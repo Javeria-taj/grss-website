@@ -1,0 +1,17 @@
+import { NextResponse } from 'next/server';
+import { readFileSync } from 'fs';
+import path from 'path';
+
+export async function GET() {
+  const htmlPath = path.join(
+    process.cwd(),
+    'IEEE GRSS - Observe Beyond Vision (6).html'
+  );
+  const html = readFileSync(htmlPath);
+  return new NextResponse(html, {
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+    },
+  });
+}
