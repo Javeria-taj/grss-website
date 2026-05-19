@@ -3,7 +3,7 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { EARTH, ORBITAL } from '../../constants/animations';
+import { EARTH } from '../../constants/animations';
 import { COLORS } from '../../constants/colors';
 
 interface AtmosphericLayerSystemProps {
@@ -90,8 +90,11 @@ export function AtmosphericLayerSystem({
     const t = clock.getElapsedTime();
     if (outerAtmRef.current) {
       // Very gentle pulse
-      (outerAtmMaterial.uniforms.intensity as THREE.IUniform<number>).value =
-        1.6 + Math.sin(t * 0.5) * 0.1;
+      const mat = outerAtmRef.current.material as THREE.ShaderMaterial;
+      if (mat && mat.uniforms && mat.uniforms.intensity) {
+        (mat.uniforms.intensity as THREE.IUniform<number>).value =
+          1.6 + Math.sin(t * 0.5) * 0.1;
+      }
     }
   });
 

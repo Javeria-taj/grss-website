@@ -392,8 +392,6 @@ body {
   margin-top: 48px;
 }
 
-.stat-item {}
-
 .stat-value {
   font-family: var(--font-serif);
   font-weight: 200;

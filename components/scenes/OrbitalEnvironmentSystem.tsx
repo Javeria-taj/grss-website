@@ -16,7 +16,7 @@ export function OrbitalEnvironmentSystem({
   const satelliteRef = useRef<THREE.Mesh>(null);
   const orbitGroupRef = useRef<THREE.Group>(null);
   const satelliteAngleRef = useRef(0.3);
-  const trailRef = useRef<THREE.Points>(null);
+  const spriteRef = useRef<THREE.Sprite>(null);
 
   // Orbital ellipse ring
   const orbitCurve = useMemo(() => {
@@ -76,15 +76,18 @@ export function OrbitalEnvironmentSystem({
     satelliteAngleRef.current += ORBITAL.satelliteSpeed;
     const angle = satelliteAngleRef.current;
 
+    const x = Math.cos(angle) * ORBITAL.radiusX;
+    const z = Math.sin(angle) * ORBITAL.radiusY;
+
     if (satelliteRef.current) {
-      satelliteRef.current.position.set(
-        Math.cos(angle) * ORBITAL.radiusX,
-        0,
-        Math.sin(angle) * ORBITAL.radiusY
-      );
+      satelliteRef.current.position.set(x, 0, z);
       // Subtle pulse
       const pulse = 1.0 + Math.sin(t * 3.0) * 0.15;
       satelliteRef.current.scale.setScalar(pulse);
+    }
+
+    if (spriteRef.current) {
+      spriteRef.current.position.set(x, 0, z);
     }
   });
 
@@ -101,7 +104,7 @@ export function OrbitalEnvironmentSystem({
 
       {/* Satellite halo glow */}
       <sprite
-        position={satelliteRef.current?.position ?? [0, 0, 0]}
+        ref={spriteRef}
         material={haloMaterial}
         scale={[0.14, 0.14, 0.14]}
       />

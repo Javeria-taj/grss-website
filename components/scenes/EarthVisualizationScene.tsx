@@ -15,17 +15,6 @@ function EarthSphere(): React.JSX.Element {
   const meshRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
 
-  // Procedural Earth-like appearance using layered materials
-  const earthMaterial = useMemo(() => {
-    const mat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#0e2144'),
-      emissive: new THREE.Color('#061229'),
-      emissiveIntensity: 0.35,
-      roughness: 0.88,
-      metalness: 0.05,
-    });
-    return mat;
-  }, []);
 
   // Cloud layer material
   const cloudMaterial = useMemo(() => {
@@ -118,11 +107,14 @@ function EarthSphere(): React.JSX.Element {
 
     if (meshRef.current) {
       meshRef.current.rotation.y += EARTH_CONFIG.rotationSpeed;
+      const mat = meshRef.current.material as THREE.ShaderMaterial;
+      if (mat && mat.uniforms && mat.uniforms.time) {
+        (mat.uniforms.time as THREE.IUniform<number>).value = t;
+      }
     }
     if (cloudsRef.current) {
       cloudsRef.current.rotation.y += EARTH_CONFIG.rotationSpeed * 1.12;
     }
-    (oceanMaterial.uniforms.time as THREE.IUniform<number>).value = t;
   });
 
   return (
