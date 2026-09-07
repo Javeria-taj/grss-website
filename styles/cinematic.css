@@ -688,6 +688,7 @@ body {
    ============================================================ */
 
 @media (max-width: 768px) {
+  /* Navigation */
   .nav-links {
     display: none;
   }
@@ -696,6 +697,16 @@ body {
     padding: 20px 24px;
   }
 
+  /* Hero Section */
+  .hero-tagline {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .hero-identity {
+    font-size: 10px;
+  }
+
+  /* Layout Grids */
   .section-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -705,25 +716,60 @@ body {
     direction: ltr;
   }
 
+  .cinematic-section {
+    padding: 80px 24px;
+  }
+
+  .section-headline {
+    font-size: clamp(28px, 6vw, 40px);
+    margin-bottom: 20px;
+  }
+
+  /* Stats & Cards */
   .stats-row {
     flex-wrap: wrap;
     gap: 32px;
   }
 
-  .research-grid {
-    grid-template-columns: 1fr;
+  .stat-value {
+    font-size: 32px;
   }
 
+  .research-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background: transparent;
+    border: none;
+  }
+
+  .research-card {
+    border: 1px solid var(--color-border);
+  }
+
+  /* Footer / Signature */
   .signature-links {
     flex-direction: column;
     gap: 20px;
     align-items: center;
   }
 
-  .cta-row {
-    flex-direction: column;
+  .signature-tagline {
+    font-size: clamp(24px, 8vw, 36px);
   }
 
+  /* Buttons */
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Misc */
   .progress-indicator {
     display: none;
   }
@@ -732,5 +778,9 @@ body {
 @media (max-width: 480px) {
   .cinematic-section {
     padding: 60px 20px;
+  }
+
+  .nav-system {
+    padding: 16px 20px;
   }
 }
