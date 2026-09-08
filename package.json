@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "site:unpack": "node scripts/site-unpack.mjs",
+    "site:pack": "node scripts/site-pack.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEEE GRSS · Observe Beyond Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 200 400;
+  font-display: swap;
+  src: url("e3522af4-89e6-42b6-8e3e-77279a1fc70d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 200 400;
+  font-display: swap;
+  src: url("e8ef4f94-8437-4dca-90ab-93a9dc147465") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 200 400;
+  font-display: swap;
+  src: url("2893708e-4a60-4df1-8cf7-121b19536bce") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 200 400;
+  font-display: swap;
+  src: url("71a5753f-cdb4-41db-a7fb-3281dee43005") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 200 400;
+  font-display: swap;
+  src: url("b955cc5b-c2a7-466b-8dd3-b39d69897c80") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 200 400;
+  font-display: swap;
+  src: url("72792add-5aa2-42ad-9c84-3f8f94f8dbfe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("6f513895-1ed0-4d64-95db-5315bdc4a3e5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("dfafc84f-2420-44f0-8fbe-18879995dceb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("57fa0d73-2b55-4a30-9fc9-e6d06fc41ac8") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("0e45b63c-a8bc-42b7-bcc0-03bfb5d5301f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("17d2b1f0-2fb5-402e-9958-707c71d70498") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("c8f14332-10fc-498b-b45c-5203b89293c0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("145c2f2c-652b-4fdd-b60d-595482445ba6") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("6f513895-1ed0-4d64-95db-5315bdc4a3e5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("dfafc84f-2420-44f0-8fbe-18879995dceb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("57fa0d73-2b55-4a30-9fc9-e6d06fc41ac8") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("0e45b63c-a8bc-42b7-bcc0-03bfb5d5301f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("17d2b1f0-2fb5-402e-9958-707c71d70498") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("c8f14332-10fc-498b-b45c-5203b89293c0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("145c2f2c-652b-4fdd-b60d-595482445ba6") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6f513895-1ed0-4d64-95db-5315bdc4a3e5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("dfafc84f-2420-44f0-8fbe-18879995dceb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("57fa0d73-2b55-4a30-9fc9-e6d06fc41ac8") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0e45b63c-a8bc-42b7-bcc0-03bfb5d5301f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("17d2b1f0-2fb5-402e-9958-707c71d70498") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c8f14332-10fc-498b-b45c-5203b89293c0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("145c2f2c-652b-4fdd-b60d-595482445ba6") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("20561510-05c3-4a71-9ee5-80c72a125690") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("78716a8b-d690-4633-8d32-cdffc463515e") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("226c17d3-5397-428c-b06d-196e1b5bd3cb") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("975caffa-d2f9-4d48-9ce7-a5418d9bf997") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("2b6a7501-0539-4324-8bf9-62178ccc3eea") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("cc5e81b9-16d5-403b-9c7b-969f7fcd1100") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("20561510-05c3-4a71-9ee5-80c72a125690") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("78716a8b-d690-4633-8d32-cdffc463515e") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("226c17d3-5397-428c-b06d-196e1b5bd3cb") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("975caffa-d2f9-4d48-9ce7-a5418d9bf997") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2b6a7501-0539-4324-8bf9-62178ccc3eea") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("cc5e81b9-16d5-403b-9c7b-969f7fcd1100") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<style>
+/* ============================================================
+   IEEE GRSS · OBSERVE BEYOND VISION
+   A cinematic, restrained, atmospheric experience.
+   ============================================================ */
+
+  :root {
+    --bg: #03050a;
+    --bg-deep: #010205;
+    --ink: #eaecf2;
+    --ink-dim: #61687a;
+    --ink-faint: #1f242e;
+    --ink-ghost: #0d1015;
+    --line: rgba(234,236,242,0.05);
+    --line-mid: rgba(234,236,242,0.12);
+    --accent: #9ec1ff;
+    --accent-warm: #d4b285;
+    --glow: rgba(158,193,255,0.22);
+
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+
+    --ease-cine: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-deep: cubic-bezier(0.7, 0, 0.3, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    cursor: none;
+    line-height: 1.4;
+  }
+
+  /* Cold open: page begins in near darkness, fades to reveal */
+  .cold-open {
+    position: fixed; inset: 0;
+    background: var(--bg);
+    z-index: 9999;
+    pointer-events: none;
+    animation: coldOpen 1.6s var(--ease-deep) 0.2s forwards;
+  }
+  @keyframes coldOpen {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  /* GRAIN — barely there */
+  .grain {
+    position: fixed; inset: 0; z-index: 9996;
+    pointer-events: none; opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+  }
+  .vignette {
+    position: fixed; inset: 0; z-index: 9995;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.6) 100%);
+  }
+
+  /* CURSOR */
+  .cur-dot, .cur-ring {
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 10000;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    mix-blend-mode: difference;
+  }
+  .cur-dot { width: 3px; height: 3px; background: var(--ink); border-radius: 50%; }
+  .cur-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(234,236,242,0.4);
+    border-radius: 50%;
+    transition: width .6s var(--ease-cine), height .6s var(--ease-cine), border-color .6s;
+  }
+  .cur-ring.hover { width: 88px; height: 88px; border-color: var(--accent); }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* ── CHROME ─────────────────────────────────────── */
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 110;
+    padding: 38px 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    mix-blend-mode: difference;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .logo .mark {
+    width: 18px; height: 18px;
+    border: 1px solid var(--ink); border-radius: 50%;
+    position: relative;
+  }
+  .logo .mark::before {
+    content: ""; position: absolute; inset: 3px;
+    border: 1px solid var(--ink); border-radius: 50%;
+  }
+  .logo .mark::after {
+    content: ""; position: absolute;
+    top: 50%; left: 50%;
+    width: 2px; height: 2px;
+    background: var(--ink); border-radius: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .logo b { font-weight: 500; letter-spacing: 0.24em; }
+  .logo .sub { color: var(--ink-dim); margin-left: 2px; }
+
+  .menu {
+    list-style: none; display: flex; gap: 44px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+  }
+  .menu a {
+    color: var(--ink); text-decoration: none;
+    opacity: 0.55; transition: opacity .5s;
+  }
+  .menu a:hover, .menu li.active a { opacity: 1; }
+
+  .status {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .status .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #76f0b3;
+    box-shadow: 0 0 8px rgba(118,240,179,0.7);
+    animation: blink 2.6s infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* SYSTEM BOOT LOG — telemetry that fades in during the cold open,
+     then quietly retires once the hero is alive. Sells the idea that
+     the system was already running before the user arrived. */
+  .boot-log {
+    position: fixed;
+    bottom: 96px; left: 64px;
+    z-index: 10000;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--accent);
+    pointer-events: none;
+    animation: bootFadeOut 1.4s var(--ease-cine) 3.6s forwards;
+  }
+  @keyframes bootFadeOut {
+    from { opacity: 1; visibility: visible; }
+    to   { opacity: 0; visibility: hidden; }
+  }
+  .boot-log .line {
+    opacity: 0;
+    animation: bootLineIn 0.7s var(--ease-cine) forwards;
+    margin-bottom: 8px;
+    color: var(--ink-dim);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .boot-log .line::before {
+    content: "▸";
+    color: var(--ink-faint);
+  }
+  .boot-log .line.ok {
+    color: var(--accent);
+  }
+  .boot-log .line.live::before { content: "●"; color: #76f0b3; }
+  .boot-log .line.live { color: #76f0b3; }
+  @keyframes bootLineIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 0.88; transform: translateX(0); }
+  }
+  .boot-log .line[data-l="0"] { animation-delay: 0.4s; }
+  .boot-log .line[data-l="1"] { animation-delay: 0.9s; }
+  .boot-log .line[data-l="2"] { animation-delay: 1.4s; }
+  .boot-log .line[data-l="3"] { animation-delay: 1.9s; }
+  .boot-log .line[data-l="4"] { animation-delay: 2.3s; }
+  .boot-log .line[data-l="5"] { animation-delay: 2.7s; }
+
+  /* Live coordinate ticker — last digits update softly */
+  .tk {
+    display: inline-block;
+    min-width: 1.6ch;
+    text-align: left;
+  }
+  .hud {
+    position: fixed; z-index: 95;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ink-dim);
+    pointer-events: none;
+  }
+  .hud.bl { bottom: 38px; left: 64px; }
+  .hud.br { bottom: 38px; right: 64px; text-align: right; }
+
+  /* SCENE TITLE CARD — small floating label that updates as the
+     "camera" enters a scene. Slides + fades subtly. */
+  .scene-card {
+    position: fixed;
+    top: 50%; right: 64px;
+    transform: translateY(-50%);
+    z-index: 96;
+    pointer-events: none;
+    width: 200px;
+    text-align: right;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--ink-dim);
+    opacity: 0;
+    transition: opacity 1.6s var(--ease-cine);
+  }
+  .scene-card.show { opacity: 1; }
+  .scene-card .num {
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .scene-card .name {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    line-height: 1;
+    margin-top: 8px;
+    font-variation-settings: 'opsz' 48;
+  }
+  .scene-card .meta {
+    margin-top: 14px;
+    color: var(--ink-faint);
+    font-size: 8px;
+    letter-spacing: 0.32em;
+    line-height: 1.7;
+  }
+  .scene-card .meta::before {
+    content: "";
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--ink-faint);
+    margin: 0 0 12px auto;
+  }
+
+  /* PROGRESS RAIL */
+  .rail {
+    position: fixed;
+    left: 64px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 95;
+    pointer-events: none;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .rail .step {
+    width: 18px; display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink-faint);
+    transition: color .8s var(--ease-cine);
+  }
+  .rail .step .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    border: 1px solid var(--ink-faint);
+    background: var(--bg);
+    transition: all .8s var(--ease-cine);
+  }
+  .rail .step .name {
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: all .8s var(--ease-cine);
+    white-space: nowrap;
+  }
+  .rail .step.active { color: var(--ink); }
+  .rail .step.active .dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--glow);
+  }
+  .rail .step.active .name {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* SCROLL HINT */
+  .scroll-hint {
+    position: absolute; bottom: 56px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    animation: scrollHintIn 1.4s var(--ease-cine) 3.8s forwards;
+  }
+  @keyframes scrollHintIn { to { opacity: 1; } }
+  .scroll-hint .bar {
+    width: 1px; height: 44px;
+    background: linear-gradient(to bottom, var(--ink-dim) 0%, transparent 100%);
+    animation: barWipe 3s infinite var(--ease-cine);
+    transform-origin: top;
+  }
+  @keyframes barWipe {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    45%  { transform: scaleY(1); transform-origin: top; }
+    55%  { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── STAGE (sticky earth backdrop) ─────────────── */
+  .stage {
+    position: fixed; inset: 0; z-index: 1;
+    pointer-events: none;
+  }
+  #earth-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* Earth pulse signature — atmospheric rings that emanate from earth periodically */
+  .pulse-system {
+    position: fixed;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vmin; height: 100vmin;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    animation: pulseSystemIn 2s var(--ease-cine) 2s forwards;
+  }
+  @keyframes pulseSystemIn { to { opacity: 1; } }
+  .pulse-system .ring {
+    position: absolute;
+    inset: 50% 50%;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulseRing 8s ease-out infinite;
+  }
+  .pulse-system .ring:nth-child(1) { animation-delay: 0s; }
+  .pulse-system .ring:nth-child(2) { animation-delay: 2.6s; }
+  .pulse-system .ring:nth-child(3) { animation-delay: 5.2s; }
+  @keyframes pulseRing {
+    0%   { inset: calc(50% - 4px) calc(50% - 4px); opacity: 0; }
+    8%   { opacity: 0.6; }
+    100% { inset: 0; opacity: 0; }
+  }
+
+  /* ── SIGNATURE MOMENT: ATMOSPHERIC ENTRY ───────────────
+     As user scrolls hero → manifesto, this layer briefly floods
+     the viewport with atmospheric blue — as if the camera dives
+     through Earth's atmosphere before emerging on the other side
+     for the manifesto sequence.
+     ──────────────────────────────────────────────────────── */
+  .atmo-flash {
+    position: fixed; inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+    background:
+      radial-gradient(circle at 50% 55%, rgba(140,180,235,0.35) 0%, rgba(40,80,140,0.25) 30%, transparent 70%),
+      radial-gradient(ellipse at 50% 100%, rgba(110,154,212,0.18) 0%, transparent 60%);
+    mix-blend-mode: screen;
+  }
+  /* atmospheric horizon arc — emerges during the entry */
+  .atmo-flash::before {
+    content: "";
+    position: absolute;
+    left: -10%; right: -10%;
+    bottom: 30%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(158,193,255,0.4), transparent);
+    filter: blur(2px);
+    box-shadow: 0 0 60px rgba(158,193,255,0.3);
+    opacity: 0;
+    transition: opacity .4s;
+  }
+  .atmo-flash.peak::before { opacity: 1; }
+
+  /* ── DRIFTING DUST: sparse atmospheric motes ─────────── */
+  .dust {
+    position: fixed; inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .dust span {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: rgba(234,236,242,0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(234,236,242,0.3);
+    animation: drift linear infinite;
+    opacity: 0;
+  }
+  @keyframes drift {
+    0%   { transform: translate(0, 0); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.6; }
+    100% { transform: translate(-120px, -80px); opacity: 0; }
+  }
+
+  /* ── CINEMATIC LETTERBOX BARS ────────────────────────────
+     Subtle 21:9 framing that quietly slides in on key emotional
+     scenes (Manifesto + Horizon) to signal we're inside the film. */
+  .cine-bar {
+    position: fixed; left: 0; right: 0;
+    z-index: 80;
+    pointer-events: none;
+    height: 0;
+    background: #02030a;
+    transition: height 2s var(--ease-cine);
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+  }
+  .cine-bar.top { top: 0; }
+  .cine-bar.bot { bottom: 0; }
+  body.cine .cine-bar { height: 84px; }
+
+  /* ── SCENES ─────────────────────────────────────── */
+  .scene { position: relative; z-index: 3; }
+
+  /* HERO */
+  .scene-hero {
+    height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-frame {
+    position: absolute; inset: 100px 100px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1.8s var(--ease-cine) 2.8s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .hero-frame::before, .hero-frame::after,
+  .hero-frame > i:nth-child(1), .hero-frame > i:nth-child(2) {
+    content: ""; position: absolute;
+    width: 20px; height: 20px;
+    border: 1px solid var(--line-mid);
+  }
+  .hero-frame::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+  .hero-frame::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+  .hero-frame > i:nth-child(1) { top: 0; right: 0; border-left: none; border-bottom: none; }
+  .hero-frame > i:nth-child(2) { bottom: 0; left: 0; border-right: none; border-top: none; }
+
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.55em; text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 48px;
+    z-index: 4;
+    opacity: 0;
+    animation: fadeIn 1.4s var(--ease-cine) 1s forwards;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ""; width: 40px; height: 1px;
+    background: var(--ink-faint);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(56px, 11vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.038em;
+    z-index: 4;
+    font-variation-settings: 'opsz' 144;
+    max-width: 92vw;
+  }
+  .hero-title .line {
+    display: block;
+    overflow: hidden;
+    width: max-content;
+    max-width: 100%;
+    padding-right: 0.3em;
+  }
+  .hero-title .line > span {
+    display: inline-block;
+    transform: translateY(112%);
+    animation: lineUp 1.6s var(--ease-cine) both;
+  }
+  .hero-title .line:nth-child(1) > span { animation-delay: 1.8s; }
+  .hero-title .line:nth-child(2) > span { animation-delay: 1.98s; }
+  .hero-title .line:nth-child(3) > span { animation-delay: 2.16s; }
+  @keyframes lineUp { to { transform: translateY(0); } }
+  .hero-title em {
+    font-style: italic;
+    color: var(--ink-dim);
+  }
+
+  .hero-sub {
+    margin-top: 56px;
+    max-width: 440px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+    z-index: 4;
+    opacity: 0;
+    animation: fadeIn 1.3s var(--ease-cine) 3.2s forwards;
+  }
+  .hero-coords {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 2;
+    z-index: 3;
+    opacity: 0;
+    animation: fadeIn 1.3s var(--ease-cine) 2.2s forwards;
+  }
+  .hero-coords.left { left: 64px; }
+  .hero-coords.right { right: 64px; text-align: right; animation-delay: 2.3s; }
+  .hero-coords b { color: var(--ink-dim); font-weight: 400; }
+
+  /* MANIFESTO — single statement, fades through */
+  .scene-manifesto {
+    min-height: 220vh;
+    position: relative;
+  }
+  .manifesto-sticky {
+    position: sticky; top: 0;
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 64px;
+    overflow: hidden;
+  }
+  .manifesto-track {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    text-align: center;
+  }
+  .manifesto-line {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(44px, 8.5vw, 144px);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    will-change: transform, opacity;
+    font-variation-settings: 'opsz' 144;
+    text-wrap: balance;
+  }
+  .manifesto-line em { font-style: italic; color: var(--ink-dim); }
+  .manifesto-caption {
+    position: absolute;
+    bottom: 64px; left: 64px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 2;
+  }
+  .manifesto-caption b { color: var(--accent); font-weight: 400; }
+
+  /* DISCIPLINES — large list, mostly negative space */
+  .scene-disciplines {
+    min-height: 100vh;
+    padding: 220px 64px 240px;
+    position: relative;
+  }
+  .scene-head {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 80px;
+    margin-bottom: 180px;
+    align-items: start;
+  }
+  .scene-num {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex; gap: 14px;
+  }
+  .scene-num .ln {
+    width: 28px; height: 1px;
+    background: var(--ink-faint);
+    margin-top: 8px;
+  }
+  .scene-head h2 {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(40px, 5.5vw, 96px);
+    line-height: 1.02; letter-spacing: -0.03em;
+    text-wrap: balance;
+    max-width: 1100px;
+    font-variation-settings: 'opsz' 96;
+  }
+  .scene-head h2 em { font-style: italic; color: var(--ink-dim); }
+
+  .discipline-list {
+    border-top: 1px solid var(--line);
+  }
+  .discipline-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 180px;
+    gap: 60px;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    cursor: none;
+    position: relative;
+    transition: padding 1s var(--ease-cine);
+  }
+  .discipline-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(158,193,255,0.04) 40%, transparent 80%);
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  .discipline-row:hover::before { opacity: 1; }
+  .discipline-row:hover .d-name {
+    color: var(--accent);
+    transform: translateX(24px);
+  }
+  .discipline-row:hover .d-tag {
+    color: var(--ink-dim);
+    border-color: var(--line-mid);
+  }
+  .d-num {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+  }
+  .d-name {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(32px, 4.2vw, 68px);
+    line-height: 1; letter-spacing: -0.022em;
+    color: var(--ink);
+    transition: color 1s var(--ease-cine), transform 1s var(--ease-cine);
+    font-variation-settings: 'opsz' 96;
+  }
+  .d-name em { font-style: italic; color: var(--ink-dim); }
+  .d-tag {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    transition: all .8s var(--ease-cine);
+    justify-self: end;
+  }
+
+  /* THEATRE — sparse, single floating telemetry card */
+  .scene-theatre {
+    min-height: 180vh;
+    position: relative;
+  }
+  .theatre-sticky {
+    position: sticky; top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 64px;
+  }
+  .theatre-title {
+    position: absolute;
+    top: 50%; left: 64px;
+    transform: translateY(-50%);
+    max-width: 560px;
+    z-index: 3;
+  }
+  .theatre-title .num {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 32px;
+  }
+  .theatre-title h2 {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(40px, 5.5vw, 88px);
+    line-height: 1; letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    font-variation-settings: 'opsz' 96;
+  }
+  .theatre-title h2 em { font-style: italic; color: var(--ink-dim); }
+  .theatre-title p {
+    color: var(--ink-dim); font-size: 13px; line-height: 1.8;
+    max-width: 380px;
+  }
+  .theatre-hud {
+    position: absolute;
+    right: 96px; top: 50%;
+    transform: translateY(-50%);
+    width: 460px;
+    z-index: 3;
+  }
+  .hud-card {
+    border: 1px solid var(--line-mid);
+    background: rgba(3,5,10,0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 28px;
+    position: relative;
+  }
+  .hud-card::before, .hud-card::after,
+  .hud-card > i:nth-child(1), .hud-card > i:nth-child(2) {
+    content: ""; position: absolute;
+    width: 8px; height: 8px;
+    border: 1px solid var(--accent);
+  }
+  .hud-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .hud-card::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .hud-card > i:nth-child(1) { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+  .hud-card > i:nth-child(2) { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+  .hud-card .hd {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-dim);
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+  .hud-card .hd .live {
+    color: var(--accent);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hud-card .hd .live::before {
+    content: ""; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 10px var(--accent);
+    animation: blink 1.6s infinite;
+  }
+  .gauge-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .gauge .k {
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  .gauge .v {
+    font-family: var(--serif); font-weight: 200;
+    font-size: 34px; color: var(--accent);
+    letter-spacing: -0.025em; line-height: 1;
+    font-variation-settings: 'opsz' 48;
+  }
+  .gauge .v small {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--ink-dim); margin-left: 4px;
+    font-weight: 400;
+  }
+  .gauge .bar {
+    height: 1px; background: var(--line);
+    margin-top: 16px; overflow: hidden;
+  }
+  .gauge .bar > i {
+    display: block; height: 100%;
+    background: var(--accent);
+    width: 0;
+    box-shadow: 0 0 6px var(--accent);
+  }
+  .hud-footer {
+    margin-top: 24px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* TRAJECTORY */
+  .scene-trajectory {
+    padding: 220px 64px 240px;
+    position: relative;
+  }
+  .traj-inner {
+    max-width: 1100px; margin: 0 auto;
+    position: relative;
+  }
+  .traj-line {
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+  .traj-line .fill {
+    position: absolute; top: 0; left: 0; right: 0; height: 0;
+    background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+    box-shadow: 0 0 18px var(--glow);
+  }
+  .traj-event {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: center;
+    margin-bottom: 200px;
+    opacity: 0.2;
+    transition: opacity 1.2s var(--ease-cine);
+  }
+  .traj-event.on { opacity: 1; }
+  .traj-event:nth-child(odd) .te-body {
+    text-align: right; padding-right: 64px;
+  }
+  .traj-event:nth-child(even) .te-body {
+    grid-column: 3; padding-left: 64px;
+  }
+  .traj-event:nth-child(even) .te-meta {
+    grid-column: 1; text-align: right; padding-right: 64px;
+  }
+  .te-node {
+    grid-column: 2; justify-self: center;
+    width: 22px; height: 22px;
+    border: 1px solid var(--line-mid);
+    background: var(--bg);
+    border-radius: 50%;
+    position: relative; z-index: 2;
+    transition: all 1.2s var(--ease-cine);
+  }
+  .traj-event.on .te-node {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 6px rgba(158,193,255,0.07), 0 0 24px var(--glow);
+  }
+  .traj-event.on .te-node::after {
+    content: "";
+    position: absolute; inset: 6px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .te-body .date {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 22px;
+  }
+  .te-body h3 {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(28px, 3.5vw, 54px);
+    line-height: 1; letter-spacing: -0.025em;
+    margin-bottom: 22px;
+    font-variation-settings: 'opsz' 72;
+  }
+  .te-body h3 em { font-style: italic; color: var(--ink-dim); }
+  .te-body p {
+    color: var(--ink-dim); font-size: 13px; line-height: 1.7;
+    max-width: 380px;
+  }
+  .traj-event:nth-child(odd) .te-body p { margin-left: auto; }
+  .te-meta {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink-faint); line-height: 1.9;
+  }
+
+  /* MISSIONS — pinned horizontal */
+  .scene-missions {
+    height: 100vh; overflow: hidden;
+    position: relative;
+  }
+  .missions-head {
+    position: absolute;
+    top: 140px; left: 64px; right: 64px;
+    z-index: 5;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .missions-head .num {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .missions-head h2 {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(36px, 4.5vw, 72px);
+    line-height: 1; letter-spacing: -0.03em;
+    margin-top: 18px;
+    font-variation-settings: 'opsz' 96;
+  }
+  .missions-head h2 em { font-style: italic; color: var(--ink-dim); }
+  .missions-head .counter {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--ink-dim);
+  }
+  .missions-track {
+    display: flex; height: 100%; align-items: center;
+    padding: 0 64px;
+    will-change: transform;
+  }
+  .mission {
+    flex-shrink: 0;
+    width: 64vw; max-width: 900px;
+    height: 68vh;
+    margin-right: 80px;
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: #050810;
+  }
+  .mission .corner {
+    position: absolute; width: 12px; height: 12px;
+    border: 1px solid var(--accent);
+    z-index: 4; opacity: 0.55;
+  }
+  .mission .corner.tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+  .mission .corner.tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+  .mission .corner.bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+  .mission .corner.br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+  .mission .imagery { position: absolute; inset: 0; }
+  .mission .imagery svg { width: 100%; height: 100%; }
+  .mission .imagery::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 28% 32%, rgba(158,193,255,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 72% 78%, rgba(212,178,133,0.08) 0%, transparent 55%);
+  }
+  .mission .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(3,5,10,0.96) 0%, rgba(3,5,10,0.4) 45%, transparent 100%);
+  }
+  .mission .top-meta {
+    position: absolute; top: 50px; left: 50px; right: 50px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-dim);
+    z-index: 3;
+  }
+  .mission .top-meta .a { color: var(--accent); }
+  .mission .body {
+    position: absolute;
+    bottom: 56px; left: 50px; right: 50px;
+    z-index: 3;
+  }
+  .mission .body .label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+  }
+  .mission .body h3 {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(36px, 4vw, 60px);
+    line-height: 1; letter-spacing: -0.028em;
+    margin-bottom: 24px;
+    text-wrap: balance;
+    font-variation-settings: 'opsz' 96;
+  }
+  .mission .body h3 em { font-style: italic; color: var(--ink-dim); }
+  .mission .body p {
+    color: var(--ink-dim); font-size: 13px; line-height: 1.75;
+    max-width: 540px;
+  }
+
+  /* NETWORK */
+  .scene-network {
+    padding: 220px 64px 240px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-deep) 50%, transparent 100%);
+  }
+  .network-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--line);
+    max-width: 1300px; margin: 0 auto;
+    border: 1px solid var(--line);
+  }
+  .nm {
+    background: var(--bg);
+    aspect-ratio: 4/5;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    transition: background 1s var(--ease-cine);
+  }
+  .nm:hover { background: var(--ink-ghost); }
+  .nm::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(158,193,255,0.18), transparent 50%);
+    opacity: 0; transition: opacity .8s;
+    pointer-events: none;
+  }
+  .nm:hover::after { opacity: 1; }
+  .nm .portrait {
+    position: relative;
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(40deg, rgba(158,193,255,0.04) 0 1px, transparent 1px 10px),
+      radial-gradient(circle at 50% 40%, rgba(158,193,255,0.15), transparent 70%),
+      var(--ink-ghost);
+    margin-bottom: 26px;
+  }
+  .nm .portrait::after {
+    content: attr(data-init);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 200; font-style: italic;
+    font-size: 76px; color: rgba(234,236,242,0.42);
+    font-variation-settings: 'opsz' 96;
+  }
+  .nm .portrait .sweep {
+    position: absolute; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    top: 0; animation: sweep 6s infinite linear;
+    opacity: 0.55;
+  }
+  @keyframes sweep {
+    0% { top: -2%; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 102%; opacity: 0; }
+  }
+  .nm .id {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 12px;
+  }
+  .nm .name {
+    font-family: var(--serif); font-weight: 200;
+    font-size: 24px; line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 48;
+  }
+  .nm .role {
+    font-size: 12px; color: var(--ink-dim);
+    margin-top: 10px;
+  }
+
+  /* HORIZON */
+  .scene-horizon {
+    min-height: 140vh;
+    position: relative;
+    padding: 280px 64px 140px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .horizon-rings {
+    position: absolute;
+    bottom: -65vw; left: 50%;
+    transform: translateX(-50%);
+    width: 120vw; height: 120vw;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .horizon-rings span {
+    position: absolute; inset: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+  .horizon-rings span:nth-child(1) { inset: 0; }
+  .horizon-rings span:nth-child(2) { inset: 10%; border-color: var(--line-mid); }
+  .horizon-rings span:nth-child(3) { inset: 22%; border-style: dashed; opacity: 0.5; }
+  .horizon-rings span:nth-child(4) {
+    inset: 0; border: none;
+    background: radial-gradient(circle at 50% 100%, rgba(158,193,255,0.12), transparent 50%);
+  }
+  .horizon-num {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--ink-dim); margin-bottom: 64px;
+    position: relative; z-index: 2;
+  }
+  .horizon-statement {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(56px, 10vw, 180px);
+    line-height: 0.92; letter-spacing: -0.038em;
+    max-width: 1400px; margin: 0 auto;
+    text-wrap: balance;
+    position: relative; z-index: 2;
+    font-variation-settings: 'opsz' 144;
+  }
+  .horizon-statement em { font-style: italic; color: var(--ink-dim); }
+  .horizon-sub {
+    margin-top: 88px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--ink-dim);
+    position: relative; z-index: 2;
+  }
+  .horizon-cta {
+    margin-top: 56px;
+    display: inline-flex; align-items: center; gap: 18px;
+    padding: 22px 38px;
+    border: 1px solid var(--line-mid);
+    border-radius: 999px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    background: rgba(158,193,255,0.02);
+    backdrop-filter: blur(10px);
+    transition: all .8s var(--ease-cine);
+    position: relative; z-index: 2;
+    cursor: none;
+  }
+  .horizon-cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(158,193,255,0.06);
+    transform: translateY(-2px);
+  }
+  .horizon-cta .arrow {
+    width: 12px; height: 12px;
+    border-top: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform .6s var(--ease-cine);
+  }
+  .horizon-cta:hover .arrow { transform: rotate(45deg) translate(3px, -3px); }
+
+  footer {
+    position: relative; z-index: 5;
+    padding: 120px 64px 56px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 64px;
+  }
+  footer .brand {
+    font-family: var(--serif); font-weight: 200;
+    font-size: 38px; line-height: 1;
+    letter-spacing: -0.022em;
+    font-variation-settings: 'opsz' 72;
+  }
+  footer .brand em { font-style: italic; color: var(--ink-dim); }
+  footer .brand .sub {
+    display: block;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  footer h5 {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 26px;
+    font-weight: 400;
+  }
+  footer ul { list-style: none; }
+  footer ul li {
+    margin-bottom: 14px;
+    color: var(--ink-dim); font-size: 13px;
+    transition: color .6s;
+    cursor: none;
+  }
+  footer ul li a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .6s;
+  }
+  footer ul li:hover, footer ul li a:hover { color: var(--ink); }
+  footer .credit {
+    grid-column: 1 / -1;
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    html, body { cursor: auto; }
+    .cur-dot, .cur-ring { display: none; }
+    .rail, .hud { display: none; }
+    nav.top { padding: 20px 22px; }
+    .menu, .status { display: none; }
+    .hero-frame { inset: 60px 24px; }
+    .hero-coords { display: none; }
+    .scene-disciplines, .scene-trajectory, .scene-network { padding: 120px 24px; }
+    .scene-head { grid-template-columns: 1fr; gap: 28px; margin-bottom: 80px; }
+    .discipline-row { grid-template-columns: 50px 1fr; gap: 20px; padding: 32px 0; }
+    .discipline-row .d-tag { display: none; }
+    .theatre-sticky { padding: 100px 24px; flex-direction: column; justify-content: flex-start; gap: 32px; overflow-y: auto; height: auto; }
+    .theatre-title { position: static; transform: none; max-width: 100%; }
+    .theatre-hud { position: static; transform: none; width: 100%; }
+    .scene-theatre { min-height: auto; }
+    .scene-theatre .theatre-sticky { position: relative; height: auto; }
+    .traj-line { left: 14px; }
+    .traj-event { grid-template-columns: 40px 1fr; margin-bottom: 100px; }
+    .traj-event:nth-child(odd) .te-body,
+    .traj-event:nth-child(even) .te-body {
+      grid-column: 2; text-align: left; padding: 0;
+    }
+    .traj-event:nth-child(even) .te-meta {
+      grid-column: 2; text-align: left; padding: 0; margin-bottom: 12px;
+    }
+    .te-node { grid-column: 1; }
+    .scene-missions { height: auto; }
+    .missions-head { position: static; padding: 120px 24px 48px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .missions-track { flex-direction: column; padding: 0 24px 80px; }
+    .mission { width: 100%; height: 520px; margin: 0 0 28px 0; }
+    .network-grid { grid-template-columns: repeat(2, 1fr); }
+    .scene-horizon { padding: 160px 24px 80px; }
+    .horizon-rings { width: 170vw; height: 170vw; bottom: -85vw; }
+    footer { grid-template-columns: 1fr 1fr; padding: 80px 24px 40px; gap: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .cold-open { display: none; }
+  }
+
+  /* Scroll-reveal: opacity + translateY, CSS-only (robust without RAF) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.4s var(--ease-cine), transform 1.4s var(--ease-cine);
+    will-change: opacity, transform;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger-1 { transition-delay: 0.06s; }
+  .reveal-stagger-2 { transition-delay: 0.12s; }
+  .reveal-stagger-3 { transition-delay: 0.18s; }
+</style>
+
+</head>
+<body>
+
+<div class="cold-open"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<div class="cur-ring" id="curRing"></div>
+<div class="cur-dot" id="curDot"></div>
+
+<!-- STAGE -->
+<div class="stage">
+  <canvas id="earth-canvas"></canvas>
+</div>
+<div class="pulse-system">
+  <span class="ring"></span>
+  <span class="ring"></span>
+  <span class="ring"></span>
+</div>
+<div class="atmo-flash" id="atmoFlash"></div>
+<div class="dust" id="dust"></div>
+
+<!-- CHROME -->
+<nav class="top">
+  <div class="logo">
+    <span class="mark"></span>
+    <span><b>GRSS</b><span class="sub"> · BMSIT</span></span>
+  </div>
+  <ul class="menu" id="menu">
+    <li><a href="#hero" data-hover="">Index</a></li>
+    <li><a href="#manifesto" data-hover="">Manifesto</a></li>
+    <li><a href="#disciplines" data-hover="">Disciplines</a></li>
+    <li><a href="#theatre" data-hover="">Signal</a></li>
+    <li><a href="#trajectory" data-hover="">Trajectory</a></li>
+    <li><a href="#missions" data-hover="">Missions</a></li>
+    <li><a href="#network" data-hover="">Network</a></li>
+  </ul>
+  <div class="status">
+    <span class="dot"></span>
+    <span>Array · Online</span>
+  </div>
+</nav>
+
+<div class="cine-bar top"></div>
+<div class="cine-bar bot"></div>
+
+<div class="boot-log" id="bootLog">
+  <div class="line" data-l="0">Initializing array</div>
+  <div class="line" data-l="1">Link · 24.11 · standby</div>
+  <div class="line" data-l="2">Sector iv · 13.08°N 77.59°E</div>
+  <div class="line ok" data-l="3">Downlink · nominal</div>
+  <div class="line ok" data-l="4">L · C · X band sync</div>
+  <div class="line live" data-l="5">Array · live</div>
+</div>
+
+<div class="hud bl" id="hudIndex">01 · INDEX</div>
+<div class="hud br" id="hudUtc">00:00:00 UTC</div>
+
+<div class="scene-card" id="sceneCard">
+  <span class="num">SCENE — 02</span>
+  <div class="name">Manifesto</div>
+  <div class="meta">The signal · 01</div>
+</div>
+
+<div class="rail" id="rail"></div>
+
+<!-- ════ HERO ════ -->
+<section class="scene scene-hero" id="hero" data-scene="01" data-label="Index">
+  <div class="hero-frame"><i></i><i></i></div>
+
+  <div class="hero-coords left">
+    <b>POSITION</b><br>
+    13.08<span class="tk" data-tk="27">27</span>°N<br>
+    77.58<span class="tk" data-tk="77">77</span>°E<br>
+    <br>
+    <b>SECTOR · IV</b>
+  </div>
+  <div class="hero-coords right">
+    <b>BAND</b><br>
+    L · C · X<br>
+    REV 24.<span class="tk" data-tk="11">11</span><br>
+    <br>
+    <b>ARRAY · LIVE</b>
+  </div>
+
+  <div class="hero-eyebrow">IEEE · GRSS · BMSIT&amp;M</div>
+  <h1 class="hero-title">
+    <span class="line"><span>Observe</span></span>
+    <span class="line"><span><em>Beyond</em></span></span>
+    <span class="line"><span>Vision.</span></span>
+  </h1>
+  <p class="hero-sub">
+    A student chapter listening to Earth through artificial intelligence,
+    remote sensing, and orbital instrumentation.
+  </p>
+
+  <div class="scroll-hint">
+    <span>Begin Observation</span>
+    <span class="bar"></span>
+  </div>
+</section>
+
+<!-- ════ MANIFESTO ════ -->
+<section class="scene scene-manifesto" id="manifesto" data-scene="02" data-label="Manifesto">
+  <div class="manifesto-sticky">
+    <div class="manifesto-track" id="manifestoTrack">
+      <div class="manifesto-line" data-i="0">The planet is <em>speaking.</em></div>
+      <div class="manifesto-line" data-i="1">We are learning to <em>listen.</em></div>
+      <div class="manifesto-line" data-i="2"><em>Signals</em> become intelligence.</div>
+    </div>
+    <div class="manifesto-caption">
+      <b>02 · MANIFESTO</b><br>
+      &nbsp;<br>
+      THE PROJECT
+    </div>
+  </div>
+</section>
+
+<!-- ════ DISCIPLINES ════ -->
+<section class="scene scene-disciplines" id="disciplines" data-scene="03" data-label="Disciplines">
+  <div class="scene-head">
+    <div class="scene-num"><span class="ln"></span>03 · DISCIPLINES</div>
+    <h2>Six disciplines orbit a single question — <em>how does the planet change?</em></h2>
+  </div>
+  <div class="discipline-list" id="disciplineList"></div>
+</section>
+
+<!-- ════ THEATRE ════ -->
+<section class="scene scene-theatre" id="theatre" data-scene="04" data-label="Signal">
+  <div class="theatre-sticky">
+    <div class="theatre-title">
+      <div class="num">04 · SIGNAL THEATRE</div>
+      <h2>Raw <em>downlink.</em><br>Decoded in <em>real time.</em></h2>
+      <p>A live read from the chapter's signal theatre — telemetry returned from the orbital array overhead.</p>
+    </div>
+    <div class="theatre-hud">
+      <div class="hud-card">
+        <i></i><i></i>
+        <div class="hd">
+          <span>SECTOR · IV</span>
+          <span class="live">Live</span>
+        </div>
+        <div class="gauge-row">
+          <div class="gauge"><div class="k">NDVI</div><div class="v">0.62<small></small></div><div class="bar"><i data-w="62"></i></div></div>
+          <div class="gauge"><div class="k">LST</div><div class="v">28.4<small>°C</small></div><div class="bar"><i data-w="68"></i></div></div>
+          <div class="gauge"><div class="k">AOD</div><div class="v">0.31<small></small></div><div class="bar"><i data-w="31"></i></div></div>
+        </div>
+        <div class="hud-footer">
+          <span>13.082°N · 77.587°E</span>
+          <span id="theatreClock">T+00:00:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TRAJECTORY ════ -->
+<section class="scene scene-trajectory" id="trajectory" data-scene="05" data-label="Trajectory">
+  <div class="scene-head" style="max-width: 1100px; margin: 0 auto 200px;">
+    <div class="scene-num"><span class="ln"></span>05 · TRAJECTORY</div>
+    <h2>A calendar of <em>signals received.</em></h2>
+  </div>
+  <div class="traj-inner" id="trajInner">
+    <div class="traj-line"><div class="fill" id="trajFill"></div></div>
+  </div>
+</section>
+
+<!-- ════ MISSIONS ════ -->
+<section class="scene scene-missions" id="missions" data-scene="06" data-label="Missions">
+  <div class="missions-head">
+    <div>
+      <div class="num">06 · MISSIONS</div>
+      <h2>Field <em>research,</em> filed from orbit.</h2>
+    </div>
+    <div class="counter" id="missionCounter">01 · 04</div>
+  </div>
+  <div class="missions-track" id="missionsTrack"></div>
+</section>
+
+<!-- ════ NETWORK ════ -->
+<section class="scene scene-network" id="network" data-scene="07" data-label="Network">
+  <div class="scene-head" style="max-width: 1300px; margin: 0 auto 140px;">
+    <div class="scene-num"><span class="ln"></span>07 · NETWORK</div>
+    <h2>The minds <em>behind the lens.</em></h2>
+  </div>
+  <div class="network-grid" id="networkGrid"></div>
+</section>
+
+<!-- ════ HORIZON ════ -->
+<section class="scene scene-horizon" id="horizon" data-scene="08" data-label="Horizon">
+  <div class="horizon-rings">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="horizon-num">08 · HORIZON</div>
+  <h2 class="horizon-statement">
+    The future of <em>Earth intelligence</em><br>begins <em>here.</em>
+  </h2>
+  <div class="horizon-sub">JOIN THE CHAPTER · BMSIT&amp;M · BENGALURU</div>
+  <a class="horizon-cta" href="mailto:grssbmsitm@gmail.com" data-hover="">
+    <span>Initiate Contact</span>
+    <span class="arrow"></span>
+  </a>
+</section>
+
+<footer>
+  <div class="brand">
+    GRSS · <em>BMSIT</em>
+    <span class="sub">IEEE Geoscience &amp; Remote Sensing Society · Student Chapter</span>
+  </div>
+  <div>
+    <h5>Chapter</h5>
+    <ul><li>About</li><li>Charter</li><li>Advisors</li></ul>
+  </div>
+  <div>
+    <h5>Engage</h5>
+    <ul><li>Workshops</li><li>Symposia</li><li>Publications</li></ul>
+  </div>
+  <div>
+    <h5>Signal</h5>
+    <ul><li><a href="https://www.instagram.com/grss_bmsitm?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" data-hover="">Instagram</a></li><li><a href="https://www.linkedin.com/company/ieee-grss-bmsitm/" target="_blank" rel="noopener noreferrer" data-hover="">LinkedIn</a></li><li>GitHub</li></ul>
+  </div>
+  <div class="credit">
+    <span>© 26 · Observe Beyond Vision</span>
+    <span>Designed in low-earth orbit · v24.11</span>
+  </div>
+</footer>
+
+<!-- LIBRARIES -->
+<script src="e44a2fbb-909c-4db9-9738-7fe5effc75b2"></script>
+<script src="56043462-0a8f-49ab-b566-f0962f76eef9"></script>
+<script src="b908b706-07b9-47de-93e7-22d67c393073"></script>
+<script src="9a68908e-f29a-491b-87ee-c1c7091a197a"></script>
+
+<script>
+const $  = (q, c=document) => c.querySelector(q);
+const $$ = (q, c=document) => [...c.querySelectorAll(q)];
+const lerp = (a,b,t) => a + (b-a)*t;
+const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+
+/* Fallback cold-open removal — guarantees visibility even if CSS keyframes stall */
+setTimeout(() => {
+  const co = document.querySelector('.cold-open');
+  if(co){ co.style.opacity = '0'; co.style.visibility = 'hidden'; }
+  // Force-show entrance elements as a safety net
+  document.querySelectorAll('.hero-eyebrow, .hero-sub, .hero-coords, .hero-frame, .scroll-hint, .pulse-system').forEach(el => {
+    el.style.opacity = '1';
+  });
+  document.querySelectorAll('.hero-title .line > span').forEach(el => {
+    el.style.transform = 'translateY(0)';
+  });
+}, 4200);
+
+/* ── DRIFTING DUST: sparse atmospheric motes ─────────── */
+(function dust(){
+  const host = document.getElementById('dust');
+  if(!host) return;
+  const N = 18;
+  for(let i=0;i<N;i++){
+    const s = document.createElement('span');
+    const dur = 22 + Math.random()*16;
+    const delay = -Math.random()*dur;
+    s.style.left = `${Math.random()*100}%`;
+    s.style.top  = `${Math.random()*100}%`;
+    s.style.animationDuration = `${dur}s`;
+    s.style.animationDelay = `${delay}s`;
+    s.style.opacity = '0';
+    // slightly varied size
+    const size = 1 + Math.random()*1.8;
+    s.style.width = `${size}px`;
+    s.style.height = `${size}px`;
+    host.appendChild(s);
+  }
+})();
+
+/* ── Lenis smooth scroll ───────────────────────── */
+const lenis = new Lenis({
+  duration: 1.6,
+  easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  smoothTouch: false,
+});
+gsap.registerPlugin(ScrollTrigger);
+lenis.on('scroll', ScrollTrigger.update);
+function rafLoop(t){ lenis.raf(t); requestAnimationFrame(rafLoop); }
+requestAnimationFrame(rafLoop);
+
+/* ── Cursor ────────────────────────────────────── */
+const cd = $('#curDot'), cr = $('#curRing');
+let mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my;
+addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+function curLoop(){
+  rx += (mx-rx)*0.15;
+  ry += (my-ry)*0.15;
+  cd.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  cr.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+  requestAnimationFrame(curLoop);
+}
+curLoop();
+function attachHover(){
+  $$('a, [data-hover], .discipline-row, .nm, .mission, .horizon-cta').forEach(el => {
+    if(el._h) return; el._h = true;
+    el.addEventListener('mouseenter', () => cr.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cr.classList.remove('hover'));
+  });
+
+  /* Magnetic nav links — gentle pull toward cursor */
+  $$('.menu a, .logo, .horizon-cta').forEach(el => {
+    if(el._mag) return; el._mag = true;
+    const strength = el.classList.contains('horizon-cta') ? 18 : 8;
+    el.style.willChange = 'transform';
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width/2)) / (r.width/2);
+      const dy = (e.clientY - (r.top + r.height/2)) / (r.height/2);
+      el.style.transform = `translate(${dx*strength}px, ${dy*strength}px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transition = 'transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+      el.style.transform = 'translate(0,0)';
+      setTimeout(() => { el.style.transition = ''; }, 800);
+    });
+    el.addEventListener('mouseenter', () => { el.style.transition = ''; });
+  });
+}
+
+/* ── UTC clock ─────────────────────────────────── */
+const startT = Date.now();
+function tick(){
+  const d = new Date();
+  const u = d.toISOString().slice(11,19);
+  $('#hudUtc').textContent = u + ' UTC';
+  const e = Math.floor((Date.now()-startT)/1000);
+  const cl = $('#theatreClock');
+  if(cl) cl.textContent = `T+${String(Math.floor(e/3600)).padStart(2,'0')}:${String(Math.floor((e%3600)/60)).padStart(2,'0')}:${String(e%60).padStart(2,'0')}`;
+}
+setInterval(tick, 1000); tick();
+
+/* Live coordinate ticker — last digits softly walk, selling the
+   feeling that the system is actively tracking something */
+setInterval(() => {
+  document.querySelectorAll('.tk').forEach(t => {
+    let cur = parseInt(t.dataset.tk, 10) || 0;
+    cur += (Math.random() < 0.5 ? -1 : 1);
+    if(cur < 0) cur = 99;
+    if(cur > 99) cur = 0;
+    t.dataset.tk = String(cur).padStart(2, '0');
+    t.textContent = t.dataset.tk;
+  });
+}, 1800);
+
+/* ════════════════════════════════════════════════
+   THE EARTH
+   A shaded planet, single elegant orbital ring,
+   sparse stars, atmospheric scatter.
+   ════════════════════════════════════════════════ */
+const Earth = (function(){
+  const canvas = $('#earth-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x03050a, 0.010);
+
+  const camera = new THREE.PerspectiveCamera(34, innerWidth/innerHeight, 0.1, 200);
+  camera.position.set(0, 0, 7);
+
+  const earth = new THREE.Group();
+  earth.rotation.z = 0.41;
+  scene.add(earth);
+
+  /* Base shaded sphere */
+  const lightDir = new THREE.Vector3(1.0, 0.4, 0.8).normalize();
+  const baseMat = new THREE.ShaderMaterial({
+    uniforms: {
+      uLight: { value: lightDir },
+      uDay:   { value: new THREE.Color(0x0a1322) },
+      uNight: { value: new THREE.Color(0x020308) },
+      uRim:   { value: new THREE.Color(0x6e9ad4) },
+    },
+    vertexShader: `
+      varying vec3 vN;
+      varying vec3 vView;
+      void main(){
+        vN = normalize(normalMatrix * normal);
+        vec4 mv = modelViewMatrix * vec4(position,1.0);
+        vView = normalize(-mv.xyz);
+        gl_Position = projectionMatrix * mv;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 uLight;
+      uniform vec3 uDay;
+      uniform vec3 uNight;
+      uniform vec3 uRim;
+      varying vec3 vN;
+      varying vec3 vView;
+      void main(){
+        float ndl = clamp(dot(vN, normalize(uLight)) * 0.5 + 0.5, 0.0, 1.0);
+        vec3 base = mix(uNight, uDay, smoothstep(0.2, 0.9, ndl));
+        float rim = pow(1.0 - max(dot(vN, vView),0.0), 2.7);
+        base += uRim * rim * 0.5;
+        gl_FragColor = vec4(base, 1.0);
+      }
+    `,
+  });
+  earth.add(new THREE.Mesh(new THREE.SphereGeometry(1.65, 96, 64), baseMat));
+
+  /* Continent dot-cloud (fewer dots, more selective) */
+  function n3(x,y,z){
+    return Math.sin(x*2.1)*Math.cos(y*1.8)*Math.sin(z*1.5)
+         + Math.sin(x*0.8+1.2)*Math.cos(y*1.1)*0.7
+         + Math.cos(x*1.3)*Math.sin(z*0.9+0.4)*0.5
+         + Math.sin(x*3.4)*Math.cos(z*2.7)*0.25;
+  }
+  const DC = 4000;
+  const dGeo = new THREE.BufferGeometry();
+  const dPos = new Float32Array(DC*3);
+  const dSize = new Float32Array(DC);
+  const dCol = new Float32Array(DC*3);
+  const dNrm = new Float32Array(DC*3);
+  let landIdx = 0;
+  for(let i=0;i<DC;i++){
+    const phi = Math.acos(1 - 2*(i+0.5)/DC);
+    const theta = Math.PI * (1 + Math.sqrt(5)) * (i+0.5);
+    const x = Math.cos(theta)*Math.sin(phi);
+    const y = Math.sin(theta)*Math.sin(phi);
+    const z = Math.cos(phi);
+    const nv = n3(x*1.9, y*1.9, z*1.9);
+    const land = nv > 0.18;
+    if(!land && Math.random() > 0.18) continue;
+    const r = 1.658;
+    const k = landIdx++;
+    dPos[k*3]=x*r; dPos[k*3+1]=y*r; dPos[k*3+2]=z*r;
+    dNrm[k*3]=x; dNrm[k*3+1]=y; dNrm[k*3+2]=z;
+    if(land){
+      const tone = clamp(nv*0.6, 0, 0.6);
+      dSize[k] = 0.022 + Math.random()*0.014;
+      dCol[k*3]=0.66+tone*0.4; dCol[k*3+1]=0.78+tone*0.25; dCol[k*3+2]=1.0;
+    } else {
+      dSize[k] = 0.010 + Math.random()*0.006;
+      dCol[k*3]=0.10; dCol[k*3+1]=0.22; dCol[k*3+2]=0.40;
+    }
+  }
+  // shrink to actual count
+  const finalPos = dPos.slice(0, landIdx*3);
+  const finalSize = dSize.slice(0, landIdx);
+  const finalCol = dCol.slice(0, landIdx*3);
+  const finalNrm = dNrm.slice(0, landIdx*3);
+  dGeo.setAttribute('position', new THREE.BufferAttribute(finalPos,3));
+  dGeo.setAttribute('size',     new THREE.BufferAttribute(finalSize,1));
+  dGeo.setAttribute('color',    new THREE.BufferAttribute(finalCol,3));
+  dGeo.setAttribute('nrm',      new THREE.BufferAttribute(finalNrm,3));
+  const dMat = new THREE.ShaderMaterial({
+    uniforms: { uLight: baseMat.uniforms.uLight },
+    vertexShader: `
+      attribute float size;
+      attribute vec3 color;
+      attribute vec3 nrm;
+      uniform vec3 uLight;
+      varying vec3 vC;
+      varying float vL;
+      void main(){
+        vC = color;
+        vec3 n = normalize((modelMatrix * vec4(nrm,0.0)).xyz);
+        vL = clamp(dot(n, normalize(uLight))*0.5 + 0.5, 0.0, 1.0);
+        vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = size * (340.0 / -mv.z);
+        gl_Position = projectionMatrix * mv;
+      }
+    `,
+    fragmentShader: `
+      varying vec3 vC;
+      varying float vL;
+      void main(){
+        vec2 c = gl_PointCoord - 0.5;
+        float d = length(c);
+        if(d>0.5) discard;
+        float a = smoothstep(0.5,0.15,d) * mix(0.12, 1.0, smoothstep(0.25,0.85,vL));
+        gl_FragColor = vec4(vC * mix(0.45, 1.0, vL), a);
+      }
+    `,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  });
+  earth.add(new THREE.Points(dGeo, dMat));
+
+  /* Atmosphere — soft scatter */
+  const atmMat = new THREE.ShaderMaterial({
+    uniforms: {
+      uLight: baseMat.uniforms.uLight,
+      uColor: { value: new THREE.Color(0x6e9ad4) },
+    },
+    vertexShader: `
+      varying vec3 vN;
+      varying vec3 vPos;
+      void main(){
+        vN = normalize(normalMatrix * normal);
+        vec4 mv = modelViewMatrix * vec4(position,1.0);
+        vPos = -mv.xyz;
+        gl_Position = projectionMatrix * mv;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 uColor;
+      uniform vec3 uLight;
+      varying vec3 vN;
+      varying vec3 vPos;
+      void main(){
+        float fres = pow(0.62 - dot(vN, normalize(vPos)), 3.0);
+        float lit = clamp(dot(vN, normalize(uLight)) * 0.5 + 0.6, 0.0, 1.0);
+        vec3 col = uColor * fres * lit;
+        gl_FragColor = vec4(col, fres);
+      }
+    `,
+    side: THREE.BackSide, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.86, 64, 48), atmMat));
+
+  /* ONE signature orbital ring */
+  const ringGroup = new THREE.Group();
+  scene.add(ringGroup);
+  (function(){
+    const seg = 256, r = 2.25;
+    const verts = [];
+    for(let i=0;i<=seg;i++){
+      const a = (i/seg)*Math.PI*2;
+      verts.push(Math.cos(a)*r, 0, Math.sin(a)*r);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(verts,3));
+    const m = new THREE.LineBasicMaterial({ color: 0x9ec1ff, transparent: true, opacity: 0.42 });
+    const line = new THREE.Line(g,m);
+    line.rotation.x = 0.32;
+    ringGroup.add(line);
+  })();
+
+  /* ONE satellite on the ring */
+  const sat = new THREE.Mesh(
+    new THREE.SphereGeometry(0.022, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0xffffff })
+  );
+  const satGlow = new THREE.Mesh(
+    new THREE.SphereGeometry(0.075, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 0x9ec1ff, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending })
+  );
+  sat.add(satGlow);
+  scene.add(sat);
+
+  /* A second, distant orbital — much farther, much slower, barely visible.
+     Sells the feeling that the system has activity beyond what we can see. */
+  const satFar = new THREE.Mesh(
+    new THREE.SphereGeometry(0.012, 12, 12),
+    new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 })
+  );
+  const satFarGlow = new THREE.Mesh(
+    new THREE.SphereGeometry(0.04, 12, 12),
+    new THREE.MeshBasicMaterial({ color: 0x9ec1ff, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending })
+  );
+  satFar.add(satFarGlow);
+  scene.add(satFar);
+  const satFar2 = new THREE.Mesh(
+    new THREE.SphereGeometry(0.012, 12, 12),
+    new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.55 })
+  );
+  scene.add(satFar2);
+
+  /* Sparse stars (only ~500 total) */
+  function starLayer(count, dist, size, opacity){
+    const g = new THREE.BufferGeometry();
+    const p = new Float32Array(count*3);
+    for(let i=0;i<count;i++){
+      const r = dist + Math.random()*5;
+      const phi = Math.acos(2*Math.random()-1);
+      const th = Math.random()*Math.PI*2;
+      p[i*3]=r*Math.sin(phi)*Math.cos(th);
+      p[i*3+1]=r*Math.sin(phi)*Math.sin(th);
+      p[i*3+2]=r*Math.cos(phi);
+    }
+    g.setAttribute('position', new THREE.BufferAttribute(p,3));
+    const m = new THREE.PointsMaterial({ color: 0xffffff, size, sizeAttenuation: true, transparent: true, opacity });
+    return new THREE.Points(g, m);
+  }
+  const stars = starLayer(350, 30, 0.05, 0.65);
+  scene.add(stars);
+  const stars2 = starLayer(150, 50, 0.10, 0.4);
+  scene.add(stars2);
+
+  /* Mouse parallax */
+  let pmx=0, pmy=0;
+  addEventListener('mousemove', e => {
+    pmx = (e.clientX/innerWidth - 0.5);
+    pmy = (e.clientY/innerHeight - 0.5);
+  });
+  addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+
+  /* Scroll-driven framing */
+  const target = {
+    camX: 0, camY: 0, camZ: 7,
+    earthX: 0, earthY: 0, earthScale: 1,
+    rotSpeed: 0.025,
+  };
+  const current = { ...target };
+  function setTarget(t){ Object.assign(target, t); }
+
+  const clock = new THREE.Clock();
+  function loop(){
+    const t = clock.getElapsedTime();
+    for(const k of Object.keys(target)){
+      current[k] = lerp(current[k], target[k], 0.04);
+    }
+    earth.rotation.y = t * current.rotSpeed + 0.4;
+    earth.position.x = current.earthX + pmx * 0.05;
+    earth.position.y = current.earthY - pmy * 0.05;
+    earth.scale.setScalar(current.earthScale);
+
+    // Cinematic camera drift — layered low-frequency sines so the
+    // world feels handheld / floating, never robotically static.
+    const driftX = Math.sin(t * 0.13) * 0.18 + Math.sin(t * 0.07 + 1.3) * 0.10;
+    const driftY = Math.cos(t * 0.11 + 0.6) * 0.10 + Math.sin(t * 0.05 + 2.1) * 0.06;
+    const driftRoll = Math.sin(t * 0.09) * 0.012;
+    camera.position.x = current.camX + pmx * 0.22 + driftX;
+    camera.position.y = current.camY - pmy * 0.16 + driftY;
+    camera.position.z = current.camZ;
+    camera.up.set(Math.sin(driftRoll), Math.cos(driftRoll), 0);
+    camera.lookAt(current.earthX, current.earthY, 0);
+
+    // Slow ambient atmospheric hue shift — barely-perceptible breathing
+    atmMat.uniforms.uColor.value.setHSL(0.6 + Math.sin(t*0.04)*0.02, 0.5, 0.46 + Math.sin(t*0.07)*0.04);
+
+    ringGroup.position.copy(earth.position);
+    ringGroup.scale.setScalar(current.earthScale);
+    ringGroup.rotation.y = t * 0.04;
+
+    const a = t * 0.18;
+    sat.position.set(
+      Math.cos(a) * 2.25 * current.earthScale + earth.position.x,
+      Math.sin(a) * Math.sin(0.32) * 2.25 * current.earthScale + earth.position.y,
+      Math.sin(a) * Math.cos(0.32) * 2.25 * current.earthScale
+    );
+
+    // Distant secondary orbital — slower, wider, tilted differently
+    const aFar = t * 0.06 + 2.4;
+    const tiltFar = -0.62;
+    const rFar = 4.2 * current.earthScale;
+    satFar.position.set(
+      Math.cos(aFar) * rFar + earth.position.x,
+      Math.sin(aFar) * Math.sin(tiltFar) * rFar + earth.position.y,
+      Math.sin(aFar) * Math.cos(tiltFar) * rFar
+    );
+    // A second, even more distant satellite — half-speed, opposite phase
+    const aFar2 = -t * 0.04 + 1.1;
+    const tiltFar2 = 0.85;
+    const rFar2 = 5.6 * current.earthScale;
+    satFar2.position.set(
+      Math.cos(aFar2) * rFar2 + earth.position.x,
+      Math.sin(aFar2) * Math.sin(tiltFar2) * rFar2 + earth.position.y,
+      Math.sin(aFar2) * Math.cos(tiltFar2) * rFar2
+    );
+
+    stars.rotation.y = t * 0.002 + pmx * 0.03;
+    stars.rotation.x = pmy * 0.02;
+    stars2.rotation.y = t * 0.001 + pmx * 0.05;
+    stars2.rotation.x = pmy * 0.03;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  return { setTarget };
+})();
+
+/* ════════════════════════════════════════════════
+   CONTENT
+   ════════════════════════════════════════════════ */
+const DISC = [
+  { n:'01', name:'Remote Sensing',         tag:'SAR · L-BAND' },
+  { n:'02', name:'Earth Observation',      tag:'L1C → L2A' },
+  { n:'03', name:'Artificial Intelligence',tag:'DEEP · SSL' },
+  { n:'04', name:'GIS & Mapping',          tag:'GEO · VECTOR' },
+  { n:'05', name:'Climate Analytics',      tag:'NDVI · LST · AOD' },
+  { n:'06', name:'Computer Vision',        tag:'SEG · TRACK' },
+];
+const dList = $('#disciplineList');
+DISC.forEach(d => {
+  const el = document.createElement('div');
+  el.className = 'discipline-row';
+  el.innerHTML = `
+    <div class="d-num">${d.n}</div>
+    <div class="d-name">${d.name}</div>
+    <div class="d-tag">${d.tag}</div>
+  `;
+  dList.appendChild(el);
+});
+
+const EVENTS = [
+  { date:'AUG · 2024', t:'Chapter <em>chartered.</em>',          meta:'BMSIT&amp;M',                      d:'Inaugurated under IEEE GRSS. The signal begins.' },
+  { date:'FEB · 2025', t:'Hackathon · <em>Earth-Lens.</em>',     meta:'48H · 110 PARTICIPANTS',           d:'Detect deforestation, sprawl, and thermal anomalies from Sentinel-2.' },
+  { date:'JUN · 2025', t:'Mission · <em>Wetlands.</em>',         meta:'KARNATAKA · HESARAGHATTA',         d:'Ground-truthing UAV multispectral capture against Sentinel-2 surface reflectance.' },
+  { date:'MAR · 2026', t:'Publication · <em>Orbit Journal.</em>',meta:'VOL. 01 · OPEN ACCESS',            d:'The chapter\'s inaugural journal — student-authored case studies and method notes.' },
+];
+const trajInner = $('#trajInner');
+EVENTS.forEach(e => {
+  const div = document.createElement('div');
+  div.className = 'traj-event';
+  div.innerHTML = `
+    <div class="te-body">
+      <div class="date">${e.date}</div>
+      <h3>${e.t}</h3>
+      <p>${e.d}</p>
+    </div>
+    <div class="te-node"></div>
+    <div class="te-meta">${e.meta}</div>
+  `;
+  trajInner.appendChild(div);
+});
+
+const MISSIONS = [
+  { id:'M·01', code:'ATLAS-7',  loc:'BENGALURU · URBAN',  title:'Mapping the city\'s <em>heat island,</em> block by block.', d:'A 30-meter urban heat map of Bengaluru fused from Landsat-8 thermal infrared and Sentinel-2 land cover.', tags:['LST','L8 · TIRS','2025'] },
+  { id:'M·02', code:'CANOPY',   loc:'WESTERN GHATS',      title:'Counting <em>forests</em> from orbit.', d:'Time-series biomass estimation across the Western Ghats using Sentinel-1 SAR backscatter and AGB regression.', tags:['SAR','BIOMASS','2025'] },
+  { id:'M·03', code:'GLACIER',  loc:'HIMALAYA · GANGOTRI',title:'Tracking the <em>retreat</em> of ice.', d:'A 12-year retrospective on Gangotri glacier mass balance — optical, SAR, and ICESat-2 altimetry.', tags:['ALTIMETRY','12Y','2026'] },
+  { id:'M·04', code:'COAST',    loc:'KARNATAKA COAST',    title:'Where the <em>shore</em> remembers itself.', d:'Shoreline change vectors along the Karnataka coast from 1990 to 2025, harmonised across Landsat and PlanetScope.', tags:['EROSION','35Y','2026'] },
+];
+const missTrack = $('#missionsTrack');
+MISSIONS.forEach((m, i) => {
+  const lines = [];
+  for(let j=0;j<32;j++){
+    let pts = `M 0 ${8 + j*3} `;
+    for(let x=0;x<=100;x+=2){
+      const y = 8 + j*3 + Math.sin(x*0.18 + j*0.6 + i*1.2)*2 + Math.sin(x*0.06)*1.6;
+      pts += `L ${x} ${y} `;
+    }
+    lines.push(`<path d="${pts}" stroke="rgba(158,193,255,${0.04 + (j%4)*0.025})" fill="none" stroke-width="0.18"/>`);
+  }
+  const mark = `<g>
+    <circle cx="${28+(i*15)%55}" cy="${42+(i*11)%30}" r="1.3" fill="rgba(158,193,255,0.7)"/>
+    <circle cx="${28+(i*15)%55}" cy="${42+(i*11)%30}" r="5" fill="none" stroke="rgba(158,193,255,0.4)" stroke-width="0.2"/>
+    <circle cx="${28+(i*15)%55}" cy="${42+(i*11)%30}" r="9" fill="none" stroke="rgba(158,193,255,0.18)" stroke-width="0.15"/>
+  </g>`;
+  const el = document.createElement('div');
+  el.className = 'mission';
+  el.innerHTML = `
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    <div class="imagery">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        ${lines.join('')}
+        ${mark}
+      </svg>
+    </div>
+    <div class="scrim"></div>
+    <div class="top-meta">
+      <span>${m.id} · ${m.code}</span>
+      <span class="a">${m.loc}</span>
+    </div>
+    <div class="body">
+      <div class="label">MISSION DOSSIER</div>
+      <h3>${m.title}</h3>
+      <p>${m.d}</p>
+    </div>
+  `;
+  missTrack.appendChild(el);
+});
+
+const TEAM = [
+  { n:'Aarav Mehta',    r:'Chair · ML for Earth',  id:'A · 001' },
+  { n:'Sneha Iyer',     r:'Vice Chair · SAR',      id:'B · 002' },
+  { n:'Rohan Das',      r:'Tech Lead · CV',        id:'C · 003' },
+  { n:'Meera Kulkarni', r:'Research · Climate',    id:'D · 004' },
+  { n:'Vikram Shenoy',  r:'GIS · Cartography',     id:'E · 005' },
+  { n:'Priya Raghav',   r:'Outreach · Editor',     id:'F · 006' },
+];
+const ng = $('#networkGrid');
+TEAM.forEach(m => {
+  const init = m.n.split(' ').map(s => s[0]).join('');
+  const el = document.createElement('div');
+  el.className = 'nm';
+  el.innerHTML = `
+    <div class="portrait" data-init="${init}"><div class="sweep"></div></div>
+    <div class="id">${m.id}</div>
+    <div class="name">${m.n}</div>
+    <div class="role">${m.r}</div>
+  `;
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${e.clientX-r.left}px`);
+    el.style.setProperty('--my', `${e.clientY-r.top}px`);
+  });
+  ng.appendChild(el);
+});
+
+/* ── Rail ─────────────────────────────────────── */
+const SCENES = $$('.scene');
+const rail = $('#rail');
+SCENES.forEach((s, i) => {
+  const lab = s.dataset.label || `0${i+1}`;
+  const num = String(i+1).padStart(2,'0');
+  const step = document.createElement('div');
+  step.className = 'step';
+  step.innerHTML = `<span class="dot"></span><span class="name">${num} · ${lab}</span>`;
+  rail.appendChild(step);
+  s._step = step;
+});
+
+/* ── ScrollTrigger / scene framing ──────────── */
+function bind(){
+  /* HERO baseline */
+  ScrollTrigger.create({
+    trigger: '#hero',
+    start: 'top top', end: 'bottom top',
+    onEnter:     () => Earth.setTarget({ camX:0, camY:0, camZ:7, earthX:0, earthY:0, earthScale:1, rotSpeed:0.025 }),
+    onEnterBack: () => Earth.setTarget({ camX:0, camY:0, camZ:7, earthX:0, earthY:0, earthScale:1, rotSpeed:0.025 }),
+  });
+
+  /* Hero → Manifesto: SIGNATURE atmospheric entry —
+     camera dives into Earth's atmosphere, screen floods with
+     atmospheric blue, then emerges on the other side. */
+  const atmoFlash = $('#atmoFlash');
+  ScrollTrigger.create({
+    trigger: '#manifesto',
+    start: 'top bottom', end: 'top top', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      // Earth dives toward viewer then recedes
+      const dive = Math.sin(p * Math.PI); // peaks at 0.5
+      Earth.setTarget({
+        camZ: lerp(7, 4.8, p) - dive * 0.8,
+        earthX: lerp(0, -2.5, p),
+        earthY: lerp(0, 0.4, p),
+        earthScale: lerp(1, 1.18, p) + dive * 0.18,
+        rotSpeed: lerp(0.025, 0.012, p),
+      });
+      // Atmospheric flash peaks around the middle of the transition
+      const flashOp = Math.pow(dive, 1.6) * 0.95;
+      atmoFlash.style.opacity = String(flashOp);
+      atmoFlash.classList.toggle('peak', flashOp > 0.4);
+    }
+  });
+
+  /* MANIFESTO lines — cinematic scale + soft focus */
+  const manLines = $$('.manifesto-line');
+  ScrollTrigger.create({
+    trigger: '#manifesto',
+    start: 'top top', end: 'bottom bottom', scrub: 1,
+    onUpdate: self => {
+      const p = self.progress;
+      const N = manLines.length;
+      manLines.forEach((line, i) => {
+        const local = clamp((p * N) - i, 0, 1);
+        const fadeIn  = clamp(local*2.5, 0, 1);
+        const fadeOut = clamp((1-local)*2.5, 0, 1);
+        const op = Math.min(fadeIn, fadeOut);
+        const ty = (1 - fadeIn) * 50 - (1 - fadeOut) * 50;
+        // Subtle camera-zoom feel: scale rises through visible window
+        const scale = 0.96 + Math.min(fadeIn, fadeOut) * 0.06;
+        // Soft focus at entry/exit
+        const blur = (1 - op) * 6;
+        line.style.opacity = op;
+        line.style.transform = `translateY(calc(-50% + ${ty}px)) scale(${scale})`;
+        line.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none';
+      });
+    }
+  });
+
+  /* DISCIPLINES — earth retreats */
+  ScrollTrigger.create({
+    trigger: '#disciplines',
+    start: 'top bottom', end: 'top center', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      Earth.setTarget({
+        camZ: lerp(4.8, 9.5, p),
+        earthX: lerp(-2.5, -3.4, p),
+        earthY: lerp(0.4, 2, p),
+        earthScale: lerp(1.18, 0.65, p),
+        rotSpeed: 0.012,
+      });
+    }
+  });
+
+  /* discipline reveals — via IntersectionObserver, see below */
+  $$('.discipline-row').forEach(row => row.classList.add('reveal'));
+
+  /* THEATRE — earth re-emerges */
+  ScrollTrigger.create({
+    trigger: '#theatre',
+    start: 'top bottom', end: 'top top', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      Earth.setTarget({
+        camZ: lerp(9.5, 6.2, p),
+        earthX: lerp(-3.4, -1.4, p),
+        earthY: lerp(2, 0, p),
+        earthScale: lerp(0.65, 1.0, p),
+        rotSpeed: lerp(0.012, 0.035, p),
+      });
+    }
+  });
+
+  /* TRAJECTORY — earth fades into the distance */
+  ScrollTrigger.create({
+    trigger: '#trajectory',
+    start: 'top bottom', end: 'top center', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      Earth.setTarget({
+        camZ: lerp(6.2, 11, p),
+        earthX: lerp(-1.4, 3.4, p),
+        earthY: lerp(0, -2.4, p),
+        earthScale: lerp(1.0, 0.5, p),
+        rotSpeed: 0.02,
+      });
+    }
+  });
+
+  ScrollTrigger.create({
+    trigger: '.scene-trajectory',
+    start: 'top top', end: 'bottom bottom',
+    onUpdate: self => $('#trajFill').style.height = `${self.progress*100}%`,
+  });
+
+  $$('.traj-event').forEach(ev => {
+    ScrollTrigger.create({
+      trigger: ev,
+      start: 'top 78%', end: 'bottom 22%',
+      onToggle: self => ev.classList.toggle('on', self.isActive),
+    });
+  });
+
+  setupHorizontal();
+
+  /* NETWORK */
+  ScrollTrigger.create({
+    trigger: '#network',
+    start: 'top bottom', end: 'top center', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      Earth.setTarget({
+        camZ: lerp(11, 13, p),
+        earthX: lerp(3.4, -2.8, p),
+        earthY: lerp(-2.4, 2.6, p),
+        earthScale: lerp(0.5, 0.42, p),
+        rotSpeed: 0.018,
+      });
+    }
+  });
+
+  $$('.nm').forEach((el, i) => el.classList.add('reveal', `reveal-stagger-${(i%3)+1}`));
+
+  /* HORIZON */
+  ScrollTrigger.create({
+    trigger: '#horizon',
+    start: 'top bottom', end: 'top center', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      Earth.setTarget({
+        camZ: lerp(13, 8.5, p),
+        earthX: lerp(-2.8, 0, p),
+        earthY: lerp(2.6, -1.6, p),
+        earthScale: lerp(0.42, 1.6, p),
+        rotSpeed: 0.025,
+      });
+    }
+  });
+
+  /* generic reveals — class-based */
+  $$('.scene-num, .scene-head h2, .theatre-title h2, .theatre-title p, .theatre-title .num').forEach(el => {
+    el.classList.add('reveal');
+  });
+
+  $('.horizon-statement').classList.add('reveal');
+  $('.horizon-sub').classList.add('reveal', 'reveal-stagger-1');
+  $('.horizon-cta').classList.add('reveal', 'reveal-stagger-2');
+
+  /* gauges fill */
+  ScrollTrigger.create({
+    trigger: '#theatre',
+    start: 'top 65%',
+    onEnter: () => $$('.gauge .bar i').forEach(b => {
+      gsap.to(b, { width: `${b.dataset.w}%`, duration: 2, ease: 'expo.out' });
+    })
+  });
+
+  /* Intersection-based reveals (robust to RAF stalls) */
+  const revealIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        revealIO.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+  $$('.reveal').forEach(el => revealIO.observe(el));
+
+  /* Safety net: if anything didn't fire (e.g. throttled tab), reveal after delay */
+  setTimeout(() => $$('.reveal').forEach(el => el.classList.add('in')), 4000);
+}
+
+function setupHorizontal(){
+  if(innerWidth <= 900) return;
+  const track = $('#missionsTrack');
+  ScrollTrigger.create({
+    trigger: '#missions',
+    start: 'top top',
+    end: () => `+=${track.scrollWidth - innerWidth + innerHeight*0.6}`,
+    pin: true, scrub: 1.2, invalidateOnRefresh: true,
+    onUpdate: self => {
+      const distance = track.scrollWidth - innerWidth + 64;
+      gsap.set(track, { x: -distance * self.progress });
+      const idx = Math.min(MISSIONS.length, Math.floor(self.progress * MISSIONS.length)+1);
+      $('#missionCounter').textContent = `${String(idx).padStart(2,'0')} · ${String(MISSIONS.length).padStart(2,'0')}`;
+      Earth.setTarget({
+        camZ: lerp(7.6, 7.2, self.progress),
+        earthX: lerp(2.6, -2.6, self.progress),
+        earthY: 0,
+        earthScale: 0.9,
+        rotSpeed: 0.045,
+      });
+    }
+  });
+  ScrollTrigger.create({
+    trigger: '#missions',
+    start: 'top bottom', end: 'top top', scrub: 1.2,
+    onUpdate: self => {
+      const p = self.progress;
+      Earth.setTarget({
+        camZ: lerp(6.2, 7.6, p),
+        earthX: lerp(-1.4, 2.6, p),
+        earthScale: lerp(1.0, 0.9, p),
+      });
+    }
+  });
+}
+
+setTimeout(() => { bind(); attachHover(); }, 80);
+
+/* Rail + HUD + scene title card */
+let _lastSceneIdx = -1;
+let _cardTimer = null;
+const sceneCard = $('#sceneCard');
+ScrollTrigger.create({
+  trigger: 'body',
+  start: 'top top', end: 'bottom bottom',
+  onUpdate: self => {
+    const p = self.progress;
+    const i = Math.min(SCENES.length-1, Math.floor(p * SCENES.length));
+    SCENES.forEach((s, j) => s._step.classList.toggle('active', j===i));
+    $$('#menu li').forEach((li, j) => li.classList.toggle('active', j===i));
+    const cur = SCENES[i];
+    $('#hudIndex').textContent = `${String(i+1).padStart(2,'0')} · ${(cur.dataset.label || '').toUpperCase()}`;
+
+    // Show the floating scene-card briefly on scene change (skip hero)
+    if(i !== _lastSceneIdx){
+      _lastSceneIdx = i;
+      if(i === 0){
+        sceneCard.classList.remove('show');
+      } else {
+        sceneCard.querySelector('.num').textContent = `SCENE — ${String(i+1).padStart(2,'0')}`;
+        sceneCard.querySelector('.name').textContent = cur.dataset.label || '';
+        sceneCard.querySelector('.meta').textContent = `The signal · ${String(i).padStart(2,'0')}`;
+        sceneCard.classList.add('show');
+        clearTimeout(_cardTimer);
+        _cardTimer = setTimeout(() => sceneCard.classList.remove('show'), 3200);
+      }
+
+      // Cinematic letterbox on the two emotional scenes
+      const cineScenes = new Set([1, 7]); // manifesto (idx 1), horizon (idx 7)
+      document.body.classList.toggle('cine', cineScenes.has(i));
+    }
+  }
+});
+
+$$('nav.top a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) lenis.scrollTo(t, { offset: 0, duration: 2 });
+  });
+});
+
+if(document.fonts){
+  document.fonts.ready.then(() => setTimeout(() => ScrollTrigger.refresh(), 150));
+}
+window.addEventListener('load', () => setTimeout(() => ScrollTrigger.refresh(), 250));
+window.addEventListener('resize', () => clearTimeout(window._rT) || (window._rT = setTimeout(() => ScrollTrigger.refresh(), 200)));
+</script>
+
+
+</body></html>
