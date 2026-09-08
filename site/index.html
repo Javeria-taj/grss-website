@@ -1394,6 +1394,44 @@
     margin-top: 10px;
   }
 
+  /* Roster tiers: execom reads at full weight, volcom denser beneath it. */
+  .net-tier + .net-tier { margin-top: 100px; }
+  .net-tier-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex; gap: 14px;
+    max-width: 1300px; margin: 0 auto 24px;
+  }
+  .net-tier-label .ln {
+    width: 28px; height: 1px;
+    background: var(--ink-faint);
+    margin-top: 8px;
+  }
+  .network-grid--exec, .network-grid--vol { grid-template-columns: repeat(4, 1fr); }
+
+  .nm .portrait img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.55) contrast(1.04);
+    opacity: 0.88;
+    transition: filter 1.2s var(--ease-cine), opacity 1.2s var(--ease-cine);
+  }
+  .nm:hover .portrait img { filter: grayscale(0); opacity: 1; }
+  /* Initials are the fallback; suppress them once a photo is present. */
+  .nm .portrait.has-photo::after { display: none; }
+
+  .nm-sm { aspect-ratio: auto; padding: 22px; }
+  /* Shorter portrait band is what actually makes this tier denser — smaller type
+     alone left the cards the same height as the executive ones. Crop is biased
+     upward so head and shoulders stay in frame. */
+  .nm-sm .portrait { aspect-ratio: 3 / 2; margin-bottom: 16px; }
+  .nm-sm .portrait img { object-position: center 10%; }
+  .nm-sm .id { font-size: 8px; margin-bottom: 10px; }
+  .nm-sm .name { font-size: 17px; }
+  .nm-sm .role { font-size: 11px; margin-top: 7px; }
+
   /* HORIZON */
   .scene-horizon {
     min-height: 140vh;
@@ -1563,6 +1601,8 @@
     .missions-track { flex-direction: column; padding: 0 24px 80px; }
     .mission { width: 100%; height: 520px; margin: 0 0 28px 0; }
     .network-grid { grid-template-columns: repeat(2, 1fr); }
+    .network-grid--exec, .network-grid--vol { grid-template-columns: repeat(2, 1fr); }
+    .net-tier + .net-tier { margin-top: 64px; }
     .scene-horizon { padding: 160px 24px 80px; }
     .horizon-rings { width: 170vw; height: 170vw; bottom: -85vw; }
     footer { grid-template-columns: 1fr 1fr; padding: 80px 24px 40px; gap: 40px; }
@@ -1777,7 +1817,14 @@
     <div class="scene-num"><span class="ln"></span>07 · NETWORK</div>
     <h2>The minds <em>behind the lens.</em></h2>
   </div>
-  <div class="network-grid" id="networkGrid"></div>
+  <div class="net-tier">
+    <div class="net-tier-label"><span class="ln"></span>Executive Committee</div>
+    <div class="network-grid network-grid--exec" id="execomGrid"></div>
+  </div>
+  <div class="net-tier">
+    <div class="net-tier-label"><span class="ln"></span>Volunteer Committee</div>
+    <div class="network-grid network-grid--vol" id="volcomGrid"></div>
+  </div>
 </section>
 
 <!-- ════ HORIZON ════ -->
@@ -2360,32 +2407,60 @@ MISSIONS.forEach((m, i) => {
   missTrack.appendChild(el);
 });
 
-const TEAM = [
-  { n:'Aarav Mehta',    r:'Chair · ML for Earth',  id:'A · 001' },
-  { n:'Sneha Iyer',     r:'Vice Chair · SAR',      id:'B · 002' },
-  { n:'Rohan Das',      r:'Tech Lead · CV',        id:'C · 003' },
-  { n:'Meera Kulkarni', r:'Research · Climate',    id:'D · 004' },
-  { n:'Vikram Shenoy',  r:'GIS · Cartography',     id:'E · 005' },
-  { n:'Priya Raghav',   r:'Outreach · Editor',     id:'F · 006' },
+const EXECOM = [
+  { n:'Dhanush Gowda M',       r:'Chair',           img:'/team/execom/chair-dhanush_gowda_m.png' },
+  { n:'Sri Manisha Ramisetty', r:'Vice Chair',      img:'/team/execom/vicechair-sri_manisha_ramisetty.png' },
+  { n:'Anagh Manivarnan',      r:'Secretary',       img:'/team/execom/secretary-anagh_manivarnan.png' },
+  { n:'Datha Sharma',          r:'Treasurer',       img:'/team/execom/treasurer-datha_sharma.png' },
+  { n:'C Yatin Reddy',         r:'Events Head',     img:'/team/execom/events_head-c_yatin_reddy.png' },
+  { n:'Balaji P',              r:'Marketing Head',  img:'/team/execom/marketing_head-balaji_p.png' },
+  { n:'Shambhavi Sinha',       r:'Media Head',      img:'/team/execom/media_head-shambhavi_sinha.png' },
+  { n:'Javeria Taj',           r:'Webmaster',       img:'/team/execom/webmaster-javeria_taj.png' },
 ];
-const ng = $('#networkGrid');
-TEAM.forEach(m => {
-  const init = m.n.split(' ').map(s => s[0]).join('');
-  const el = document.createElement('div');
-  el.className = 'nm';
-  el.innerHTML = `
-    <div class="portrait" data-init="${init}"><div class="sweep"></div></div>
-    <div class="id">${m.id}</div>
-    <div class="name">${m.n}</div>
-    <div class="role">${m.r}</div>
-  `;
-  el.addEventListener('mousemove', e => {
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX-r.left}px`);
-    el.style.setProperty('--my', `${e.clientY-r.top}px`);
+
+const VOLCOM = [
+  { n:'Mauli Ahuja',      r:'Technical Coordinator', img:'/team/volcom/technical_coordinator-mauli_ahuja.png' },
+  { n:'P Mahidhar',       r:'Technical Coordinator', img:'/team/volcom/technical-coordinator-p_mahidhar.png' },
+  { n:'Shreya Hangal',    r:'Events Coordinator',    img:'/team/volcom/events_coordinator-shreya_hangal.png' },
+  { n:'Swarna P',         r:'Events Coordinator',    img:'/team/volcom/events_coordinator-swarna_p.png' },
+  { n:'Yana Agarwal',     r:'Events Coordinator',    img:'/team/volcom/events_coordinator-yana_agarwal.png' },
+  { n:'Chinmayi M',       r:'Marketing Coordinator', img:'/team/volcom/marketing_coordinator-chinmayi_m.png' },
+  { n:'Kushadhi J Yadav', r:'Marketing Coordinator', img:'/team/volcom/marketing_coordinator-kushadhi_j_yadav.png' },
+  { n:'Sohini Mallick',   r:'Media Coordinator',     img:'/team/volcom/media_coordinator-sohini_mallick.png' },
+];
+
+const esc = str => String(str).replace(/[&<>"]/g, c => (
+  { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]
+));
+
+function renderRoster(list, mountSel, prefix, dense) {
+  const mount = $(mountSel);
+  if (!mount) return;
+  list.forEach((m, i) => {
+    const init = m.n.split(' ').map(s => s[0]).join('').slice(0, 2);
+    const id = `${prefix} \u00b7 ${String(i + 1).padStart(3, '0')}`;
+    const el = document.createElement('div');
+    el.className = dense ? 'nm nm-sm' : 'nm';
+    el.innerHTML = `
+      <div class="portrait${m.img ? ' has-photo' : ''}" data-init="${esc(init)}">
+        ${m.img ? `<img src="${esc(m.img)}" alt="${esc(m.n)}" loading="lazy" decoding="async">` : ''}
+        <div class="sweep"></div>
+      </div>
+      <div class="id">${esc(id)}</div>
+      <div class="name">${esc(m.n)}</div>
+      <div class="role">${esc(m.r)}</div>
+    `;
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX-r.left}px`);
+      el.style.setProperty('--my', `${e.clientY-r.top}px`);
+    });
+    mount.appendChild(el);
   });
-  ng.appendChild(el);
-});
+}
+
+renderRoster(EXECOM, '#execomGrid', 'E', false);
+renderRoster(VOLCOM, '#volcomGrid', 'V', true);
 
 /* ── Rail ─────────────────────────────────────── */
 const SCENES = $$('.scene');
