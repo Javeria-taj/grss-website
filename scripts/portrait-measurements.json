@@ -1,0 +1,130 @@
+{
+ "execom__chair-dhanush_gowda_m.png": {
+  "chinY": 29.6,
+  "crownY": 10.1,
+  "eyeY": 20.4,
+  "faceCenterX": 52,
+  "framing": "thigh-up",
+  "shoulderY": 34
+ },
+ "execom__events_head-c_yatin_reddy.png": {
+  "chinY": 47,
+  "crownY": 28.4,
+  "eyeY": 38.8,
+  "faceCenterX": 49.5,
+  "framing": "waist-up",
+  "shoulderY": 50.8
+ },
+ "execom__marketing_head-balaji_p.png": {
+  "chinY": 42,
+  "crownY": 12.5,
+  "eyeY": 27.5,
+  "faceCenterX": 52,
+  "framing": "waist-up",
+  "shoulderY": 46
+ },
+ "execom__media_head-shambhavi_sinha.png": {
+  "chinY": 26,
+  "crownY": 13,
+  "eyeY": 20,
+  "faceCenterX": 55,
+  "framing": "full-body",
+  "shoulderY": 27
+ },
+ "execom__secretary-anagh_manivarnan.png": {
+  "chinY": 36,
+  "crownY": 21.5,
+  "eyeY": 29.4,
+  "faceCenterX": 49,
+  "framing": "thigh-up",
+  "shoulderY": 39.5
+ },
+ "execom__treasurer-datha_sharma.png": {
+  "chinY": 57,
+  "crownY": 37.6,
+  "eyeY": 48.3,
+  "faceCenterX": 50,
+  "framing": "waist-up",
+  "shoulderY": 58.3
+ },
+ "execom__vicechair-sri_manisha_ramisetty.png": {
+  "chinY": 49,
+  "crownY": 32.3,
+  "eyeY": 41,
+  "faceCenterX": 42,
+  "framing": "thigh-up",
+  "shoulderY": 52
+ },
+ "execom__webmaster-javeria_taj.png": {
+  "chinY": 37.5,
+  "crownY": 22,
+  "eyeY": 30,
+  "faceCenterX": 51,
+  "framing": "full-body",
+  "shoulderY": 41
+ },
+ "volcom__events_coordinator-shreya_hangal.png": {
+  "chinY": 38.5,
+  "crownY": 16,
+  "eyeY": 29,
+  "faceCenterX": 50,
+  "framing": "thigh-up",
+  "shoulderY": 41.5
+ },
+ "volcom__events_coordinator-swarna_p.png": {
+  "chinY": 40.3,
+  "crownY": 17,
+  "eyeY": 28.7,
+  "faceCenterX": 57,
+  "framing": "waist-up",
+  "shoulderY": 46
+ },
+ "volcom__events_coordinator-yana_agarwal.png": {
+  "chinY": 51.5,
+  "crownY": 30,
+  "eyeY": 41.5,
+  "faceCenterX": 48,
+  "framing": "waist-up",
+  "shoulderY": 57
+ },
+ "volcom__marketing_coordinator-chinmayi_m.png": {
+  "chinY": 60.5,
+  "crownY": 36.7,
+  "eyeY": 50,
+  "faceCenterX": 50,
+  "framing": "waist-up",
+  "shoulderY": 63
+ },
+ "volcom__marketing_coordinator-kushadhi_j_yadav.png": {
+  "chinY": 56.6,
+  "crownY": 35,
+  "eyeY": 46.6,
+  "faceCenterX": 50,
+  "framing": "waist-up",
+  "shoulderY": 59.3
+ },
+ "volcom__media_coordinator-sohini_mallick.png": {
+  "chinY": 48.5,
+  "crownY": 28.4,
+  "eyeY": 39.4,
+  "faceCenterX": 45.5,
+  "framing": "thigh-up",
+  "shoulderY": 51
+ },
+ "volcom__technical-coordinator-p_mahidhar.png": {
+  "chinY": 45,
+  "crownY": 27,
+  "eyeY": 37,
+  "faceCenterX": 53.5,
+  "framing": "thigh-up",
+  "shoulderY": 48
+ },
+ "volcom__technical_coordinator-mauli_ahuja.png": {
+  "chinY": 46,
+  "crownY": 11.7,
+  "eyeY": 30.5,
+  "faceCenterX": 49,
+  "framing": "chest-up",
+  "shoulderY": 52
+ }
+}

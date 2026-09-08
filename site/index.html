@@ -1423,11 +1423,10 @@
   .nm .portrait.has-photo::after { display: none; }
 
   .nm-sm { aspect-ratio: auto; padding: 22px; }
-  /* Shorter portrait band is what actually makes this tier denser — smaller type
-     alone left the cards the same height as the executive ones. Crop is biased
-     upward so head and shoulders stay in frame. */
-  .nm-sm .portrait { aspect-ratio: 3 / 2; margin-bottom: 16px; }
-  .nm-sm .portrait img { object-position: center 10%; }
+  /* 4:5 rather than the executive 1:1 — still a portrait, visibly tighter.
+     No object-position tuning: every derivative is pre-composed to put the
+     crown at 13% and the eyes on the upper third, so plain cover is correct. */
+  .nm-sm .portrait { aspect-ratio: 4 / 5; margin-bottom: 16px; }
   .nm-sm .id { font-size: 8px; margin-bottom: 10px; }
   .nm-sm .name { font-size: 17px; }
   .nm-sm .role { font-size: 11px; margin-top: 7px; }
@@ -2408,25 +2407,25 @@ MISSIONS.forEach((m, i) => {
 });
 
 const EXECOM = [
-  { n:'Dhanush Gowda M',       r:'Chair',           img:'/team/execom/chair-dhanush_gowda_m.png' },
-  { n:'Sri Manisha Ramisetty', r:'Vice Chair',      img:'/team/execom/vicechair-sri_manisha_ramisetty.png' },
-  { n:'Anagh Manivarnan',      r:'Secretary',       img:'/team/execom/secretary-anagh_manivarnan.png' },
-  { n:'Datha Sharma',          r:'Treasurer',       img:'/team/execom/treasurer-datha_sharma.png' },
-  { n:'C Yatin Reddy',         r:'Events Head',     img:'/team/execom/events_head-c_yatin_reddy.png' },
-  { n:'Balaji P',              r:'Marketing Head',  img:'/team/execom/marketing_head-balaji_p.png' },
-  { n:'Shambhavi Sinha',       r:'Media Head',      img:'/team/execom/media_head-shambhavi_sinha.png' },
-  { n:'Javeria Taj',           r:'Webmaster',       img:'/team/execom/webmaster-javeria_taj.png' },
+  { n:'Dhanush Gowda M',       r:'Chair',           img:'/team/framed/execom/chair-dhanush_gowda_m.webp' },
+  { n:'Sri Manisha Ramisetty', r:'Vice Chair',      img:'/team/framed/execom/vicechair-sri_manisha_ramisetty.webp' },
+  { n:'Anagh Manivarnan',      r:'Secretary',       img:'/team/framed/execom/secretary-anagh_manivarnan.webp' },
+  { n:'Datha Sharma',          r:'Treasurer',       img:'/team/framed/execom/treasurer-datha_sharma.webp' },
+  { n:'C Yatin Reddy',         r:'Events Head',     img:'/team/framed/execom/events_head-c_yatin_reddy.webp' },
+  { n:'Balaji P',              r:'Marketing Head',  img:'/team/framed/execom/marketing_head-balaji_p.webp' },
+  { n:'Shambhavi Sinha',       r:'Media Head',      img:'/team/framed/execom/media_head-shambhavi_sinha.webp' },
+  { n:'Javeria Taj',           r:'Webmaster',       img:'/team/framed/execom/webmaster-javeria_taj.webp' },
 ];
 
 const VOLCOM = [
-  { n:'Mauli Ahuja',      r:'Technical Coordinator', img:'/team/volcom/technical_coordinator-mauli_ahuja.png' },
-  { n:'P Mahidhar',       r:'Technical Coordinator', img:'/team/volcom/technical-coordinator-p_mahidhar.png' },
-  { n:'Shreya Hangal',    r:'Events Coordinator',    img:'/team/volcom/events_coordinator-shreya_hangal.png' },
-  { n:'Swarna P',         r:'Events Coordinator',    img:'/team/volcom/events_coordinator-swarna_p.png' },
-  { n:'Yana Agarwal',     r:'Events Coordinator',    img:'/team/volcom/events_coordinator-yana_agarwal.png' },
-  { n:'Chinmayi M',       r:'Marketing Coordinator', img:'/team/volcom/marketing_coordinator-chinmayi_m.png' },
-  { n:'Kushadhi J Yadav', r:'Marketing Coordinator', img:'/team/volcom/marketing_coordinator-kushadhi_j_yadav.png' },
-  { n:'Sohini Mallick',   r:'Media Coordinator',     img:'/team/volcom/media_coordinator-sohini_mallick.png' },
+  { n:'Mauli Ahuja',      r:'Technical Coordinator', img:'/team/framed/volcom/technical_coordinator-mauli_ahuja.webp' },
+  { n:'P Mahidhar',       r:'Technical Coordinator', img:'/team/framed/volcom/technical-coordinator-p_mahidhar.webp' },
+  { n:'Shreya Hangal',    r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-shreya_hangal.webp' },
+  { n:'Swarna P',         r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-swarna_p.webp' },
+  { n:'Yana Agarwal',     r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-yana_agarwal.webp' },
+  { n:'Chinmayi M',       r:'Marketing Coordinator', img:'/team/framed/volcom/marketing_coordinator-chinmayi_m.webp' },
+  { n:'Kushadhi J Yadav', r:'Marketing Coordinator', img:'/team/framed/volcom/marketing_coordinator-kushadhi_j_yadav.webp' },
+  { n:'Sohini Mallick',   r:'Media Coordinator',     img:'/team/framed/volcom/media_coordinator-sohini_mallick.webp' },
 ];
 
 const esc = str => String(str).replace(/[&<>"]/g, c => (
