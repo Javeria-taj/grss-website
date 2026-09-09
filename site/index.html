@@ -1205,7 +1205,7 @@
   /* An event still ahead of us has not been "received" yet, so it is flagged
      rather than shown as history. Derived from the entry's own date, so it
      retires itself the day after the event. */
-  .te-up {
+  .te-up, .m-soon {
     margin-left: 14px; padding: 3px 8px;
     border: 1px solid var(--line-mid);
     font-size: 8px; letter-spacing: 0.28em;
@@ -1990,7 +1990,7 @@
       <div class="num">06 · MISSIONS</div>
       <h2>Field <em>research,</em> filed from orbit.</h2>
     </div>
-    <div class="counter" id="missionCounter">01 · 04</div>
+    <div class="counter" id="missionCounter">01 · 05</div>
   </div>
   <div class="missions-track" id="missionsTrack"></div>
 </section>
@@ -2602,10 +2602,11 @@ EVENTS.forEach(e => {
 });
 
 const MISSIONS = [
-  { id:'M·01', code:'ATLAS-7',  loc:'BENGALURU · URBAN',  title:'Mapping the city\'s <em>heat island,</em> block by block.', d:'A 30-meter urban heat map of Bengaluru fused from Landsat-8 thermal infrared and Sentinel-2 land cover.', tags:['LST','L8 · TIRS','2025'] },
-  { id:'M·02', code:'CANOPY',   loc:'WESTERN GHATS',      title:'Counting <em>forests</em> from orbit.', d:'Time-series biomass estimation across the Western Ghats using Sentinel-1 SAR backscatter and AGB regression.', tags:['SAR','BIOMASS','2025'] },
-  { id:'M·03', code:'GLACIER',  loc:'HIMALAYA · GANGOTRI',title:'Tracking the <em>retreat</em> of ice.', d:'A 12-year retrospective on Gangotri glacier mass balance — optical, SAR, and ICESat-2 altimetry.', tags:['ALTIMETRY','12Y','2026'] },
-  { id:'M·04', code:'COAST',    loc:'KARNATAKA COAST',    title:'Where the <em>shore</em> remembers itself.', d:'Shoreline change vectors along the Karnataka coast from 1990 to 2025, harmonised across Landsat and PlanetScope.', tags:['EROSION','35Y','2026'] },
+  { id:'M·01', code:'GEOQUEST', loc:'BMSIT&amp;M · LAUNCH DAY', title:'Two levels, <em>one leaderboard.</em>', d:'Launch-day contest on orbits, SAR bands and Indian missions. An eliminator round, then a final, for a ₹6,000 pool — AstroSync, MODIfy and Scout placed.', tags:['QUIZ','2 LEVELS','2026'] },
+  { id:'M·02', code:'ATLAS-7',  loc:'BENGALURU · URBAN',  soon:true, title:'Mapping the city\'s <em>heat island,</em> block by block.', d:'A 30-meter urban heat map of Bengaluru fused from Landsat-8 thermal infrared and Sentinel-2 land cover.', tags:['LST','L8 · TIRS','2025'] },
+  { id:'M·03', code:'CANOPY',   loc:'WESTERN GHATS',      soon:true, title:'Counting <em>forests</em> from orbit.', d:'Time-series biomass estimation across the Western Ghats using Sentinel-1 SAR backscatter and AGB regression.', tags:['SAR','BIOMASS','2025'] },
+  { id:'M·04', code:'GLACIER',  loc:'HIMALAYA · GANGOTRI',soon:true, title:'Tracking the <em>retreat</em> of ice.', d:'A 12-year retrospective on Gangotri glacier mass balance — optical, SAR, and ICESat-2 altimetry.', tags:['ALTIMETRY','12Y','2026'] },
+  { id:'M·05', code:'COAST',    loc:'KARNATAKA COAST',    soon:true, title:'Where the <em>shore</em> remembers itself.', d:'Shoreline change vectors along the Karnataka coast from 1990 to 2025, harmonised across Landsat and PlanetScope.', tags:['EROSION','35Y','2026'] },
 ];
 const missTrack = $('#missionsTrack');
 MISSIONS.forEach((m, i) => {
@@ -2639,7 +2640,7 @@ MISSIONS.forEach((m, i) => {
       <span class="a">${m.loc}</span>
     </div>
     <div class="body">
-      <div class="label">MISSION DOSSIER</div>
+      <div class="label">MISSION DOSSIER${m.soon ? '<span class="m-soon">Coming Soon</span>' : ''}</div>
       <h3>${m.title}</h3>
       <p>${m.d}</p>
     </div>
