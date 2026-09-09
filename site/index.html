@@ -1234,6 +1234,137 @@
     color: var(--ink-faint); line-height: 1.9;
   }
 
+  /* ── Event dossier ──────────────────────────────
+     Opened from the trajectory. Built from the page's own material: hairline
+     rules, mono keys, Fraunces headline, square corners, no shadow. */
+  .traj-event[role="button"] { cursor: pointer; }
+  .traj-event[role="button"]:focus-visible {
+    outline: 1px solid var(--accent); outline-offset: 10px;
+  }
+  .traj-event[role="button"]:hover .te-body h3 { color: var(--accent); }
+  .te-body h3 { transition: color 0.5s var(--ease-cine); }
+  .te-more {
+    margin-top: 20px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: #7d8598;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .te-more::after {
+    content: ""; width: 20px; height: 1px; background: var(--line-mid);
+    transition: width 0.5s var(--ease-cine), background 0.5s;
+  }
+  .traj-event[role="button"]:hover .te-more::after { width: 34px; background: var(--accent); }
+  .traj-event:nth-child(odd) .te-body .te-more { margin-left: auto; }
+
+  .ev-modal { position: fixed; inset: 0; z-index: 200; }
+  .ev-veil {
+    position: absolute; inset: 0;
+    background: rgba(2, 4, 8, 0.86);
+    backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity 0.45s var(--ease-cine);
+  }
+  .ev-panel {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -48%);
+    width: min(880px, calc(100vw - 48px));
+    max-height: min(86vh, 900px);
+    background: #060910;
+    border: 1px solid var(--line-mid);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-cine), transform 0.5s var(--ease-cine);
+    display: flex; flex-direction: column;
+  }
+  .ev-modal.open .ev-veil { opacity: 1; }
+  .ev-modal.open .ev-panel { opacity: 1; transform: translate(-50%, -50%); }
+
+  .ev-x {
+    position: absolute; top: 18px; right: 18px; z-index: 3;
+    width: 44px; height: 44px; padding: 0;
+    background: transparent; border: 1px solid var(--line-mid);
+    cursor: pointer; transition: border-color 0.4s, background 0.4s;
+  }
+  .ev-x::before, .ev-x::after {
+    content: ""; position: absolute; left: 13px; top: 21px;
+    width: 16px; height: 1px; background: var(--ink);
+  }
+  .ev-x::before { transform: rotate(45deg); }
+  .ev-x::after  { transform: rotate(-45deg); }
+  .ev-x:hover { border-color: var(--accent); background: rgba(158,193,255,0.06); }
+  .ev-x:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+
+  .ev-scroll { overflow-y: auto; overscroll-behavior: contain; padding: 54px 56px 56px; }
+  .ev-scroll:focus-visible { outline: 1px solid var(--accent); outline-offset: -4px; }
+  .ev-kicker {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+  }
+  .ev-scroll h3 {
+    font-family: var(--serif); font-weight: 200;
+    font-size: clamp(30px, 3.6vw, 50px); line-height: 1.04;
+    letter-spacing: -0.025em; color: var(--ink);
+    font-variation-settings: 'opsz' 72; margin-bottom: 18px;
+  }
+  .ev-lede {
+    color: var(--ink); font-size: 15px; line-height: 1.7;
+    max-width: 60ch; margin-bottom: 40px;
+  }
+  .ev-rule { height: 1px; background: var(--line); margin: 38px 0 30px; }
+  .ev-h {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: #7d8598; margin-bottom: 18px;
+  }
+  .ev-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .ev-facts > div { background: #060910; padding: 16px 18px; }
+  /* an odd number of facts would otherwise leave a hole in the last row */
+  .ev-facts > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .ev-facts dt {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: #7d8598; margin-bottom: 8px;
+  }
+  .ev-facts dd { margin: 0; color: var(--ink); font-size: 14px; line-height: 1.5; }
+  .ev-people { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .ev-people > div { background: #060910; padding: 15px 18px; display: grid; grid-template-columns: 210px 1fr; gap: 18px; align-items: baseline; }
+  .ev-role {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.26em; text-transform: uppercase; color: #7d8598;
+  }
+  .ev-name { color: var(--ink); font-size: 14px; }
+  .ev-org { display: block; color: #7d8598; font-size: 12px; margin-top: 4px; }
+  .ev-sec p { color: #a9b1c3; font-size: 14px; line-height: 1.8; max-width: 68ch; }
+  .ev-sec + .ev-sec { margin-top: 28px; }
+  .ev-win { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .ev-win > div { background: #060910; padding: 20px 18px; }
+  .ev-win b {
+    display: block; font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.28em; color: var(--accent-warm); font-weight: 400; margin-bottom: 10px;
+  }
+  .ev-win span { font-family: var(--serif); font-weight: 200; font-size: 24px; color: var(--ink); letter-spacing: -0.02em; }
+  .ev-photos { display: grid; gap: 14px; }
+  .ev-photos figure { margin: 0; border: 1px solid var(--line); }
+  .ev-photos img { display: block; width: 100%; height: auto; filter: grayscale(0.35) contrast(1.03); }
+  .ev-photos figcaption {
+    padding: 11px 14px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: #7d8598;
+  }
+
+  @media (max-width: 900px) {
+    .ev-panel { width: calc(100vw - 24px); max-height: 90vh; }
+    .ev-scroll { padding: 46px 22px 40px; }
+    .ev-facts { grid-template-columns: 1fr; }
+    .ev-people > div { grid-template-columns: 1fr; gap: 6px; }
+    .ev-win { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ev-veil, .ev-panel { transition: none !important; }
+    .ev-panel { transform: translate(-50%, -50%) !important; }
+    .te-more::after, .te-body h3 { transition: none !important; }
+  }
+
   /* MISSIONS — pinned horizontal */
   .scene-missions {
     height: 100vh; overflow: hidden;
@@ -1295,13 +1426,31 @@
       radial-gradient(ellipse at 28% 32%, rgba(158,193,255,0.18) 0%, transparent 55%),
       radial-gradient(ellipse at 72% 78%, rgba(212,178,133,0.08) 0%, transparent 55%);
   }
-  .mission .imagery .m-photo {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 42%;
-    filter: grayscale(0.45) contrast(1.05);
-    opacity: 0.78;
+  /* The game is a UI capture with its own neon palette, so it is framed as an
+     inset rather than bled across the card: quarantined behind a hairline, at a
+     size where the HUD is still legible, leaving the card's own ground intact. */
+  .m-panel {
+    position: absolute; z-index: 3;
+    top: 104px; right: 50px; width: 36%; max-width: 340px;
+    margin: 0; padding: 10px;
+    border: 1px solid var(--line-mid);
+    background: rgba(3, 5, 10, 0.62);
+    backdrop-filter: blur(2px);
   }
+  .m-panel img {
+    display: block; width: 100%; height: auto;
+    filter: saturate(0.72) contrast(1.02);
+    opacity: 0.94;
+  }
+  .m-panel figcaption {
+    margin-top: 9px;
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: #7d8598;
+  }
+  /* Keep the copy clear of the panel column so the two can never collide,
+     whatever the card's height works out to. */
+  .mission:has(.m-panel) .body { right: calc(36% + 66px); }
   /* A mission with nothing flown yet is veiled rather than dressed up: the card
      behind stays faintly legible so it still reads as a dossier in waiting. */
   .m-soon {
@@ -1803,6 +1952,13 @@
     .missions-head { position: static; padding: 120px 24px 48px; flex-direction: column; align-items: flex-start; gap: 16px; }
     .missions-track { flex-direction: column; padding: 0 24px 80px; }
     .mission { width: 100%; height: 520px; margin: 0 0 28px 0; }
+    /* the panel card carries more copy than the others, and the panel needs its
+       own band above it, so it is given the extra height rather than overlapping */
+    .mission:has(.m-panel) { height: 648px; }
+    .m-panel { top: 84px; left: 24px; right: 24px; width: auto; max-width: none; padding: 8px; }
+    .m-panel img { max-height: 170px; object-fit: cover; object-position: center top; }
+    .mission:has(.m-panel) .body { right: 24px; }
+    .m-panel figcaption { margin-top: 7px; }
     .network-grid { grid-template-columns: repeat(2, 1fr); }
     .network-grid--exec, .network-grid--vol { grid-template-columns: repeat(2, 1fr); }
     .scene-horizon { padding: 160px 24px 80px; }
@@ -2129,6 +2285,15 @@
     <span>Designed in low-earth orbit · v24.11</span>
   </div>
 </footer>
+
+<!-- ════ EVENT DOSSIER ════ -->
+<div class="ev-modal" id="evModal" hidden>
+  <div class="ev-veil" data-ev-close></div>
+  <div class="ev-panel" role="dialog" aria-modal="true" aria-labelledby="evTitle">
+    <button class="ev-x" type="button" data-ev-close aria-label="Close dossier"></button>
+    <div class="ev-scroll" id="evBody" tabindex="0"></div>
+  </div>
+</div>
 
 <!-- LIBRARIES -->
 <script src="e44a2fbb-909c-4db9-9738-7fe5effc75b2"></script>
@@ -2606,17 +2771,71 @@ DISC.forEach(d => {
 const EVENTS = [
   { date:'APR · 2026', t:'Chapter <em>chartered.</em>',
     meta:'IEEE BANGALORE SECTION',
-    d:'Approval granted to form the GRSS Student Branch Chapter at BMSIT&amp;M.' },
+    d:'Approval granted to form the GRSS Student Branch Chapter at BMSIT&amp;M.',
+    detail:{
+      kicker:'IEEE Petition · Bangalore Section',
+      name:'Chapter chartered',
+      lede:'IEEE approved the formation of a Geoscience and Remote Sensing Society Student Branch Chapter at BMSIT&amp;M.',
+      facts:[['Approved','3 April 2026'],['Section','IEEE Bangalore Section'],
+             ['Host','BMS Institute of Technology &amp; Management'],['Notified to','Dhanush Gowda N, Chapter Chair']],
+      sections:[
+        {h:'What was approved', p:'Formation of the IEEE BMS Institute of Technology Geoscience and Remote Sensing Society Student Branch Chapter, within the IEEE Bangalore Section.'},
+        {h:'What followed', p:'The petition team confirmed that formal notification and the congratulatory letter would follow, and that the chapter could begin its activities immediately. The launch ceremony was held five weeks later.'}
+      ]
+    } },
   { date:'MAY · 2026', t:'Launch · <em>GeoQuest.</em>',
     meta:'ISRO · UR RAO SATELLITE CENTRE',
-    d:'Inaugurated with the GRSS Bangalore Chair, then GeoQuest — AstroSync, MODIfy and Scout took the podium.' },
+    d:'Inaugurated with the GRSS Bangalore Chair, then GeoQuest — AstroSync, MODI-FY and Scout took the podium.',
+    detail:{
+      kicker:'Launch ceremony · GeoQuest',
+      name:'Launch &amp; GeoQuest',
+      lede:'The chapter opened with a formal inauguration and closed with a contest its own technical team had built.',
+      facts:[['Date','8 May 2026'],['Time','9:00 AM – 12:30 PM'],['Venue','BSN Auditorium, BMSIT&amp;M'],
+             ['Prize pool','₹6,000'],['Team size','1–2 members']],
+      people:[
+        ['Chief Guest','Shri G. Ravichandra Babu','Programme Director, UR Rao Satellite Centre, ISRO'],
+        ['Guest of Honour','Dr. Dilip Kumar Dalei','Chair, IEEE GRSS Bangalore Section'],
+        ['Student Branch Counsellor','Dr. Siddiq Iqbal','BMSIT&amp;M'],
+        ['Faculty Advisor','Prof. Archana K','IEEE GRSS Student Chapter'],
+        ['Head, Civil Engineering','Dr. Aruna G','BMSIT&amp;M'],
+        ['Chapter Chair','Dhanush Gowda N','IEEE GRSS Student Chapter']
+      ],
+      sections:[
+        {h:'The ceremony', p:'Opened with the lamp lighting, then an account from the chapter chair of how the chapter came together, an address from the Student Branch Counsellor on IEEE at BMSIT&amp;M, and the Chief Guest on where geoscience and remote sensing meet industry — space research, satellite imaging, environmental monitoring and GIS. The Principal closed the formal segment, and it ended with the National Anthem.'},
+        {h:'GeoQuest', p:'An interactive five-level challenge built by the chapter\'s technical team. Agents signed in by USN and played against the clock, spending a field budget on instruments — a SAR satellite feed, a thermal camera — whose prices climbed on a countdown, with a hint, a skip and a freeze to spend per run. Questions ran across orbits, SAR bands, Indian missions and image processing.'}
+      ],
+      winners:[['01','AstroSync'],['02','MODI-FY'],['03','Scout']],
+      photos:[
+        ['/events/geoquest-winners.webp','The leading teams in front of the live standings'],
+        ['/events/geoquest-inauguration.webp','Lamp lighting with the guests and faculty'],
+        ['/events/geoquest-hall.webp','The hall at BSN Auditorium']
+      ]
+    } },
   { date:'SEP · 2026', iso:'2026-09-12',
     t:'Conclave · <em>Faculty.</em>',
     meta:'BSN AUDITORIUM · 09:30–16:00',
-    d:'Invited talks for the faculty, by the faculty. A flagship event of the IEEE GRSS Bangalore Chapter, hosted here.' },
+    d:'Invited talks for the faculty, by the faculty. A flagship event of the IEEE GRSS Bangalore Chapter, hosted here.',
+    detail:{
+      kicker:'Flagship event · IEEE GRSS Bangalore Chapter',
+      name:'Faculty Conclave',
+      lede:'Invited talks for the faculty, by the faculty — hosted at BMSIT&amp;M with the IEEE GRSS Bangalore Chapter.',
+      facts:[['Date','Saturday, 12 September 2026'],['Time','9:30 AM – 4:00 PM'],
+             ['Venue','BSN Auditorium, BMSIT&amp;M Bengaluru'],['Expected','About 100 faculty, guests and volunteers'],
+             ['Hosted by','IEEE GRSS BMSITM Student Branch Chapter']],
+      people:[
+        ['Coordinator','Prof. Archana K','Faculty Advisor, IEEE GRSS BMSITM'],
+        ['Coordinator','Dr. Keerti Kulkarni','Secretary, IEEE GRSS Bangalore Chapter'],
+        ['Student Branch Counsellor','Mr. Siddiq Iqbal','BMSITM'],
+        ['Student Coordinator','Mr. Dhanush','88670 10939']
+      ],
+      sections:[
+        {h:'On the day', p:'Three things the conclave sets out to do: meet GRSS academic leaders, learn geospatial concepts from geospatial experts, and build a network across the GRSS community.'},
+        {h:'How it came about', p:'Proposed in July 2026 by Dr. Keerti Kulkarni, Secretary of the IEEE GRSS Bangalore Chapter, and taken up by the student chapter under its Student Branch Counsellor and Faculty Advisor. BMSIT&amp;M hosts, providing the venue and the hospitality; the Bangalore Chapter provides participant kits, guest conveyance and mementos.'}
+      ]
+    } },
 ];
 const trajInner = $('#trajInner');
-EVENTS.forEach(e => {
+EVENTS.forEach((e, i) => {
   const div = document.createElement('div');
   div.className = 'traj-event';
   const inbound = e.iso && new Date(e.iso + 'T23:59:59') > new Date();
@@ -2626,15 +2845,133 @@ EVENTS.forEach(e => {
       <div class="date">${e.date}${inbound ? '<span class="te-up">Inbound</span>' : ''}</div>
       <h3>${e.t}</h3>
       <p>${e.d}</p>
+      ${e.detail ? '<div class="te-more">View dossier</div>' : ''}
     </div>
     <div class="te-node"></div>
     <div class="te-meta">${e.meta}</div>
   `;
+  if (e.detail) {
+    /* A div rather than a button: the event is a two-column grid row with the
+       node and rail running through it, and a button would collapse that. It
+       carries the full button contract instead — role, tab stop, Enter/Space,
+       an accessible name, and a focus ring. */
+    div.setAttribute('role', 'button');
+    div.tabIndex = 0;
+    div.setAttribute('aria-haspopup', 'dialog');
+    div.setAttribute('aria-label',
+      `${e.date.replace(/\s*·\s*/g, ' ')} — ${div.querySelector('h3').textContent.trim()} Open dossier.`);
+    div.addEventListener('click', () => openDossier(i, div));
+    div.addEventListener('keydown', ev => {
+      if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') {
+        ev.preventDefault();
+        openDossier(i, div);
+      }
+    });
+  }
   trajInner.appendChild(div);
 });
 
+/* ── Event dossier ─────────────────────────────── */
+const evModal = $('#evModal');
+const evBody  = $('#evBody');
+const evPanel = evModal && evModal.querySelector('.ev-panel');
+let evOpener = null;
+
+function evFacts(rows){
+  return `<dl class="ev-facts">${rows.map(([k,v]) =>
+    `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+}
+function evPeople(rows){
+  return `<div class="ev-people">${rows.map(([role,name,org]) =>
+    `<div><span class="ev-role">${role}</span><span class="ev-name">${name}${org ? `<span class="ev-org">${org}</span>` : ''}</span></div>`).join('')}</div>`;
+}
+function evWinners(rows){
+  return `<div class="ev-win">${rows.map(([rank,team]) =>
+    `<div><b>${rank}</b><span>${team}</span></div>`).join('')}</div>`;
+}
+function evPhotos(rows){
+  return `<div class="ev-photos">${rows.map(([src,cap]) =>
+    `<figure><img src="${src}" alt="${cap}" loading="lazy" decoding="async"><figcaption>${cap}</figcaption></figure>`).join('')}</div>`;
+}
+
+function renderDossier(d){
+  const out = [
+    `<div class="ev-kicker">${d.kicker}</div>`,
+    `<h3 id="evTitle">${d.name}</h3>`,
+    `<p class="ev-lede">${d.lede}</p>`,
+    evFacts(d.facts),
+  ];
+  if (d.sections) {
+    out.push('<div class="ev-rule"></div>');
+    out.push(d.sections.map(sec =>
+      `<section class="ev-sec"><div class="ev-h">${sec.h}</div><p>${sec.p}</p></section>`).join(''));
+  }
+  if (d.winners) {
+    out.push('<div class="ev-rule"></div><div class="ev-h">Podium</div>', evWinners(d.winners));
+  }
+  if (d.people) {
+    out.push('<div class="ev-rule"></div><div class="ev-h">On the platform</div>', evPeople(d.people));
+  }
+  if (d.photos) {
+    out.push('<div class="ev-rule"></div><div class="ev-h">From the day</div>', evPhotos(d.photos));
+  }
+  return out.join('');
+}
+
+function evFocusable(){
+  return Array.prototype.slice.call(
+    evPanel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+  ).filter(el => el.offsetParent !== null || el === evPanel.querySelector('.ev-x'));
+}
+
+function openDossier(i, opener){
+  const d = EVENTS[i] && EVENTS[i].detail;
+  if (!d || !evModal) return;
+  evOpener = opener || null;
+  evBody.innerHTML = renderDossier(d);
+  evBody.scrollTop = 0;
+  evModal.hidden = false;
+  void evModal.offsetWidth;              /* flush before the transition */
+  evModal.classList.add('open');
+  /* Lenis owns the page scroll; without stopping it the background travels
+     under the dialog while the wheel is over the panel. */
+  if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+  document.documentElement.style.overflow = 'hidden';
+  const x = evPanel.querySelector('.ev-x');
+  if (x) x.focus();
+}
+
+function closeDossier(){
+  if (!evModal || evModal.hidden) return;
+  evModal.classList.remove('open');
+  if (typeof lenis !== 'undefined' && lenis.start) lenis.start();
+  document.documentElement.style.overflow = '';
+  const done = () => {
+    evModal.hidden = true;
+    evBody.innerHTML = '';
+    if (evOpener) { evOpener.focus(); evOpener = null; }
+  };
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) done();
+  else setTimeout(done, 460);
+}
+
+if (evModal) {
+  evModal.querySelectorAll('[data-ev-close]').forEach(el =>
+    el.addEventListener('click', closeDossier));
+  document.addEventListener('keydown', ev => {
+    if (evModal.hidden) return;
+    if (ev.key === 'Escape') { ev.preventDefault(); closeDossier(); return; }
+    if (ev.key !== 'Tab') return;
+    const f = evFocusable();
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+  });
+}
+
 const MISSIONS = [
-  { id:'M·01', code:'GEOQUEST', loc:'BMSIT&amp;M · LAUNCH DAY', img:'/events/geoquest-winners.webp', title:'GeoQuest', d:'Five levels on orbits, SAR bands and Indian missions, built by the chapter\'s technical team. AstroSync, MODIfy and Scout placed.', tags:['QUIZ','5 LEVELS','2026'] },
+  { id:'M·01', code:'GEOQUEST', loc:'GRSS FIELD ANALYST', panel:'/events/geoquest-game.webp', panelCap:'In game · Level 2 · Intel', title:'GeoQuest', d:'Agents sign in by USN and work five timed levels. A field budget buys instruments — a SAR satellite feed, a thermal camera — while their prices climb on a countdown, and each run carries a hint, a skip and a freeze to spend.', tags:['QUIZ','5 LEVELS','2026'] },
   { id:'M·02', code:'ATLAS-7',  loc:'BENGALURU · URBAN',  soon:true, title:'Mapping the city\'s <em>heat island,</em> block by block.', d:'A 30-meter urban heat map of Bengaluru fused from Landsat-8 thermal infrared and Sentinel-2 land cover.', tags:['LST','L8 · TIRS','2025'] },
   { id:'M·03', code:'CANOPY',   loc:'WESTERN GHATS',      soon:true, title:'Counting <em>forests</em> from orbit.', d:'Time-series biomass estimation across the Western Ghats using Sentinel-1 SAR backscatter and AGB regression.', tags:['SAR','BIOMASS','2025'] },
   { id:'M·04', code:'GLACIER',  loc:'HIMALAYA · GANGOTRI',soon:true, title:'Tracking the <em>retreat</em> of ice.', d:'A 12-year retrospective on Gangotri glacier mass balance — optical, SAR, and ICESat-2 altimetry.', tags:['ALTIMETRY','12Y','2026'] },
@@ -2661,7 +2998,6 @@ MISSIONS.forEach((m, i) => {
   el.innerHTML = `
     <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
     <div class="imagery">
-      ${m.img ? `<img class="m-photo" src="${m.img}" alt="" loading="lazy" decoding="async">` : ''}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none">
         ${lines.join('')}
         ${mark}
@@ -2677,6 +3013,10 @@ MISSIONS.forEach((m, i) => {
       <h3>${m.title}</h3>
       <p>${m.d}</p>
     </div>
+    ${m.panel ? `<figure class="m-panel">
+      <img src="${m.panel}" alt="The GeoQuest game board mid-run, showing the level, score, timer and instrument budget." loading="lazy" decoding="async">
+      <figcaption>${m.panelCap || ''}</figcaption>
+    </figure>` : ''}
     ${m.soon ? `<div class="m-soon"><span>Coming Soon</span><i>Mission not yet flown</i></div>` : ''}
   `;
   missTrack.appendChild(el);
