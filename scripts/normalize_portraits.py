@@ -26,15 +26,17 @@ import sys
 import glob
 from PIL import Image
 
-MAX_SCALE = 2.6   # beyond this the source simply lacks pixels
+MAX_SCALE = 2.9   # beyond this the source simply lacks pixels
 
 SRC_ROOT = "public/team"
 OUT_ROOT = "public/team/framed"
 
 # Output boxes, rendered at 2x the CSS display size for retina.
 PROFILES = {
-    "execom": {"w": 560, "h": 560, "crown": 0.145, "head": 0.36},   # 1:1
-    "volcom": {"w": 520, "h": 650, "crown": 0.130, "head": 0.40},   # 4:5, slightly tighter
+    # The tiers were swapped: volunteers now carry the large square card and
+    # executives the denser 4:5 one, so the derivative boxes swap with them.
+    "execom": {"w": 520, "h": 650, "crown": 0.130, "head": 0.40},   # 4:5, tighter
+    "volcom": {"w": 560, "h": 560, "crown": 0.145, "head": 0.36},   # 1:1
 }
 
 # Sources that hold no torso cannot show one. Framing the head a little larger

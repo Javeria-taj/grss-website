@@ -2678,13 +2678,16 @@ function renderRoster(list, mountSel, prefix, dense) {
   });
 }
 
-renderRoster(EXECOM, '#execomGrid', 'E', false);
-renderRoster(VOLCOM, '#volcomGrid', 'V', true);
+/* Tiers swapped: executives take the denser 4:5 card, volunteers the large
+   square one. The portrait aspect and type scale ride on .nm / .nm-sm, so the
+   dense flag is the only switch. */
+renderRoster(EXECOM, '#execomGrid', 'E', true);
+renderRoster(VOLCOM, '#volcomGrid', 'V', false);
 
 /* ── 07 · NETWORK — acquisition head ────────────────────────────────
    Place immediately after:
-     renderRoster(EXECOM, '#execomGrid', 'E', false);
-     renderRoster(VOLCOM, '#volcomGrid', 'V', true);
+     renderRoster(EXECOM, '#execomGrid', 'E', true);
+     renderRoster(VOLCOM, '#volcomGrid', 'V', false);
    renderRoster and its per-card --mx/--my handlers are untouched. */
 (function initNetworkSwitch(){
   const head  = document.getElementById('nsHead');
