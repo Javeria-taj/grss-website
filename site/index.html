@@ -1205,7 +1205,7 @@
   /* An event still ahead of us has not been "received" yet, so it is flagged
      rather than shown as history. Derived from the entry's own date, so it
      retires itself the day after the event. */
-  .te-up, .m-soon {
+  .te-up {
     margin-left: 14px; padding: 3px 8px;
     border: 1px solid var(--line-mid);
     font-size: 8px; letter-spacing: 0.28em;
@@ -1295,6 +1295,38 @@
       radial-gradient(ellipse at 28% 32%, rgba(158,193,255,0.18) 0%, transparent 55%),
       radial-gradient(ellipse at 72% 78%, rgba(212,178,133,0.08) 0%, transparent 55%);
   }
+  .mission .imagery .m-photo {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 42%;
+    filter: grayscale(0.45) contrast(1.05);
+    opacity: 0.78;
+  }
+  /* A mission with nothing flown yet is veiled rather than dressed up: the card
+     behind stays faintly legible so it still reads as a dossier in waiting. */
+  .m-soon {
+    position: absolute; inset: 0; z-index: 5;
+    display: grid; place-content: center; justify-items: center; gap: 20px;
+    background: rgba(3, 5, 10, 0.82);
+    backdrop-filter: blur(3px);
+    text-align: center; padding: 24px;
+  }
+  .m-soon span {
+    font-family: var(--mono);
+    font-size: clamp(18px, 2.2vw, 34px);
+    letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--accent-warm);
+    text-indent: 0.42em;            /* offset the trailing letter-space so it centres true */
+  }
+  .m-soon i {
+    font-style: normal; font-family: var(--mono);
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    /* --ink-dim is 3.6:1 here; this line is meant to be read, not decorative */
+    color: #7d8598;
+  }
+  /* keep the corner ticks reading above the veil so the card keeps its frame */
+  .mission .corner { z-index: 6; }
+
   .mission .scrim {
     position: absolute; inset: 0;
     background: linear-gradient(to top, rgba(3,5,10,0.96) 0%, rgba(3,5,10,0.4) 45%, transparent 100%);
@@ -2602,7 +2634,7 @@ EVENTS.forEach(e => {
 });
 
 const MISSIONS = [
-  { id:'M·01', code:'GEOQUEST', loc:'BMSIT&amp;M · LAUNCH DAY', title:'Two levels, <em>one leaderboard.</em>', d:'Launch-day contest on orbits, SAR bands and Indian missions. An eliminator round, then a final, for a ₹6,000 pool — AstroSync, MODIfy and Scout placed.', tags:['QUIZ','2 LEVELS','2026'] },
+  { id:'M·01', code:'GEOQUEST', loc:'BMSIT&amp;M · LAUNCH DAY', img:'/events/geoquest-winners.webp', title:'GeoQuest', d:'Five levels on orbits, SAR bands and Indian missions, built by the chapter\'s technical team. AstroSync, MODIfy and Scout placed.', tags:['QUIZ','5 LEVELS','2026'] },
   { id:'M·02', code:'ATLAS-7',  loc:'BENGALURU · URBAN',  soon:true, title:'Mapping the city\'s <em>heat island,</em> block by block.', d:'A 30-meter urban heat map of Bengaluru fused from Landsat-8 thermal infrared and Sentinel-2 land cover.', tags:['LST','L8 · TIRS','2025'] },
   { id:'M·03', code:'CANOPY',   loc:'WESTERN GHATS',      soon:true, title:'Counting <em>forests</em> from orbit.', d:'Time-series biomass estimation across the Western Ghats using Sentinel-1 SAR backscatter and AGB regression.', tags:['SAR','BIOMASS','2025'] },
   { id:'M·04', code:'GLACIER',  loc:'HIMALAYA · GANGOTRI',soon:true, title:'Tracking the <em>retreat</em> of ice.', d:'A 12-year retrospective on Gangotri glacier mass balance — optical, SAR, and ICESat-2 altimetry.', tags:['ALTIMETRY','12Y','2026'] },
@@ -2629,6 +2661,7 @@ MISSIONS.forEach((m, i) => {
   el.innerHTML = `
     <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
     <div class="imagery">
+      ${m.img ? `<img class="m-photo" src="${m.img}" alt="" loading="lazy" decoding="async">` : ''}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none">
         ${lines.join('')}
         ${mark}
@@ -2640,10 +2673,11 @@ MISSIONS.forEach((m, i) => {
       <span class="a">${m.loc}</span>
     </div>
     <div class="body">
-      <div class="label">MISSION DOSSIER${m.soon ? '<span class="m-soon">Coming Soon</span>' : ''}</div>
+      <div class="label">MISSION DOSSIER</div>
       <h3>${m.title}</h3>
       <p>${m.d}</p>
     </div>
+    ${m.soon ? `<div class="m-soon"><span>Coming Soon</span><i>Mission not yet flown</i></div>` : ''}
   `;
   missTrack.appendChild(el);
 });
