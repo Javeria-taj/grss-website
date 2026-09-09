@@ -1293,7 +1293,7 @@
   .ev-x:hover { border-color: var(--accent); background: rgba(158,193,255,0.06); }
   .ev-x:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
 
-  .ev-scroll { overflow-y: auto; overscroll-behavior: contain; padding: 54px 56px 56px; }
+  .ev-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 54px 56px 56px; }
   .ev-scroll:focus-visible { outline: 1px solid var(--accent); outline-offset: -4px; }
   .ev-kicker {
     font-family: var(--mono); font-size: 10px;
@@ -2291,7 +2291,7 @@
   <div class="ev-veil" data-ev-close></div>
   <div class="ev-panel" role="dialog" aria-modal="true" aria-labelledby="evTitle">
     <button class="ev-x" type="button" data-ev-close aria-label="Close dossier"></button>
-    <div class="ev-scroll" id="evBody" tabindex="0"></div>
+    <div class="ev-scroll" id="evBody" tabindex="0" data-lenis-prevent></div>
   </div>
 </div>
 
@@ -2891,7 +2891,7 @@ function evWinners(rows){
 }
 function evPhotos(rows){
   return `<div class="ev-photos">${rows.map(([src,cap]) =>
-    `<figure><img src="${src}" alt="${cap}" loading="lazy" decoding="async"><figcaption>${cap}</figcaption></figure>`).join('')}</div>`;
+    `<figure><img src="${src}" alt="${cap}" decoding="async"><figcaption>${cap}</figcaption></figure>`).join('')}</div>`;
 }
 
 function renderDossier(d){
