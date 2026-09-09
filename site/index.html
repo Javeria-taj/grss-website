@@ -1211,9 +1211,43 @@
     font-size: 8px; letter-spacing: 0.28em;
     color: var(--accent-warm); vertical-align: 1px;
   }
-  .traj-event.inbound .te-node { border-style: dashed; }
-  .traj-event.inbound.on .te-node { border-color: var(--accent-warm); box-shadow: none; }
+  /* The one event still ahead of us should pull the eye and reward the hover:
+     amber against the blue of everything received, a ring breathing outward
+     from the node, and a warm lift on the readout. Every cue has a static
+     counterpart so it still reads with motion suppressed. */
+  .traj-event.inbound .te-node { border-style: dashed; border-color: var(--accent-warm); }
+  .traj-event.inbound.on .te-node {
+    border-color: var(--accent-warm);
+    box-shadow: 0 0 0 6px rgba(212,178,133,0.07), 0 0 30px rgba(212,178,133,0.34);
+  }
   .traj-event.inbound.on .te-node::after { background: var(--accent-warm); }
+  .traj-event.inbound .te-node::before {
+    content: ""; position: absolute; inset: -9px;
+    border: 1px solid var(--accent-warm); border-radius: 50%;
+    opacity: 0; pointer-events: none;
+    animation: teSignal 3s infinite var(--ease-cine);
+  }
+  @keyframes teSignal {
+    0%   { transform: scale(0.62); opacity: 0; }
+    30%  { opacity: 0.5; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+  .traj-event.inbound:hover .te-node,
+  .traj-event.inbound:focus-visible .te-node {
+    box-shadow: 0 0 0 8px rgba(212,178,133,0.11), 0 0 44px rgba(212,178,133,0.5);
+  }
+  /* the countdown itself: warmer ground, and it breathes rather than blinks */
+  .traj-event.inbound .te-up {
+    border-color: rgba(212,178,133,0.42);
+    background: rgba(212,178,133,0.07);
+    animation: teBreathe 3s ease-in-out infinite;
+  }
+  @keyframes teBreathe { 0%,100% { opacity: 0.78; } 50% { opacity: 1; } }
+  /* and the call to action goes warm, with a longer rule on hover */
+  .traj-event.inbound .te-more { color: var(--accent-warm); }
+  .traj-event.inbound .te-more::after { background: rgba(212,178,133,0.55); }
+  .traj-event.inbound:hover .te-more::after { width: 46px; background: var(--accent-warm); }
+  .traj-event.inbound:hover .te-body h3 { color: var(--accent-warm); }
 
   .te-body h3 {
     font-family: var(--serif); font-weight: 200;
@@ -1346,6 +1380,9 @@
   .ev-photos { display: grid; gap: 14px; }
   .ev-photos figure { margin: 0; border: 1px solid var(--line); }
   .ev-photos img { display: block; width: 100%; height: auto; filter: grayscale(0.35) contrast(1.03); }
+  .ev-poster { margin: 0 auto; max-width: 430px; border: 1px solid var(--line); }
+  .ev-poster img { display: block; width: 100%; height: auto; }
+  .ev-poster figcaption,
   .ev-photos figcaption {
     padding: 11px 14px;
     font-family: var(--mono); font-size: 9px;
@@ -1360,6 +1397,8 @@
     .ev-win { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
+    .traj-event.inbound .te-node::before { animation: none !important; opacity: 0 !important; }
+    .traj-event.inbound .te-up { animation: none !important; opacity: 1 !important; }
     .ev-veil, .ev-panel { transition: none !important; }
     .ev-panel { transform: translate(-50%, -50%) !important; }
     .te-more::after, .te-body h3 { transition: none !important; }
@@ -1431,7 +1470,7 @@
      size where the HUD is still legible, leaving the card's own ground intact. */
   .m-panel {
     position: absolute; z-index: 3;
-    top: 104px; right: 50px; width: 36%; max-width: 340px;
+    top: 104px; right: 50px; width: 52%; max-width: 470px;
     margin: 0; padding: 10px;
     border: 1px solid var(--line-mid);
     background: rgba(3, 5, 10, 0.62);
@@ -1450,7 +1489,7 @@
   }
   /* Keep the copy clear of the panel column so the two can never collide,
      whatever the card's height works out to. */
-  .mission:has(.m-panel) .body { right: calc(36% + 66px); }
+  .mission:has(.m-panel) .body { right: calc(52% + 66px); }
   /* A mission with nothing flown yet is veiled rather than dressed up: the card
      behind stays faintly legible so it still reads as a dossier in waiting. */
   .m-soon {
@@ -1956,7 +1995,6 @@
        own band above it, so it is given the extra height rather than overlapping */
     .mission:has(.m-panel) { height: 648px; }
     .m-panel { top: 84px; left: 24px; right: 24px; width: auto; max-width: none; padding: 8px; }
-    .m-panel img { max-height: 170px; object-fit: cover; object-position: center top; }
     .mission:has(.m-panel) .body { right: 24px; }
     .m-panel figcaption { margin-top: 7px; }
     .network-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2828,6 +2866,7 @@ const EVENTS = [
         ['Student Branch Counsellor','Mr. Siddiq Iqbal','BMSITM'],
         ['Student Coordinator','Mr. Dhanush','88670 10939']
       ],
+      poster:['/events/conclave-poster.webp','Faculty Conclave · 12 September 2026 · BSN Auditorium'],
       sections:[
         {h:'On the day', p:'Three things the conclave sets out to do: meet GRSS academic leaders, learn geospatial concepts from geospatial experts, and build a network across the GRSS community.'},
         {h:'How it came about', p:'Proposed in July 2026 by Dr. Keerti Kulkarni, Secretary of the IEEE GRSS Bangalore Chapter, and taken up by the student chapter under its Student Branch Counsellor and Faculty Advisor. BMSIT&amp;M hosts, providing the venue and the hospitality; the Bangalore Chapter provides participant kits, guest conveyance and mementos.'}
@@ -2840,9 +2879,17 @@ EVENTS.forEach((e, i) => {
   div.className = 'traj-event';
   const inbound = e.iso && new Date(e.iso + 'T23:59:59') > new Date();
   if (inbound) div.classList.add('inbound');
+  /* A live countdown does more for an upcoming event than a static label, and
+     it retires itself along with the inbound state. */
+  let flag = 'Inbound';
+  if (inbound) {
+    const midnight = d => { const x = new Date(d); x.setHours(0,0,0,0); return x; };
+    const days = Math.round((midnight(e.iso + 'T00:00:00') - midnight(new Date())) / 86400000);
+    flag = days <= 0 ? 'Today' : days === 1 ? 'Tomorrow' : `Inbound · ${days} days`;
+  }
   div.innerHTML = `
     <div class="te-body">
-      <div class="date">${e.date}${inbound ? '<span class="te-up">Inbound</span>' : ''}</div>
+      <div class="date">${e.date}${inbound ? `<span class="te-up">${flag}</span>` : ''}</div>
       <h3>${e.t}</h3>
       <p>${e.d}</p>
       ${e.detail ? '<div class="te-more">View dossier</div>' : ''}
@@ -2915,6 +2962,10 @@ function renderDossier(d){
   if (d.photos) {
     out.push('<div class="ev-rule"></div><div class="ev-h">From the day</div>', evPhotos(d.photos));
   }
+  if (d.poster) {
+    out.push('<div class="ev-rule"></div><div class="ev-h">The poster</div>',
+      `<figure class="ev-poster"><img src="${d.poster[0]}" alt="${d.poster[1]}" decoding="async"><figcaption>${d.poster[1]}</figcaption></figure>`);
+  }
   return out.join('');
 }
 
@@ -2971,7 +3022,7 @@ if (evModal) {
 }
 
 const MISSIONS = [
-  { id:'M·01', code:'GEOQUEST', loc:'GRSS FIELD ANALYST', panel:'/events/geoquest-game.webp', panelCap:'In game · Level 2 · Intel', title:'GeoQuest', d:'Agents sign in by USN and work five timed levels. A field budget buys instruments — a SAR satellite feed, a thermal camera — while their prices climb on a countdown, and each run carries a hint, a skip and a freeze to spend.', tags:['QUIZ','5 LEVELS','2026'] },
+  { id:'M·01', code:'GEOQUEST', loc:'GRSS FIELD ANALYST', panel:'/events/geoquest-game.webp', panelCap:'GRSS Field Analyst · the live board', title:'GeoQuest', d:'Agents sign in by USN and work five timed levels. A field budget buys instruments — a SAR satellite feed, a thermal camera — while their prices climb on a countdown, and each run carries a hint, a skip and a freeze to spend.', tags:['QUIZ','5 LEVELS','2026'] },
   { id:'M·02', code:'ATLAS-7',  loc:'BENGALURU · URBAN',  soon:true, title:'Mapping the city\'s <em>heat island,</em> block by block.', d:'A 30-meter urban heat map of Bengaluru fused from Landsat-8 thermal infrared and Sentinel-2 land cover.', tags:['LST','L8 · TIRS','2025'] },
   { id:'M·03', code:'CANOPY',   loc:'WESTERN GHATS',      soon:true, title:'Counting <em>forests</em> from orbit.', d:'Time-series biomass estimation across the Western Ghats using Sentinel-1 SAR backscatter and AGB regression.', tags:['SAR','BIOMASS','2025'] },
   { id:'M·04', code:'GLACIER',  loc:'HIMALAYA · GANGOTRI',soon:true, title:'Tracking the <em>retreat</em> of ice.', d:'A 12-year retrospective on Gangotri glacier mass balance — optical, SAR, and ICESat-2 altimetry.', tags:['ALTIMETRY','12Y','2026'] },
