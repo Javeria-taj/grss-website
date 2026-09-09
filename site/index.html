@@ -1202,6 +1202,19 @@
     letter-spacing: 0.32em; text-transform: uppercase;
     color: var(--accent); margin-bottom: 22px;
   }
+  /* An event still ahead of us has not been "received" yet, so it is flagged
+     rather than shown as history. Derived from the entry's own date, so it
+     retires itself the day after the event. */
+  .te-up {
+    margin-left: 14px; padding: 3px 8px;
+    border: 1px solid var(--line-mid);
+    font-size: 8px; letter-spacing: 0.28em;
+    color: var(--accent-warm); vertical-align: 1px;
+  }
+  .traj-event.inbound .te-node { border-style: dashed; }
+  .traj-event.inbound.on .te-node { border-color: var(--accent-warm); box-shadow: none; }
+  .traj-event.inbound.on .te-node::after { background: var(--accent-warm); }
+
   .te-body h3 {
     font-family: var(--serif); font-weight: 200;
     font-size: clamp(28px, 3.5vw, 54px);
@@ -2563,14 +2576,20 @@ const EVENTS = [
   { date:'FEB · 2025', t:'Hackathon · <em>Earth-Lens.</em>',     meta:'48H · 110 PARTICIPANTS',           d:'Detect deforestation, sprawl, and thermal anomalies from Sentinel-2.' },
   { date:'JUN · 2025', t:'Mission · <em>Wetlands.</em>',         meta:'KARNATAKA · HESARAGHATTA',         d:'Ground-truthing UAV multispectral capture against Sentinel-2 surface reflectance.' },
   { date:'MAR · 2026', t:'Publication · <em>Orbit Journal.</em>',meta:'VOL. 01 · OPEN ACCESS',            d:'The chapter\'s inaugural journal — student-authored case studies and method notes.' },
+  { date:'SEP · 2026', iso:'2026-09-12',
+    t:'Conclave · <em>Faculty.</em>',
+    meta:'BSN AUDITORIUM · 09:30–16:00',
+    d:'Invited talks for the faculty, by the faculty. A flagship event of the IEEE GRSS Bangalore Chapter, hosted here.' },
 ];
 const trajInner = $('#trajInner');
 EVENTS.forEach(e => {
   const div = document.createElement('div');
   div.className = 'traj-event';
+  const inbound = e.iso && new Date(e.iso + 'T23:59:59') > new Date();
+  if (inbound) div.classList.add('inbound');
   div.innerHTML = `
     <div class="te-body">
-      <div class="date">${e.date}</div>
+      <div class="date">${e.date}${inbound ? '<span class="te-up">Inbound</span>' : ''}</div>
       <h3>${e.t}</h3>
       <p>${e.d}</p>
     </div>
