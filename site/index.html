@@ -2040,6 +2040,106 @@
   .reveal-stagger-1 { transition-delay: 0.06s; }
   .reveal-stagger-2 { transition-delay: 0.12s; }
   .reveal-stagger-3 { transition-delay: 0.18s; }
+
+  /* ── MOBILE HAMBURGER BUTTON ───────────────────────────────────────────
+     Hidden on desktop, shown on mobile. 44×44 touch target. Three bars
+     animate to an X on open using CSS transitions only. */
+  .menu-tog {
+    display: none;
+    background: transparent; border: none;
+    padding: 0; margin: 0;
+    width: 44px; height: 44px;
+    position: relative; flex-shrink: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-tog .bar {
+    display: block; position: absolute;
+    left: 11px; width: 22px; height: 1px;
+    background: var(--ink);
+    transition: transform 0.4s var(--ease-cine), opacity 0.3s var(--ease-cine);
+  }
+  .menu-tog .bar:nth-child(1) { top: 14px; }
+  .menu-tog .bar:nth-child(2) { top: 22px; }
+  .menu-tog .bar:nth-child(3) { top: 30px; }
+  .menu-tog.open .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-tog.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .menu-tog.open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* ── MOBILE RESPONSIVE ADDITIONS (@media ≤900px) ───────────────────── */
+  @media (max-width: 900px) {
+    /* Show hamburger */
+    .menu-tog { display: flex; align-items: center; justify-content: center; }
+
+    /* Neutralise difference blend when the overlay is open so the dark
+       overlay background renders as intended rather than inverted. */
+    body.nav-open nav.top { mix-blend-mode: normal; }
+
+    /* Full-viewport nav overlay */
+    body.nav-open .menu {
+      display: flex; flex-direction: column; gap: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 68px 22px 36px;
+      background: rgba(2, 4, 8, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      z-index: 108;
+    }
+    body.nav-open .menu li {
+      border-bottom: 1px solid var(--line);
+    }
+    body.nav-open .menu a {
+      display: block;
+      padding: 18px 0;
+      opacity: 1;
+      font-size: 13px;
+      letter-spacing: 0.24em;
+    }
+
+    /* Manifesto: remove desktop 64px side padding */
+    .manifesto-sticky { padding: 0 24px; }
+    .manifesto-caption { left: 24px; bottom: 24px; }
+
+    /* Trajectory: clear margin-left: auto from odd-event paragraphs so
+       the text sits flush-left on mobile like the even events do. */
+    .traj-event:nth-child(odd) .te-body p { margin-left: 0; }
+
+    /* Mission cards: reduce 50px margins to match the site's mobile 24px grid */
+    .mission .body { left: 24px; right: 24px; }
+    .mission .top-meta { left: 24px; right: 24px; }
+
+    /* Prevent decorative absolute/fixed elements from causing horizontal scroll */
+    body { overflow-x: hidden; }
+
+    /* Cinematic letterbox bars would consume 168px of a 667px iPhone viewport;
+       suppress them on mobile to keep the content usable. */
+    body.cine .cine-bar { height: 0 !important; }
+
+    /* Footer: reduce oversized brand and prevent credit row from overflowing */
+    footer .brand { font-size: 28px; }
+    footer .credit { flex-wrap: wrap; gap: 12px; }
+  }
+
+  /* ── SMALL PHONE BREAKPOINT (≤480px) ───────────────────────────────────
+     2-column team grid at 375-480px leaves each card only ~135px wide —
+     too tight for the portrait + wrapped name text. Go single column. */
+  @media (max-width: 480px) {
+    .network-grid,
+    .network-grid--exec,
+    .network-grid--vol { grid-template-columns: 1fr; }
+
+    footer { grid-template-columns: 1fr; gap: 32px; }
+    footer .brand { font-size: 22px; }
+    footer .credit { flex-direction: column; gap: 8px; }
+
+    /* Event dossier: give more breathing room on narrow screens */
+    .ev-scroll { padding: 30px 16px 30px; }
+
+    /* Horizon CTA: reduce padding so the pill button fits single-line */
+    .horizon-cta { padding: 18px 28px; font-size: 9px; letter-spacing: 0.28em; }
+  }
 </style>
 
 </head>
@@ -2070,6 +2170,11 @@
     <span class="mark"></span>
     <span><b>GRSS</b><span class="sub"> · BMSIT</span></span>
   </div>
+  <button class="menu-tog" id="menuTog" aria-expanded="false" aria-label="Open navigation" aria-controls="menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
   <ul class="menu" id="menu">
     <li><a href="#hero" data-hover="">Index</a></li>
     <li><a href="#manifesto" data-hover="">Manifesto</a></li>
@@ -3599,6 +3704,45 @@ if(document.fonts){
 }
 window.addEventListener('load', () => setTimeout(() => ScrollTrigger.refresh(), 250));
 window.addEventListener('resize', () => clearTimeout(window._rT) || (window._rT = setTimeout(() => ScrollTrigger.refresh(), 200)));
+
+/* ── Mobile Navigation Toggle ──────────────────────────────────────────
+   Hamburger opens a full-viewport overlay menu. The menu auto-closes on
+   nav link click, Escape key, and lenis is paused while it is open so
+   the background does not scroll behind the overlay. */
+(function initMobileNav(){
+  const tog = document.getElementById('menuTog');
+  const nav = document.getElementById('menu');
+  if(!tog || !nav) return;
+
+  function closeNav(){
+    document.body.classList.remove('nav-open');
+    tog.classList.remove('open');
+    tog.setAttribute('aria-expanded', 'false');
+    if(typeof lenis !== 'undefined' && lenis.start) lenis.start();
+  }
+
+  function openNav(){
+    document.body.classList.add('nav-open');
+    tog.classList.add('open');
+    tog.setAttribute('aria-expanded', 'true');
+    if(typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+  }
+
+  tog.addEventListener('click', () => {
+    document.body.classList.contains('nav-open') ? closeNav() : openNav();
+  });
+
+  /* Close on any nav link tap (smooth-scroll handler in the main block
+     then takes over and scrolls Lenis to the target). */
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => closeNav());
+  });
+
+  /* Escape key dismissal (keyboard / hardware-keyboard users) */
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && document.body.classList.contains('nav-open')) closeNav();
+  });
+})();
 </script>
 
 
