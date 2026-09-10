@@ -1389,12 +1389,32 @@
     letter-spacing: 0.22em; text-transform: uppercase; color: #7d8598;
   }
 
+  .ev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 16px; }
+  .ev-grid > div { background: #060910; padding: 16px 18px; }
+  .ev-grid-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .ev-grid-desc { font-size: 13px; line-height: 1.6; color: #a9b1c3; margin: 0; }
+  .ev-bullets { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+  .ev-bullets li { font-size: 13px; color: #a9b1c3; position: relative; padding-left: 16px; line-height: 1.5; }
+  .ev-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+  .ev-quote {
+    padding: 24px 28px; border-left: 2px solid var(--accent); background: rgba(158,193,255,0.03);
+    font-family: var(--serif); font-weight: 200; font-size: 17px; line-height: 1.65; color: var(--ink);
+    margin: 28px 0; font-style: italic;
+  }
+  .ev-pillars { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 16px; }
+  .ev-pillars > div { background: #060910; padding: 14px 18px; display: grid; grid-template-columns: 140px 1fr; gap: 16px; align-items: baseline; }
+  .ev-pillar-key { font-family: var(--mono); font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); }
+  .ev-pillar-val { color: #a9b1c3; font-size: 13px; line-height: 1.6; }
+
   @media (max-width: 900px) {
     .ev-panel { width: calc(100vw - 24px); max-height: 90vh; }
     .ev-scroll { padding: 46px 22px 40px; }
     .ev-facts { grid-template-columns: 1fr; }
     .ev-people > div { grid-template-columns: 1fr; gap: 6px; }
     .ev-win { grid-template-columns: 1fr; }
+    .ev-grid { grid-template-columns: 1fr; }
+    .ev-bullets { grid-template-columns: 1fr; }
+    .ev-pillars > div { grid-template-columns: 1fr; gap: 4px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .traj-event.inbound .te-node::before { animation: none !important; opacity: 0 !important; }
@@ -2413,7 +2433,11 @@
   </div>
   <div>
     <h5>Chapter</h5>
-    <ul><li>About</li><li>Charter</li><li>Advisors</li></ul>
+    <ul>
+      <li><a href="#about" id="footerAbout" data-hover="">About</a></li>
+      <li><a href="#charter" id="footerCharter" data-hover="">Charter</a></li>
+      <li><a href="#network" data-hover="">Advisors</a></li>
+    </ul>
   </div>
   <div>
     <h5>Engage</h5>
@@ -3055,8 +3079,20 @@ function renderDossier(d){
   ];
   if (d.sections) {
     out.push('<div class="ev-rule"></div>');
-    out.push(d.sections.map(sec =>
-      `<section class="ev-sec"><div class="ev-h">${sec.h}</div><p>${sec.p}</p></section>`).join(''));
+    out.push(d.sections.map(sec => {
+      let s = `<section class="ev-sec"><div class="ev-h">${sec.h}</div><p>${sec.p}</p>`;
+      if (sec.grid) {
+        s += `<div class="ev-grid">${sec.grid.map(g => `<div><div class="ev-grid-title">${g.title}</div><p class="ev-grid-desc">${g.desc}</p></div>`).join('')}</div>`;
+      }
+      if (sec.bullets) {
+        s += `<ul class="ev-bullets">${sec.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`;
+      }
+      if (sec.pillars) {
+        s += `<div class="ev-pillars">${sec.pillars.map(p => `<div><span class="ev-pillar-key">${p.key}</span><span class="ev-pillar-val">${p.val}</span></div>`).join('')}</div>`;
+      }
+      s += `</section>`;
+      return s;
+    }).join(''));
   }
   if (d.winners) {
     out.push('<div class="ev-rule"></div><div class="ev-h">Podium</div>', evWinners(d.winners));
@@ -3071,7 +3107,225 @@ function renderDossier(d){
     out.push('<div class="ev-rule"></div><div class="ev-h">The poster</div>',
       `<figure class="ev-poster"><img src="${d.poster[0]}" alt="${d.poster[1]}" decoding="async"><figcaption>${d.poster[1]}</figcaption></figure>`);
   }
+  if (d.quote) {
+    out.push('<div class="ev-rule"></div>', `<div class="ev-quote">${d.quote}</div>`);
+  }
   return out.join('');
+}
+
+const ABOUT_DATA = {
+  kicker: 'IEEE GRSS BMSIT&amp;M · Student Chapter',
+  name: 'About the Chapter',
+  lede: 'The IEEE Geoscience and Remote Sensing Society Student Chapter at BMS Institute of Technology &amp; Management is a student-driven technical community dedicated to exploring Earth, its systems, and the technologies that allow us to understand them from new perspectives.',
+  facts: [
+    ['Formed &amp; Launched', 'May 2026'],
+    ['Institution', 'BMS Institute of Technology &amp; Management, Bengaluru'],
+    ['Parent Chapter', 'IEEE GRSS Bangalore Chapter · IEEE Bangalore Section'],
+    ['Chapter Motto', 'Observe Beyond Vision'],
+    ['Core Focus', 'Geoscience, Remote Sensing, EO, GIS &amp; AI']
+  ],
+  sections: [
+    {
+      h: 'Who We Are',
+      p: 'We exist at the intersection of geoscience, remote sensing, Earth observation, geospatial technologies, computation, and emerging intelligent systems. Our chapter brings together students with different technical interests and backgrounds to learn, experiment, collaborate, and transform curiosity into meaningful work.<br><br>Established under the IEEE Student Branch of BMSIT&amp;M, the chapter serves as a local platform for students to engage with the broader IEEE GRSS community while developing technical knowledge, research awareness, leadership abilities, and professional connections. GRSS Student Branch Chapters are intended to create local opportunities for students to engage with geoscience and remote-sensing activities while building networks with peers, faculty, researchers, and professionals.<br><br>Our chapter was officially launched at BMSIT&amp;M in May 2026, marking the beginning of a community focused on innovation, research, technical learning, and student engagement in geoscience, remote sensing, and emerging technologies.'
+    },
+    {
+      h: 'What We Explore',
+      p: 'Our interests extend across the many layers of observing and understanding Earth:',
+      grid: [
+        { title: 'Remote Sensing', desc: 'Understanding Earth from a distance through satellite, airborne, and other sensing technologies.' },
+        { title: 'Earth Observation', desc: 'Studying the planet through imagery and observational data to understand changes across land, water, atmosphere, and ecosystems.' },
+        { title: 'Geospatial Science', desc: 'Working with location-based information, spatial relationships, mapping, and geographic data to understand patterns and processes.' },
+        { title: 'Geographic Information Systems', desc: 'Exploring the tools and methods used to collect, manage, analyze, visualize, and communicate spatial information.' },
+        { title: 'Image Processing & CV', desc: 'Transforming raw imagery into meaningful information through image analysis, feature extraction, classification, segmentation, and computational techniques.' },
+        { title: 'AI for Earth Observation', desc: 'Exploring machine learning, deep learning, and intelligent computational methods for solving problems involving remote-sensing and geospatial data.' },
+        { title: 'Environmental & Societal Applications', desc: 'Understanding how Earth-observation technologies contribute to environmental monitoring, resource management, mapping, disaster management, and urban analysis.' },
+        { title: 'Emerging Technologies', desc: 'Remaining open to new sensing platforms, computational approaches, data-driven methods, and interdisciplinary technologies expanding Earth intelligence.' }
+      ]
+    },
+    {
+      h: 'What We Do',
+      p: 'We believe that technical communities become meaningful when learning extends beyond classrooms. Through the chapter, students can participate in:',
+      bullets: [
+        'Technical Workshops: Practical learning experiences focused on concepts, tools, technologies, and real-world applications.',
+        'Technical Talks & Lectures: Interactions with academics, researchers, industry professionals, and practitioners across relevant domains.',
+        'Hands-on Projects: Opportunities to move from theory to implementation by working with data, tools, models, and real problems.',
+        'Research Exploration: Exposure to emerging research areas, scientific thinking, publications, experimentation, and problem formulation.',
+        'Competitions & Challenges: Collaborative experiences that encourage students to apply technical knowledge under real constraints.',
+        'Symposia & Technical Events: Platforms for discussion, knowledge exchange, networking, and exposure to developments within the wider ecosystem.',
+        'Peer Learning: A collaborative environment where students learn from one another, exchange ideas, and grow together.',
+        'Industry & Professional Interaction: Connections with researchers, engineers, practitioners, and faculty members to translate learning into real-world opportunities.'
+      ]
+    },
+    {
+      h: 'Why We Exist',
+      p: 'The Earth is constantly changing. Cities expand. Landscapes transform. Water systems shift. Forests disappear and recover. Atmospheric conditions evolve. Natural disasters reshape communities. Every one of these changes leaves information behind.<br><br>Remote sensing allows us to observe those changes. Geospatial science allows us to place them in context. Artificial intelligence allows us to uncover patterns at scale.<br><br>But technology alone is not enough. We need people who can ask better questions, interpret evidence, understand uncertainty, build responsibly, and connect technical capability with real-world impact. That is where our chapter aims to contribute.<br><br>We want students to move beyond merely seeing data toward understanding what that data means — beyond learning tools toward solving problems, beyond participating in events toward building capability, and beyond observation toward insight.'
+    },
+    {
+      h: 'Our Community',
+      p: 'The chapter is built around people across every tier of academic and professional discovery:',
+      pillars: [
+        { key: 'Students', val: 'Bring curiosity, experimentation, ambition, and diverse technical perspectives.' },
+        { key: 'Faculty', val: 'Provide mentorship, academic guidance, research continuity, and institutional support.' },
+        { key: 'Researchers', val: 'Bring domain depth and experience from the world beyond the classroom.' },
+        { key: 'Industry & IEEE', val: 'Provide opportunities for exposure, collaboration, global resources, and professional growth.' }
+      ]
+    },
+    {
+      h: 'Our Approach',
+      p: 'We do not believe innovation begins with having all the answers. It begins with curiosity.',
+      bullets: [
+        'Question what you observe.',
+        'Explore what you do not yet understand.',
+        'Experiment with ideas and build instead of only discussing.',
+        'Collaborate instead of working in isolation.',
+        'Measure instead of assuming.',
+        'Learn from failure as seriously as success.',
+        'Share knowledge so that progress compounds.',
+        'Ensure every activity contributes to genuine individual and collective capability.'
+      ]
+    },
+    {
+      h: 'Beyond the Chapter',
+      p: 'IEEE GRSS is a global professional community, and a student chapter is one local point of connection to that larger ecosystem. Our chapter seeks to create pathways for students to discover emerging research, technical communities, professional networks, academic opportunities, mentorship, competitions, conferences, publications, research directions, industry exposure, and leadership experiences.'
+    },
+    {
+      h: 'Our Vision & Mission',
+      p: '<strong>Vision:</strong> To build a generation of students capable of observing Earth with greater depth, interpreting it with greater intelligence, and contributing to its future with greater responsibility.<br><br><strong>Mission:</strong> To create a technically rigorous, collaborative, and exploratory environment where students can learn, experiment, research, build, and connect through geoscience and remote sensing.<br><br>Through workshops, projects, technical events, research-oriented activities, collaboration, and professional interaction, we aim to help students transform curiosity into capability and capability into impact.'
+    }
+  ],
+  quote: 'We chose to observe beyond vision because Earth cannot be understood from a single image, a single discipline, or a single perspective.<br><br>Observation gives us information.<br>Science gives it meaning.<br>Technology gives us scale.<br>People give it purpose.<br><br><span style="color:var(--accent); font-family:var(--mono); font-size:11px; letter-spacing:0.25em; text-transform:uppercase; font-style:normal; display:inline-block; margin-top:12px;">IEEE GRSS BMSIT&amp;M · Observe Beyond Vision</span>'
+};
+
+function openAboutDossier(opener){
+  if (!evModal) return;
+  evOpener = opener || null;
+  evBody.innerHTML = renderDossier(ABOUT_DATA);
+  evBody.scrollTop = 0;
+  evModal.hidden = false;
+  void evModal.offsetWidth;
+  evModal.classList.add('open');
+  if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+  document.documentElement.style.overflow = 'hidden';
+  const x = evPanel.querySelector('.ev-x');
+  if (x) x.focus();
+}
+
+const CHARTER_DATA = {
+  kicker: 'IEEE GRSS BMSIT&amp;M · Chapter Charter',
+  name: 'Constitution &amp; Charter',
+  lede: 'The IEEE Geoscience and Remote Sensing Society Student Chapter at BMS Institute of Technology &amp; Management exists to cultivate a strong student community around geoscience, remote sensing, Earth observation, geospatial science, and associated technologies.',
+  facts: [
+    ['Authority', 'IEEE Geoscience &amp; Remote Sensing Society'],
+    ['Affiliation', 'IEEE BMSIT&amp;M Student Branch · Bangalore Section'],
+    ['Established', 'May 2026'],
+    ['Institution', 'BMS Institute of Technology &amp; Management'],
+    ['Core Pledge', 'Observe · Question · Explore · Build · Collaborate · Impact']
+  ],
+  sections: [
+    {
+      h: 'Preamble',
+      p: 'The chapter seeks to complement formal academic education by creating opportunities for students to learn through interaction, experimentation, projects, research exposure, technical events, collaboration, and engagement with the wider professional community.<br><br>As a Student Branch Chapter, it functions as a local platform through which students can engage with the broader IEEE GRSS community and participate in activities that encourage technical, academic, professional, and leadership development.'
+    },
+    {
+      h: 'Article I — Purpose',
+      bullets: [
+        'Promote awareness and interest in geoscience and remote sensing among students.',
+        'Encourage exploration of Earth observation, geospatial science, remote sensing, image processing, GIS, AI, and related interdisciplinary technologies.',
+        'Provide opportunities for technical learning through workshops, lectures, demonstrations, seminars, symposia, projects, and competitions.',
+        'Encourage experimentation, innovation, research awareness, and practical application of technical knowledge.',
+        'Create opportunities for interaction between students, faculty, researchers, industry professionals, and IEEE GRSS leadership.',
+        'Develop leadership, communication, teamwork, project management, and professional skills.',
+        'Promote a culture of collaboration, knowledge sharing, technical curiosity, and responsible innovation.',
+        'Encourage students to identify and work on meaningful problems with scientific, environmental, or societal outcomes.',
+        'Serve as a pathway for students to discover and engage with relevant IEEE GRSS resources and global communities.'
+      ]
+    },
+    {
+      h: 'Article II &amp; III — Vision &amp; Mission',
+      p: '<strong>Vision:</strong> To build a technically capable, research-aware, collaborative, and responsible community of students who can observe, understand, and contribute to the future of Earth and its systems through geoscience and remote sensing.<br><br><strong>Mission:</strong> To provide a platform for learning, experimentation, research exposure, collaboration, innovation, and professional development in geoscience and remote sensing by creating meaningful technical experiences, encouraging interdisciplinary collaboration, connecting students with experts and peers, and promoting a culture in which knowledge is transformed into practical capability.'
+    },
+    {
+      h: 'Article IV — Core Areas',
+      p: 'The chapter undertakes activities across core technical domains:',
+      grid: [
+        { title: 'Geoscience', desc: "Study and discussion of Earth's physical systems, processes, resources, and planetary phenomena." },
+        { title: 'Remote Sensing', desc: 'Sensing technologies and methods used to acquire information about Earth from remote platforms.' },
+        { title: 'Earth Observation', desc: 'Analysis and interpretation of observational data for understanding changes across land, water, and atmosphere.' },
+        { title: 'GIS &amp; Geospatial Science', desc: 'Spatial analysis, mapping, geographic information systems, location intelligence, and spatial methods.' },
+        { title: 'Image Processing &amp; CV', desc: 'Enhancement, transformation, classification, and computational understanding of imagery and spatial data.' },
+        { title: 'Artificial Intelligence', desc: 'Application of machine learning, deep learning, and computational intelligence to Earth-observation problems.' },
+        { title: 'Environmental &amp; Disaster Apps', desc: 'Earth-observation technologies for environmental monitoring, risk mapping, disaster response, and management.' },
+        { title: 'Emerging Technologies', desc: 'Investigation of new sensing platforms, computational algorithms, and interdisciplinary Earth intelligence.' }
+      ]
+    },
+    {
+      h: 'Article V — Activities',
+      bullets: [
+        'Workshops: Hands-on educational sessions designed to develop technical understanding and practical skills.',
+        'Technical Lectures: Invited talks and knowledge sessions led by faculty, researchers, and domain experts.',
+        'Seminars &amp; Symposia: Platforms for discussion, knowledge exchange, and exposure to emerging developments.',
+        'Projects: Collaborative technical initiatives intended to transform concepts into working implementations.',
+        'Research Activities: Research discussions, experimentation, technical investigation, and paper exploration.',
+        'Competitions: Challenges that encourage problem solving, innovation, teamwork, and practical application.',
+        'Field &amp; Practical Exposure: Direct opportunities to understand sensing, geospatial, and environmental applications.',
+        'Industry Interaction &amp; Peer Learning: Engagement with practitioners and mutual knowledge-sharing across member cohorts.'
+      ]
+    },
+    {
+      h: 'Article VI — Guiding Principles',
+      pillars: [
+        { key: 'Curiosity', val: 'We encourage questions before conclusions and exploration before assumption.' },
+        { key: 'Integrity', val: 'We value accuracy, honesty, responsible representation of work, and respect for evidence.' },
+        { key: 'Collaboration', val: 'Meaningful progress is strengthened by diverse perspectives and shared knowledge.' },
+        { key: 'Excellence', val: 'We strive for depth of understanding rather than superficial familiarity.' },
+        { key: 'Innovation', val: 'We encourage experimentation, original thinking, and responsible risk-taking.' },
+        { key: 'Inclusion', val: 'We create a welcoming environment where students of all experience levels can contribute.' },
+        { key: 'Responsibility', val: 'We consider environmental, societal, ethical, and practical consequences of technology.' },
+        { key: 'Impact', val: 'We value meaningful outcomes over activity for its own sake.' }
+      ]
+    },
+    {
+      h: 'Article VII &amp; VIII — Membership &amp; Leadership',
+      p: 'Participation is open to all students interested in geoscience, remote sensing, EO, AI, and related fields. Prior expertise is not a barrier to involvement where opportunities are intended for learning.<br><br>The chapter operates through a student leadership structure supported by faculty guidance (Student Branch Counsellor &amp; Faculty Advisor) and aligned with IEEE GRSS standards, maintaining continuity, documentation, and member mentorship.'
+    },
+    {
+      h: 'Article IX &amp; X — Professional Development &amp; Research',
+      p: 'Members develop essential leadership, communication, teamwork, project management, research awareness, and professional competencies. Students are encouraged to formulate hypotheses, evaluate results critically, document findings, and pursue prototypes, publications, and competitions.'
+    },
+    {
+      h: 'Article XII &amp; XIII — Ethical Technology &amp; Knowledge Sharing',
+      p: 'We promote responsible data use, privacy respect, transparent methodology, intellectual property ethics, and proper attribution. Knowledge is treated as a shared commons: members teach peers, document learning, and preserve organizational memory so succeeding teams build upon prior achievements.'
+    },
+    {
+      h: 'Article XIV &amp; XV — Continuity &amp; Commitment to Impact',
+      p: 'The chapter seeks to create lasting capability, not merely temporary activity. Leadership transitions prioritize:',
+      bullets: [
+        'Documentation over memory',
+        'Mentorship over isolation',
+        'Continuity over repetition',
+        'Improvement over imitation',
+        'Students gaining genuine technical and leadership capability',
+        'Ideas becoming prototypes, and prototypes becoming useful solutions',
+        'Knowledge being carried forward to future teams'
+      ]
+    }
+  ],
+  quote: 'We exist to learn deeply, explore boldly, build responsibly, collaborate openly, and use geoscience and remote sensing to understand Earth with greater clarity and contribute to it with greater purpose.<br><br><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:12px; margin-top:20px; text-align:left;"><div style="border:1px solid var(--line); padding:10px 12px; background:#060910;"><b style="color:var(--accent); font-family:var(--mono); font-size:9px; letter-spacing:0.2em; display:block; margin-bottom:3px;">OBSERVE</b><span style="font-size:11px; color:#a9b1c3; font-style:normal;">Look closer.</span></div><div style="border:1px solid var(--line); padding:10px 12px; background:#060910;"><b style="color:var(--accent); font-family:var(--mono); font-size:9px; letter-spacing:0.2em; display:block; margin-bottom:3px;">QUESTION</b><span style="font-size:11px; color:#a9b1c3; font-style:normal;">Challenge assumptions.</span></div><div style="border:1px solid var(--line); padding:10px 12px; background:#060910;"><b style="color:var(--accent); font-family:var(--mono); font-size:9px; letter-spacing:0.2em; display:block; margin-bottom:3px;">EXPLORE</b><span style="font-size:11px; color:#a9b1c3; font-style:normal;">Go beyond familiar.</span></div><div style="border:1px solid var(--line); padding:10px 12px; background:#060910;"><b style="color:var(--accent); font-family:var(--mono); font-size:9px; letter-spacing:0.2em; display:block; margin-bottom:3px;">BUILD</b><span style="font-size:11px; color:#a9b1c3; font-style:normal;">Ideas into capability.</span></div><div style="border:1px solid var(--line); padding:10px 12px; background:#060910;"><b style="color:var(--accent); font-family:var(--mono); font-size:9px; letter-spacing:0.2em; display:block; margin-bottom:3px;">COLLABORATE</b><span style="font-size:11px; color:#a9b1c3; font-style:normal;">Collective intelligence.</span></div><div style="border:1px solid var(--line); padding:10px 12px; background:#060910;"><b style="color:var(--accent); font-family:var(--mono); font-size:9px; letter-spacing:0.2em; display:block; margin-bottom:3px;">IMPACT</b><span style="font-size:11px; color:#a9b1c3; font-style:normal;">Make work matter.</span></div></div>'
+};
+
+function openCharterDossier(opener){
+  if (!evModal) return;
+  evOpener = opener || null;
+  evBody.innerHTML = renderDossier(CHARTER_DATA);
+  evBody.scrollTop = 0;
+  evModal.hidden = false;
+  void evModal.offsetWidth;
+  evModal.classList.add('open');
+  if (typeof lenis !== 'undefined' && lenis.stop) lenis.stop();
+  document.documentElement.style.overflow = 'hidden';
+  const x = evPanel.querySelector('.ev-x');
+  if (x) x.focus();
 }
 
 function evFocusable(){
@@ -3123,6 +3377,21 @@ if (evModal) {
     const first = f[0], last = f[f.length - 1];
     if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
     else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+  });
+}
+
+const footerAbout = document.getElementById('footerAbout');
+if (footerAbout) {
+  footerAbout.addEventListener('click', e => {
+    e.preventDefault();
+    openAboutDossier(footerAbout);
+  });
+}
+const footerCharter = document.getElementById('footerCharter');
+if (footerCharter) {
+  footerCharter.addEventListener('click', e => {
+    e.preventDefault();
+    openCharterDossier(footerCharter);
   });
 }
 
