@@ -24,7 +24,8 @@ import json
 import os
 import sys
 import glob
-from PIL import Image
+import math
+from PIL import Image, ImageFilter, ImageChops
 
 MAX_SCALE = 2.9   # beyond this the source simply lacks pixels
 
@@ -50,9 +51,60 @@ HEAD_FRACTION_BY_FRAMING = {
 }
 
 
-def normalise(src_path, out_path, m, profile):
+def add_white_outline(canvas_image, outline_radius=14, blur_radius=1.2, outline_color=(255, 255, 255)):
+    """
+    Renders a solid, rounded outer white silhouette contour around the subject cutout,
+    matching the exact sticker outline profile of the reference card design.
+    Uses non-wrapping translation so pixels at the bottom edge do not wrap to the top.
+    """
+    w, h = canvas_image.size
+    alpha = canvas_image.split()[3]
+    dilated = alpha.copy()
+    angles = 48
+
+    def shift_alpha(src_alpha, dx, dy):
+        shifted = Image.new("L", (w, h), 0)
+        shifted.paste(src_alpha, (dx, dy))
+        return shifted
+
+    for angle_i in range(angles):
+        angle = 2 * math.pi * angle_i / angles
+        dx = int(round(outline_radius * math.cos(angle)))
+        dy = int(round(outline_radius * math.sin(angle)))
+        shifted = shift_alpha(alpha, dx, dy)
+        dilated = ImageChops.lighter(dilated, shifted)
+
+    # Concentric inner rings to ensure a solid interior stroke
+    for r in [outline_radius * 0.33, outline_radius * 0.66]:
+        for angle_i in range(24):
+            angle = 2 * math.pi * angle_i / 24
+            dx = int(round(r * math.cos(angle)))
+            dy = int(round(r * math.sin(angle)))
+            shifted = shift_alpha(alpha, dx, dy)
+            dilated = ImageChops.lighter(dilated, shifted)
+
+    # Anti-aliased edge smoothing
+    smooth_outline_alpha = dilated.filter(ImageFilter.GaussianBlur(blur_radius))
+
+    outline_layer = Image.new("RGBA", canvas_image.size, (*outline_color, 255))
+    outline_layer.putalpha(smooth_outline_alpha)
+
+    # Composite subject on top of outline
+    return Image.alpha_composite(outline_layer, canvas_image)
+
+
+def normalise(src_path, out_path, m, profile, add_outline=True):
     im = Image.open(src_path).convert("RGBA")
     W, H = im.size
+
+    # If the source photo contains a pre-existing baked-in thin outline,
+    # strip it first by eroding the alpha mask so the clean subject boundary is used.
+    if "technical-coordinator-p_mahidhar" in src_path:
+        alpha = im.split()[3]
+        eroded_alpha = alpha.filter(ImageFilter.MinFilter(11))  # 5px inward erosion
+        bottom_patch = alpha.crop((0, H - 10, W, H))
+        eroded_alpha.paste(bottom_patch, (0, H - 10))
+        im.putalpha(eroded_alpha)
 
     crown_px = m["crownY"] / 100.0 * H
     chin_px = m["chinY"] / 100.0 * H
@@ -89,6 +141,10 @@ def normalise(src_path, out_path, m, profile):
     canvas = Image.new("RGBA", (OW, OH), (0, 0, 0, 0))
     canvas.paste(scaled, (-left, -top), scaled)
 
+    # Apply the signature outer white outline contour around the subject
+    if add_outline:
+        canvas = add_white_outline(canvas, outline_radius=14, blur_radius=1.2)
+
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     # WebP, not PNG: these are photographs with an alpha cutout, and PNG stores
     # them at roughly 5x the bytes for no visible gain.
@@ -116,7 +172,9 @@ def main():
             print(f"  !! no measurement for {rel} — skipped")
             continue
         out = os.path.join(OUT_ROOT, os.path.splitext(rel)[0] + ".webp")
-        info = normalise(src, out, m, PROFILES[tier])
+        EXCLUDE_OUTLINE = ("webmaster-javeria_taj",)
+        add_outline = not any(k in rel for k in EXCLUDE_OUTLINE)
+        info = normalise(src, out, m, PROFILES[tier], add_outline=add_outline)
         report.append((rel, info))
         flag = "  <-- UPSCALE CAPPED, head smaller than target" if info["capped"] else ""
         print(f"  {rel:<50} scale={info['scale']:<6} head={info['headPctOfBox']:>5}% of box{flag}")
