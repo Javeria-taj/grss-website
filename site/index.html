@@ -3,6 +3,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IEEE GRSS · Observe Beyond Vision</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" href="/grss-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <style>/* vietnamese */
@@ -454,28 +457,45 @@
   }
   .logo {
     display: flex; align-items: center; gap: 14px;
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--ink);
+    font-family: var(--mono); font-size: 13px;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
   }
-  .logo .mark {
-    width: 18px; height: 18px;
-    border: 1px solid var(--ink); border-radius: 50%;
-    position: relative;
+  .logo-marks {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .logo .mark::before {
-    content: ""; position: absolute; inset: 3px;
-    border: 1px solid var(--ink); border-radius: 50%;
+  .logo .logo-img {
+    width: 48px; height: 48px;
+    object-fit: contain;
+    filter: brightness(1.35) contrast(1.12) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 14px rgba(158, 193, 255, 0.75));
+    transition: transform 0.4s var(--ease-cine), filter 0.4s var(--ease-cine);
+    display: block;
+    flex-shrink: 0;
   }
-  .logo .mark::after {
-    content: ""; position: absolute;
-    top: 50%; left: 50%;
-    width: 2px; height: 2px;
-    background: var(--ink); border-radius: 50%;
-    transform: translate(-50%,-50%);
+  .logo .logo-img.bmsit {
+    width: 46px; height: 46px;
+    filter: brightness(1.4) contrast(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 14px rgba(158, 193, 255, 0.7));
   }
-  .logo b { font-weight: 500; letter-spacing: 0.24em; }
-  .logo .sub { color: var(--ink-dim); margin-left: 2px; }
+  .logo:hover .logo-img {
+    transform: scale(1.08);
+    filter: brightness(1.5) contrast(1.15) drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 20px rgba(158, 193, 255, 0.9));
+  }
+  .logo b {
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+  }
+  .logo .sub {
+    color: #f1f5f9;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    margin-left: 4px;
+    text-shadow: 0 0 8px rgba(241, 245, 249, 0.3);
+  }
 
   .menu {
     list-style: none; display: flex; gap: 44px;
@@ -1085,7 +1105,7 @@
     display: flex; justify-content: space-between;
     font-family: var(--mono); font-size: 9px;
     letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--ink-dim);
+    color: #7d8598;
     padding-bottom: 18px;
     border-bottom: 1px solid var(--line);
     margin-bottom: 24px;
@@ -1106,7 +1126,7 @@
   .gauge .k {
     font-family: var(--mono); font-size: 8px;
     letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--ink-faint);
+    color: #7d8598;
     margin-bottom: 10px;
   }
   .gauge .v {
@@ -1135,7 +1155,7 @@
     display: flex; justify-content: space-between;
     font-family: var(--mono); font-size: 8px;
     letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--ink-faint);
+    color: #7d8598;
     padding-top: 20px;
     border-top: 1px solid var(--line);
   }
@@ -1585,8 +1605,8 @@
   }
   .nm {
     background: var(--bg);
-    aspect-ratio: 4/5;
-    padding: 32px;
+    aspect-ratio: auto;
+    padding: 26px 24px 26px;
     position: relative;
     overflow: hidden;
     cursor: none;
@@ -1609,7 +1629,7 @@
       repeating-linear-gradient(40deg, rgba(158,193,255,0.04) 0 1px, transparent 1px 10px),
       radial-gradient(circle at 50% 40%, rgba(158,193,255,0.15), transparent 70%),
       var(--ink-ghost);
-    margin-bottom: 26px;
+    margin-bottom: 12px;
   }
   .nm .portrait::after {
     content: attr(data-init);
@@ -1631,10 +1651,78 @@
     80% { opacity: 1; }
     100% { top: 102%; opacity: 0; }
   }
+  .nm-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 4px;
+    min-height: 24px;
+    position: relative;
+    z-index: 4;
+  }
   .nm .id {
     font-family: var(--mono); font-size: 9px;
     letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--ink-faint); margin-bottom: 12px;
+    color: var(--ink-dim);
+  }
+  .nm-linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    border-radius: 5px;
+    background: rgba(158, 193, 255, 0.06);
+    border: 1px solid rgba(158, 193, 255, 0.25);
+    text-decoration: none;
+    position: relative;
+    z-index: 6;
+    opacity: 0.95;
+    transition: opacity 0.35s var(--ease-cine), background 0.35s var(--ease-cine), border-color 0.35s var(--ease-cine), transform 0.35s var(--ease-cine), box-shadow 0.35s var(--ease-cine);
+  }
+  .nm-linkedin .li-icon {
+    display: block;
+    width: 17px;
+    height: 17px;
+    border-radius: 3px;
+    transition: transform 0.35s var(--ease-cine), filter 0.35s var(--ease-cine);
+  }
+  .nm-linkedin .li-box {
+    fill: #64748b;
+    transition: fill 0.35s var(--ease-cine);
+  }
+  .nm-linkedin .li-in {
+    fill: #ffffff;
+    transition: fill 0.35s var(--ease-cine);
+  }
+  .nm:hover .nm-linkedin {
+    opacity: 1;
+    border-color: rgba(158, 193, 255, 0.45);
+    background: rgba(158, 193, 255, 0.12);
+  }
+  .nm:hover .nm-linkedin .li-box {
+    fill: #94a3b8;
+  }
+  .nm-linkedin:hover,
+  .nm-linkedin:focus-visible {
+    opacity: 1 !important;
+    background: rgba(10, 102, 194, 0.25) !important;
+    border-color: #0a66c2 !important;
+    transform: translateY(-2px) scale(1.12);
+    box-shadow: 0 0 16px rgba(10, 102, 194, 0.8), 0 0 28px rgba(10, 102, 194, 0.45) !important;
+  }
+  .nm-linkedin:hover .li-box,
+  .nm-linkedin:focus-visible .li-box {
+    fill: #0a66c2 !important;
+  }
+  .nm-linkedin:hover .li-in,
+  .nm-linkedin:focus-visible .li-in {
+    fill: #ffffff !important;
+  }
+  .nm-linkedin:hover .li-icon,
+  .nm-linkedin:focus-visible .li-icon {
+    filter: drop-shadow(0 0 6px rgba(10, 102, 194, 0.9));
   }
   .nm .name {
     font-family: var(--serif); font-weight: 200;
@@ -1644,180 +1732,431 @@
   }
   .nm .role {
     font-size: 12px; color: var(--ink-dim);
-    margin-top: 10px;
+    margin-top: 6px;
+    line-height: 1.35;
   }
 
-  /* ── 07 · NETWORK — ACQUISITION HEAD ───────────────────────────────
-     Replaces .net-tier / .net-tier-label / .net-tier + .net-tier.
-     Built from the roster's own material: 1px gaps on a --line ground
-     inside a 1px --line border, cells on --bg lifting to --ink-ghost,
-     the same --mx/--my radial wash as .nm. It reads as one more cell of
-     the grid it controls, welded to it by a shared hairline.
-     No --ink-faint on any text here: it is 1.31:1 on --bg, which is fine
-     for a rule and not for a readout. Keys sit at --ink-dim (the page's
-     eyebrow contrast), values at --ink or --accent. */
-
-  .ns-head {
-    /* --ink-dim (#61687a) is 3.66:1 on --bg: fine for a decorative eyebrow,
-       not for the label of the control you are about to press. This mid-tone
-       clears 4.5:1 on --bg, --ink-ghost and --deep-navy alike. */
-    --ns-ink-mid: #7d8598;
-    max-width: 1300px; margin: 0 auto -1px;      /* -1px: head and grid share one hairline */
-    display: grid; gap: 1px;
-    grid-template-columns: 3fr 1fr;              /* three of the roster's four columns, and one */
-    background: var(--line);
+  /* ── 07.0 · FACULTY ADVISOR EDITORIAL PROFILE ──────────────────── */
+  .fa-profile {
+    max-width: 1300px;
+    margin: 0 auto 120px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .fa-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fa-eyebrow .ln {
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+  .fa-card {
+    background: var(--bg);
     border: 1px solid var(--line);
-    transition: grid-template-columns 0.9s var(--ease-cine);
+    padding: 32px 36px 34px;
+    position: relative;
+    overflow: hidden;
+    max-width: 440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 1s var(--ease-cine), border-color 0.8s var(--ease-cine);
   }
-  .ns-head[data-active="1"] { grid-template-columns: 1fr 3fr; }
-
-  .ns-ch {
-    --ns-face: var(--bg);
-    position: relative; overflow: hidden;
-    display: grid; align-content: space-between; gap: 14px;
-    min-height: 92px; padding: 18px 22px 16px;
-    margin: 0; border: 0; font: inherit; text-align: left;
-    color: var(--ink); background: var(--ns-face);
-    cursor: none; -webkit-tap-highlight-color: transparent;
-    transition: background 0.9s var(--ease-cine);
+  .fa-card:hover {
+    background: var(--ink-ghost);
+    border-color: var(--line-mid);
   }
-  /* cursor-following wash — identical contract to .nm::after */
-  .ns-ch::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(circle at var(--mx,50%) var(--my,50%), var(--glow), transparent 55%);
-    opacity: 0; transition: opacity 0.8s;
+  .fa-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(158, 193, 255, 0.22), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.8s;
+    pointer-events: none;
   }
-  /* cue parity: focusing a channel previews exactly what hovering it previews */
-  .ns-ch[aria-selected="true"], .ns-ch:focus-visible { --ns-face: var(--ink-ghost); }
-  .ns-ch:focus-visible::after { opacity: 0.55; }
+  .fa-card:hover::after {
+    opacity: 1;
+  }
+  .fa-portrait-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(40deg, rgba(158,193,255,0.04) 0 1px, transparent 1px 10px),
+      radial-gradient(circle at 50% 40%, rgba(158,193,255,0.15), transparent 70%),
+      var(--ink-ghost);
+    margin-bottom: 26px;
+  }
+  .fa-portrait-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5) contrast(1.04);
+    opacity: 0.92;
+    transition: filter 1.2s var(--ease-cine), opacity 1.2s var(--ease-cine), transform 1.2s var(--ease-cine);
+  }
+  .fa-card:hover .fa-portrait-img {
+    filter: grayscale(0) contrast(1.02);
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  .fa-portrait-wrap .sweep {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    top: 0;
+    animation: sweep 6s infinite linear;
+    opacity: 0.65;
+    z-index: 2;
+  }
+  .fa-id {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+  .fa-name {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-variation-settings: 'opsz' 48;
+    color: var(--ink);
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+  .fa-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .fa-chapter {
+    font-size: 12px;
+    color: var(--ink-dim);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .fa-inst {
+    font-size: 12px;
+    color: #7d8598;
+    letter-spacing: 0.03em;
+    margin-bottom: 22px;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+  .fa-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    text-decoration: none;
+    padding: 8px 18px;
+    border: 1px solid var(--line);
+    background: rgba(158, 193, 255, 0.03);
+    transition: color 0.4s var(--ease-cine), border-color 0.4s var(--ease-cine), background 0.4s var(--ease-cine), box-shadow 0.4s var(--ease-cine), transform 0.4s var(--ease-cine);
+  }
+  .fa-linkedin .li-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    transition: transform 0.4s var(--ease-cine), filter 0.4s var(--ease-cine);
+  }
+  .fa-linkedin .li-box {
+    fill: #64748b;
+    transition: fill 0.4s var(--ease-cine);
+  }
+  .fa-linkedin .li-in {
+    fill: #ffffff;
+    transition: fill 0.4s var(--ease-cine);
+  }
+  .fa-linkedin:hover, .fa-linkedin:focus-visible {
+    color: var(--ink);
+    border-color: #0a66c2;
+    background: rgba(10, 102, 194, 0.18);
+    box-shadow: 0 0 20px rgba(10, 102, 194, 0.5);
+    transform: translateY(-1px);
+  }
+  .fa-linkedin:hover .li-box, .fa-linkedin:focus-visible .li-box {
+    fill: #0a66c2;
+  }
+  .fa-linkedin:hover .li-icon, .fa-linkedin:focus-visible .li-icon {
+    filter: drop-shadow(0 0 6px rgba(10, 102, 194, 0.9));
+    transform: scale(1.08);
+  }
+  .fa-linkedin .fa-arr {
+    display: inline-block;
+    color: var(--accent);
+    transition: transform 0.4s var(--ease-cine), color 0.4s var(--ease-cine);
+  }
+  .fa-linkedin:hover .fa-arr, .fa-linkedin:focus-visible .fa-arr {
+    color: #0a66c2;
+    transform: translate(2px, -2px);
+  }
 
-  /* the only accent rectangle in the component, so "where I am" can never
-     be confused with "what is on" — selection is carried by type register */
-  .ns-ch:focus-visible { outline: 1px solid var(--accent); outline-offset: -6px; }
+  /* ── 07.1 · NETWORK TIERS ───────────────────────────────────────── */
+  .net-tier {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .net-tier-head {
+    max-width: 1300px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 4px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .net-tier-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .net-tier-meta .ln {
+    width: 24px;
+    height: 1px;
+    background: var(--line-mid);
+  }
+  .net-tier-count {
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .net-tier-title {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(20px, 1.8vw, 26px);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variation-settings: 'opsz' 48;
+    margin: 0;
+  }
 
-  /* the live channel scans on the roster's own 6s clock */
-  .ns-scan {
-    position: absolute; left: 0; right: 0; top: 0; height: 1px;
-    pointer-events: none; opacity: 0;
+  /* ── 07.2 · WIDER NETWORK PROGRESSIVE DISCLOSURE ────────────────── */
+  .net-expand-wrap {
+    max-width: 1300px;
+    margin: 36px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+  .net-expand-btn {
+    --eb-face: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 520px;
+    padding: 24px 32px 22px;
+    margin: 0;
+    border: 1px solid var(--line);
+    background: var(--eb-face);
+    color: var(--ink);
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.8s var(--ease-cine), border-color 0.8s var(--ease-cine), box-shadow 0.8s var(--ease-cine);
+  }
+  .net-expand-btn:hover, .net-expand-btn:focus-visible {
+    --eb-face: var(--ink-ghost);
+    border-color: var(--line-mid);
+    box-shadow: 0 0 30px rgba(158, 193, 255, 0.06);
+  }
+  .net-expand-btn:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: -4px;
+  }
+  .net-expand-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(158, 193, 255, 0.16), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.8s;
+  }
+  .net-expand-btn:hover::after {
+    opacity: 1;
+  }
+  .net-expand-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    pointer-events: none;
+    opacity: 0;
     background: linear-gradient(to right, transparent, var(--accent), transparent);
   }
-  .ns-ch[aria-selected="true"] .ns-scan { animation: nsScan 6s infinite linear; }
+  .net-expand-btn:hover .net-expand-scan,
+  .net-expand-btn[aria-expanded="true"] .net-expand-scan {
+    animation: nsScan 5s infinite linear;
+  }
+  .net-expand-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .net-expand-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+    transition: background 0.6s, box-shadow 0.6s;
+  }
+  .net-expand-btn[aria-expanded="true"] .net-expand-led {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .net-expand-body {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .net-expand-delta {
+    font-family: var(--mono);
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 300;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .net-expand-label {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(20px, 2vw, 24px);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    font-variation-settings: 'opsz' 48;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .net-expand-arrow {
+    display: inline-block;
+    transition: transform 0.5s var(--ease-cine);
+    color: var(--accent);
+  }
+  .net-expand-btn:hover .net-expand-arrow {
+    transform: translateX(4px);
+  }
+  .net-expand-btn[aria-expanded="true"] .net-expand-arrow {
+    transform: rotate(90deg);
+  }
+  .net-expand-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* ── 07.2 · VOLUNTEER COMMITTEE SECTION (COLLAPSIBLE) ──────────── */
+  .net-vol-section {
+    max-width: 1300px;
+    margin: 64px auto 0;
+    position: relative;
+    transition: opacity 0.6s var(--ease-cine);
+  }
+  .net-vol-section[hidden] {
+    display: none;
+  }
+  .net-vol-section.is-collapsing,
+  .net-vol-section.is-expanding {
+    overflow: hidden;
+    transition: height 0.65s var(--ease-cine), opacity 0.5s var(--ease-cine);
+  }
+  .net-vol-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+  }
+  .net-vol-section.is-expanding .net-vol-line {
+    animation: nsFall 0.85s var(--ease-deep) forwards;
+  }
+  .net-vol-section.is-expanding .nm {
+    animation: nsCell 0.55s var(--ease-cine) both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+
   @keyframes nsScan {
     0%   { top: -1%; opacity: 0; }
     20%  { opacity: 0.34; }
     80%  { opacity: 0.34; }
     100% { top: 101%; opacity: 0; }
   }
-
-  .ns-meta {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 10px 14px; flex-wrap: wrap;
-    font-family: var(--mono); font-size: 9px;
-    letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-  .ns-meta b { font-weight: 400; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .ns-idx { white-space: nowrap; }
-  /* the dormant channel reports index and record count only — it has one
-     roster column of width, and nothing here may wrap the head taller */
-  .ns-ch[aria-selected="false"] .ns-cls { display: none; }
-
-  .ns-cue { display: flex; align-items: center; min-height: 22px; }
-  .ns-live { display: none; align-items: center; gap: 9px; min-width: 76px; color: var(--accent); }
-  .ns-led { width: 5px; height: 5px; background: var(--accent); flex: none; }
-  .ns-word { color: var(--accent); }
-  .ns-ch[aria-selected="true"] .ns-live { display: flex; }
-  .ns-ch[aria-selected="true"] .ns-verb { display: none; }
-  /* the dormant channel says, in words and with a pressable face, that it can be chosen */
-  .ns-verb {
-    display: block; padding: 5px 9px;
-    border: 1px solid var(--line-mid); color: var(--ns-ink-mid);
-    transition: color 0.5s, border-color 0.5s;
-  }
-  .ns-ch:focus-visible .ns-verb { color: var(--accent); border-color: var(--accent); }
-  /* hover cues only where there is a real pointer, so a tap cannot leave a
-     channel stuck in the hovered face on touch */
-  @media (hover: hover) and (min-width: 901px) {
-    .ns-ch:hover { --ns-face: var(--ink-ghost); }
-    .ns-ch:hover::after { opacity: 0.55; }
-    .ns-ch:hover .ns-verb { color: var(--accent); border-color: var(--accent); }
-  }
-  /* acquiring: the state word warms, the LED breathes on the page's own 1.6s
-     cadence — the same @keyframes blink the .live dot already uses */
-  .ns-ch[data-state="acq"] .ns-word,
-  .ns-ch[data-state="acq"] .ns-live { color: var(--accent-warm); }
-  .ns-ch[data-state="acq"] .ns-led { background: var(--accent-warm); animation: blink 1.6s infinite; }
-
-  /* Register shift: the two tier eyebrows stacked in one cell, sharing one
-     baseline. The live roster is set in Fraunces, the dormant one stays the
-     mono eyebrow it always was — state as a property of type, so it survives
-     greyscale, forced colours and motion suppression. The row never moves. */
-  .ns-name { display: grid; align-items: baseline; }
-  .ns-name > span { grid-area: 1 / 1; transition: opacity 0.7s var(--ease-cine); }
-  .ns-lg {
-    font-family: var(--serif); font-weight: 200;
-    font-size: clamp(19px, 1.6vw, 23px); line-height: 1.12;
-    letter-spacing: -0.02em; color: var(--ink);
-    font-variation-settings: 'opsz' 48;          /* the axis .nm .name is set on */
-    text-wrap: balance;
-  }
-  .ns-sm {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.35em; text-transform: uppercase;
-    line-height: 1.6; color: var(--ns-ink-mid);
-  }
-  .ns-ch[aria-selected="true"] .ns-sm,
-  .ns-ch[aria-selected="false"] .ns-lg { opacity: 0; visibility: hidden; }
-
-  /* lock gauge — the page's own instrument (.gauge .bar): a 1px track with a
-     fill. Empty when dormant, and it fills as the channel acquires. */
-  .ns-gauge { display: block; height: 1px; background: var(--line); overflow: hidden; }
-  .ns-gauge > i {
-    display: block; height: 100%; width: 0; background: var(--accent);
-    transition: width 0.78s var(--ease-deep);
-  }
-  .ns-ch[aria-selected="true"] .ns-gauge > i { width: 100%; }
-  .ns-ch[data-state="acq"] .ns-gauge > i { background: var(--accent-warm); }
-
-  /* Panels — one roster on screen at a time */
-  .ns-panels { position: relative; max-width: 1300px; margin: 0 auto; }
-  .ns-panels.ns-tuning { overflow: hidden; transition: height 0.6s var(--ease-cine); }
-  .ns-panel { position: relative; }
-  .ns-panel[hidden] { display: none; }
-  /* inset so it hugs the grid hairline and cannot be clipped during the swap */
-  .ns-panel:focus-visible { outline: 1px solid var(--accent); outline-offset: -1px; }
-
-  /* Re-acquisition: a scanline falls through the panel and the cards resolve
-     out of the empty hairline grid in raster order behind it. Card background
-     is --bg and the gaps are --line, so a card at 0 opacity reads as an empty
-     lit cell — the roster resolves out of its own wireframe. */
-  .ns-line {
-    position: absolute; left: 0; right: 0; top: 0; height: 1px;
-    z-index: 4; pointer-events: none; opacity: 0;
-    background: linear-gradient(to right, transparent, var(--accent), transparent);
-  }
-  .ns-panel.ns-acq .ns-line { animation: nsFall 0.78s var(--ease-deep) forwards; }
   @keyframes nsFall {
     0% { top: 0; opacity: 0; } 12% { opacity: 0.9; }
     85% { opacity: 0.9; } 100% { top: 100%; opacity: 0; }
   }
-  .ns-panel.ns-acq .nm {
-    animation: nsCell 0.55s var(--ease-cine) both;
-    animation-delay: calc(var(--i, 0) * 42ms);
-  }
   @keyframes nsCell { 0% { opacity: 0; } 40% { opacity: 0.14; } 100% { opacity: 1; } }
 
-  /* ── append inside (or immediately after) the existing
-       @media (max-width: 900px) block ── */
   @media (max-width: 900px) {
-    .ns-head, .ns-head[data-active="1"] { grid-template-columns: 1fr; }
-    .ns-ch { min-height: 72px; padding: 16px 18px; cursor: pointer; gap: 12px; }
-    .ns-ch::after { display: none; }
-    .ns-lg { font-size: 21px; }
+    .fa-profile { margin-bottom: 80px; }
+    .fa-card { padding: 24px 20px 28px; max-width: 360px; }
+    .net-expand-btn { max-width: 100%; padding: 20px 24px 18px; }
+    .net-tier-head { margin-bottom: 16px; }
   }
-  @media (max-width: 420px) {
-    .ns-meta { font-size: 8px; letter-spacing: 0.22em; gap: 10px; }
-    .ns-sm { letter-spacing: 0.26em; }
+  @media (max-width: 480px) {
+    .fa-card { padding: 20px 16px 24px; max-width: 100%; }
+    .fa-portrait-wrap { max-width: 240px; }
+    .fa-name { font-size: 24px; }
+    .fa-role { font-size: 10px; }
+    .fa-inst { font-size: 11px; margin-bottom: 18px; }
+    .net-expand-delta { font-size: 22px; }
+    .net-expand-label { font-size: 18px; }
   }
 
   .network-grid--exec, .network-grid--vol { grid-template-columns: repeat(4, 1fr); }
@@ -1834,14 +2173,12 @@
   /* Initials are the fallback; suppress them once a photo is present. */
   .nm .portrait.has-photo::after { display: none; }
 
-  .nm-sm { aspect-ratio: auto; padding: 22px; }
-  /* 4:5 rather than the executive 1:1 — still a portrait, visibly tighter.
-     No object-position tuning: every derivative is pre-composed to put the
-     crown at 13% and the eyes on the upper third, so plain cover is correct. */
-  .nm-sm .portrait { aspect-ratio: 4 / 5; margin-bottom: 16px; }
-  .nm-sm .id { font-size: 8px; margin-bottom: 10px; }
-  .nm-sm .name { font-size: 17px; }
-  .nm-sm .role { font-size: 11px; margin-top: 7px; }
+  .nm-sm { aspect-ratio: auto; padding: 20px 18px 22px; }
+  .nm-sm .portrait { margin-bottom: 10px; }
+  .nm-sm .nm-meta { margin-bottom: 4px; min-height: 24px; }
+  .nm-sm .id { font-size: 8px; }
+  .nm-sm .name { font-size: 24px; }
+  .nm-sm .role { font-size: 12px; margin-top: 6px; }
 
   /* HORIZON */
   .scene-horizon {
@@ -2038,12 +2375,10 @@
      [aria-selected] or by .ns-acq, so no static state cue is flattened:
      dormant gauge 0 / live gauge 100%, mono eyebrow / Fraunces, unchanged. ── */
   @media (prefers-reduced-motion: reduce) {
-    .ns-scan { display: none; animation: none !important; }
-    .ns-led, .ns-panel.ns-acq .ns-line, .ns-panel.ns-acq .nm { animation: none !important; }
-    .ns-panel.ns-acq .nm { opacity: 1 !important; }
-    .ns-line { opacity: 0 !important; }
-    .ns-head, .ns-ch, .ns-name > span, .ns-gauge > i, .ns-verb,
-    .ns-panels.ns-tuning { transition: none !important; }
+    .net-expand-scan, .net-vol-line { display: none !important; animation: none !important; }
+    .net-vol-section, .net-vol-section.is-expanding, .net-vol-section.is-collapsing { transition: none !important; }
+    .net-vol-section .nm { animation: none !important; opacity: 1 !important; }
+    .fa-card, .fa-portrait-img, .net-expand-btn { transition: none !important; }
   }
 
   /* Scroll-reveal: opacity + translateY, CSS-only (robust without RAF) */
@@ -2187,8 +2522,11 @@
 <!-- CHROME -->
 <nav class="top">
   <div class="logo">
-    <span class="mark"></span>
-    <span><b>GRSS</b><span class="sub"> · BMSIT</span></span>
+    <div class="logo-marks">
+      <img class="logo-img grss" src="/grss-logo.webp" alt="IEEE GRSS Logo" width="48" height="48" decoding="async">
+      <img class="logo-img bmsit" src="/bmsit-logo.webp" alt="BMSIT Logo" width="46" height="46" decoding="async">
+    </div>
+    <span><b>IEEE GRSS</b><span class="sub"> · BMSIT&amp;M</span></span>
   </div>
   <button class="menu-tog" id="menuTog" aria-expanded="false" aria-label="Open navigation" aria-controls="menu">
     <span class="bar"></span>
@@ -2348,65 +2686,88 @@
 
 <!-- ════ NETWORK ════ -->
 <section class="scene scene-network" id="network" data-scene="07" data-label="Network">
-  <div class="scene-head" style="max-width: 1300px; margin: 0 auto 140px;">
+  <div class="scene-head" style="max-width: 1300px; margin: 0 auto 72px;">
     <div class="scene-num"><span class="ln"></span>07 · NETWORK</div>
     <h2>The minds <em>behind the lens.</em></h2>
   </div>
-  <!-- ════ 07 · NETWORK — ACQUISITION HEAD ════
-       Replaces both .net-tier blocks inside #network, directly after the
-       existing .scene-head. The two tier eyebrows are not deleted — they move
-       in here, where the live one is promoted to display type.
-       #execomGrid / #volcomGrid keep their ids and classes, so renderRoster()
-       and its per-card --mx/--my handlers are untouched. -->
-  <div class="ns-head" id="nsHead" data-active="0" role="tablist"
-       aria-label="Roster" aria-orientation="horizontal">
 
-    <button class="ns-ch" type="button" role="tab" id="ns-tab-0" data-hover
-            aria-controls="ns-panel-0" aria-selected="true" tabindex="0"
-            data-tier="Tier 01" data-name="Executive Committee">
-      <span class="ns-scan" aria-hidden="true"></span>
-      <span class="ns-meta" aria-hidden="true">
-        <span class="ns-idx">07.1<span class="ns-cls"> · Elected</span> · <b class="ns-rec">08</b> REC</span>
-        <span class="ns-cue">
-          <span class="ns-live"><i class="ns-led"></i><span class="ns-word">Lock</span></span>
-          <span class="ns-verb">Tune</span>
-        </span>
-      </span>
-      <span class="ns-name" aria-hidden="true">
-        <span class="ns-lg">Executive Committee</span>
-        <span class="ns-sm">Executive Committee</span>
-      </span>
-      <span class="ns-gauge" aria-hidden="true"><i></i></span>
-    </button>
+  <!-- ════ 07.0 · FACULTY ADVISOR ════ -->
+  <article class="fa-profile" id="faculty-advisor" aria-label="Faculty Advisor — Archana Kumar Yereseme">
+    <div class="fa-eyebrow">
+      <span class="ln" aria-hidden="true"></span>
+      <span>07.0 · Chapter Guidance · Faculty Advisor</span>
+      <span class="ln" aria-hidden="true"></span>
+    </div>
+    <div class="fa-card">
+      <div class="fa-portrait-wrap">
+        <img class="fa-portrait-img"
+             src="/team/framed/faculty/faculty-advisor.webp"
+             alt="Archana Kumar Yereseme"
+             loading="lazy"
+             decoding="async">
+        <div class="sweep" aria-hidden="true"></div>
+      </div>
+      <div class="fa-id">FA · 001</div>
+      <h3 class="fa-name">Archana Kumar Yereseme</h3>
+      <div class="fa-role">Faculty Advisor · IEEE GRSS BMSIT&amp;M</div>
+      <div class="fa-chapter">IEEE Geoscience &amp; Remote Sensing Society</div>
+      <div class="fa-inst">BMS Institute of Technology and Management</div>
+      <a class="fa-linkedin"
+         href="https://www.linkedin.com/in/archana-kumar-yereseme-80176849/"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Archana Kumar Yereseme on LinkedIn"
+         data-hover>
+        <svg class="li-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect class="li-box" width="24" height="24" rx="4"/><path class="li-in" d="M7.8 19h-2.8v-9h2.8v9zm-1.4-10.2c-.9 0-1.6-.7-1.6-1.6 0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6c0 .9-.7 1.6-1.6 1.6zm12.6 10.2h-2.8v-4.6c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8v4.6h-2.8s.04-8.2 0-9h2.8v1.3c.4-.6 1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1v5.1z"/></svg>
+        <span>Professional Profile</span>
+        <span class="fa-arr" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </article>
 
-    <button class="ns-ch" type="button" role="tab" id="ns-tab-1" data-hover
-            aria-controls="ns-panel-1" aria-selected="false" tabindex="-1"
-            data-tier="Tier 02" data-name="Volunteer Committee">
-      <span class="ns-scan" aria-hidden="true"></span>
-      <span class="ns-meta" aria-hidden="true">
-        <span class="ns-idx">07.2<span class="ns-cls"> · Appointed</span> · <b class="ns-rec">08</b> REC</span>
-        <span class="ns-cue">
-          <span class="ns-live"><i class="ns-led"></i><span class="ns-word">Lock</span></span>
-          <span class="ns-verb">Tune</span>
-        </span>
+  <!-- ════ 07.1 · EXECUTIVE COMMITTEE ════ -->
+  <div class="net-tier" id="execTier">
+    <div class="net-tier-head">
+      <div class="net-tier-meta">
+        <span class="ln" aria-hidden="true"></span>
+        <span class="net-tier-idx">07.1 · Elected</span>
+        <span class="net-tier-count">· <b>08</b> REC</span>
+      </div>
+      <h3 class="net-tier-title">Executive Committee</h3>
+    </div>
+    <div class="network-grid network-grid--exec" id="execomGrid"></div>
+  </div>
+
+  <!-- ════ PROGRESSIVE DISCLOSURE: WIDER NETWORK (+08) ════ -->
+  <div class="net-expand-wrap">
+    <button class="net-expand-btn" id="netExpandBtn" type="button"
+            aria-expanded="false" aria-controls="volcomSection"
+            data-hover>
+      <span class="net-expand-scan" aria-hidden="true"></span>
+      <span class="net-expand-signal">
+        <i class="net-expand-led"></i>
+        <span class="net-expand-status" id="netExpandStatus">Standby</span>
       </span>
-      <span class="ns-name" aria-hidden="true">
-        <span class="ns-lg">Volunteer Committee</span>
-        <span class="ns-sm">Volunteer Committee</span>
+      <span class="net-expand-body">
+        <span class="net-expand-delta" id="netExpandDelta">+08</span>
+        <span class="net-expand-label" id="netExpandLabel">Wider Network <span class="net-expand-arrow">→</span></span>
       </span>
-      <span class="ns-gauge" aria-hidden="true"><i></i></span>
+      <span class="net-expand-sub">Extend Roster · Appointed Signals</span>
     </button>
   </div>
 
-  <div class="ns-panels" id="nsPanels">
-    <div class="ns-panel" id="ns-panel-0" role="tabpanel" aria-labelledby="ns-tab-0" tabindex="0">
-      <span class="ns-line" aria-hidden="true"></span>
-      <div class="network-grid network-grid--exec" id="execomGrid"></div>
+  <!-- ════ 07.2 · VOLUNTEER COMMITTEE (PROGRESSIVELY DISCLOSED) ════ -->
+  <div class="net-vol-section" id="volcomSection" hidden>
+    <span class="net-vol-line" aria-hidden="true"></span>
+    <div class="net-tier-head">
+      <div class="net-tier-meta">
+        <span class="ln" aria-hidden="true"></span>
+        <span class="net-tier-idx">07.2 · Appointed</span>
+        <span class="net-tier-count">· <b>08</b> REC</span>
+      </div>
+      <h3 class="net-tier-title">Volunteer Committee</h3>
     </div>
-    <div class="ns-panel" id="ns-panel-1" role="tabpanel" aria-labelledby="ns-tab-1" tabindex="0" hidden>
-      <span class="ns-line" aria-hidden="true"></span>
-      <div class="network-grid network-grid--vol" id="volcomGrid"></div>
-    </div>
+    <div class="network-grid network-grid--vol" id="volcomGrid"></div>
   </div>
 </section>
 
@@ -2428,7 +2789,7 @@
 
 <footer>
   <div class="brand">
-    GRSS · <em>BMSIT</em>
+    IEEE GRSS · <em>BMSIT&amp;M</em>
     <span class="sub">IEEE Geoscience &amp; Remote Sensing Society · Student Chapter</span>
   </div>
   <div>
@@ -2436,7 +2797,7 @@
     <ul>
       <li><a href="#about" id="footerAbout" data-hover="">About</a></li>
       <li><a href="#charter" id="footerCharter" data-hover="">Charter</a></li>
-      <li><a href="#network" data-hover="">Advisors</a></li>
+      <li><a href="#faculty-advisor" data-hover="">Advisors</a></li>
     </ul>
   </div>
   <div>
@@ -3445,38 +3806,50 @@ MISSIONS.forEach((m, i) => {
   missTrack.appendChild(el);
 });
 
+const FACULTY_ADVISOR = {
+  id: 'FA · 001',
+  name: 'Archana Kumar Yereseme',
+  role: 'Faculty Advisor',
+  chapter: 'IEEE GRSS BMSIT&M',
+  institution: 'BMS Institute of Technology and Management',
+  category: 'faculty',
+  img: '/team/framed/faculty/faculty-advisor.webp',
+  linkedin: 'https://www.linkedin.com/in/archana-kumar-yereseme-80176849/',
+};
+
 const EXECOM = [
-  { n:'Dhanush Gowda M',       r:'Chair',           img:'/team/framed/execom/chair-dhanush_gowda_m.webp' },
-  { n:'Sri Manisha Ramisetty', r:'Vice Chair',      img:'/team/framed/execom/vicechair-sri_manisha_ramisetty.webp' },
-  { n:'Anagh Manivarnan',      r:'Secretary',       img:'/team/framed/execom/secretary-anagh_manivarnan.webp' },
-  { n:'Datha Sharma',          r:'Treasurer',       img:'/team/framed/execom/treasurer-datha_sharma.webp' },
-  { n:'C Yatin Reddy',         r:'Events Head',     img:'/team/framed/execom/events_head-c_yatin_reddy.webp' },
-  { n:'Balaji P',              r:'Marketing Head',  img:'/team/framed/execom/marketing_head-balaji_p.webp' },
-  { n:'Shambhavi Sinha',       r:'Media Head',      img:'/team/framed/execom/media_head-shambhavi_sinha.webp' },
-  { n:'Javeria Taj',           r:'Webmaster',       img:'/team/framed/execom/webmaster-javeria_taj.webp' },
+  { n:'Dhanush Gowda M',       r:'Chair',           img:'/team/framed/execom/chair-dhanush_gowda_m.webp', category:'executive', linkedin:'https://www.linkedin.com/in/dhanush-gowda-n-7a018232a?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+  { n:'Sri Manisha Ramisetty', r:'Vice Chair',      img:'/team/framed/execom/vicechair-sri_manisha_ramisetty.webp', category:'executive', linkedin:'https://www.linkedin.com/in/sri-manisha-ramisetty-07445636a?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+  { n:'Anagh Manivarnan',      r:'Secretary',       img:'/team/framed/execom/secretary-anagh_manivarnan.webp', category:'executive' },
+  { n:'Javeria Taj',           r:'Webmaster',       img:'/team/framed/execom/webmaster-javeria_taj.webp', category:'executive', linkedin:'https://www.linkedin.com/in/javeria-taj-4b1733329?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+  { n:'Datha Sharma',          r:'Treasurer',       img:'/team/framed/execom/treasurer-datha_sharma.webp', category:'executive' },
+  { n:'C Yatin Reddy',         r:'Events Head',     img:'/team/framed/execom/events_head-c_yatin_reddy.webp', category:'executive' },
+  { n:'Shambhavi Sinha',       r:'Media Head',      img:'/team/framed/execom/media_head-shambhavi_sinha.webp', category:'executive', linkedin:'https://www.linkedin.com/in/shambhavi-sinha-61647231b?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+  { n:'Balaji P',              r:'Marketing Head',  img:'/team/framed/execom/marketing_head-balaji_p.webp', category:'executive' },
 ];
 
 const VOLCOM = [
-  { n:'Mauli Ahuja',      r:'Technical Coordinator', img:'/team/framed/volcom/technical_coordinator-mauli_ahuja.webp' },
-  { n:'P Mahidhar',       r:'Technical Coordinator', img:'/team/framed/volcom/technical-coordinator-p_mahidhar.webp' },
-  { n:'Shreya Hangal',    r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-shreya_hangal.webp' },
-  { n:'Swarna P',         r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-swarna_p.webp' },
-  { n:'Yana Agarwal',     r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-yana_agarwal.webp' },
-  { n:'Chinmayi M',       r:'Marketing Coordinator', img:'/team/framed/volcom/marketing_coordinator-chinmayi_m.webp' },
-  { n:'Kushadhi J Yadav', r:'Marketing Coordinator', img:'/team/framed/volcom/marketing_coordinator-kushadhi_j_yadav.webp' },
-  { n:'Sohini Mallick',   r:'Media Coordinator',     img:'/team/framed/volcom/media_coordinator-sohini_mallick.webp' },
+  { n:'Mauli Ahuja',      r:'Technical Coordinator', img:'/team/framed/volcom/technical_coordinator-mauli_ahuja.webp', category:'volunteer', linkedin:'https://www.linkedin.com/in/mauli-ahuja' },
+  { n:'P Mahidhar',       r:'Technical Coordinator', img:'/team/framed/volcom/technical-coordinator-p_mahidhar.webp', category:'volunteer', linkedin:'https://www.linkedin.com/in/ponuganti-mahidhar-744466428?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+  { n:'Shreya Hangal',    r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-shreya_hangal.webp', category:'volunteer' },
+  { n:'Swarna P',         r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-swarna_p.webp', category:'volunteer' },
+  { n:'Yana Agarwal',     r:'Events Coordinator',    img:'/team/framed/volcom/events_coordinator-yana_agarwal.webp', category:'volunteer' },
+  { n:'Chinmayi M',       r:'Marketing Coordinator', img:'/team/framed/volcom/marketing_coordinator-chinmayi_m.webp', category:'volunteer' },
+  { n:'Kushadhi J Yadav', r:'Marketing Coordinator', img:'/team/framed/volcom/marketing_coordinator-kushadhi_j_yadav.webp', category:'volunteer' },
+  { n:'Sohini Mallick',   r:'Media Coordinator',     img:'/team/framed/volcom/media_coordinator-sohini_mallick.webp', category:'volunteer' },
 ];
 
 const esc = str => String(str).replace(/[&<>"]/g, c => (
   { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]
 ));
 
-function renderRoster(list, mountSel, prefix, dense) {
+const LI_ICON_SVG = '<svg class="li-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect class="li-box" width="24" height="24" rx="4"/><path class="li-in" d="M7.8 19h-2.8v-9h2.8v9zm-1.4-10.2c-.9 0-1.6-.7-1.6-1.6 0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6c0 .9-.7 1.6-1.6 1.6zm12.6 10.2h-2.8v-4.6c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8v4.6h-2.8s.04-8.2 0-9h2.8v1.3c.4-.6 1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1v5.1z"/></svg>';
+
+function renderRoster(list, mountSel, dense) {
   const mount = $(mountSel);
   if (!mount) return;
-  list.forEach((m, i) => {
+  list.forEach((m) => {
     const init = m.n.split(' ').map(s => s[0]).join('').slice(0, 2);
-    const id = `${prefix} \u00b7 ${String(i + 1).padStart(3, '0')}`;
     const el = document.createElement('div');
     el.className = dense ? 'nm nm-sm' : 'nm';
     el.innerHTML = `
@@ -3484,7 +3857,9 @@ function renderRoster(list, mountSel, prefix, dense) {
         ${m.img ? `<img src="${esc(m.img)}" alt="${esc(m.n)}" loading="lazy" decoding="async">` : ''}
         <div class="sweep"></div>
       </div>
-      <div class="id">${esc(id)}</div>
+      <div class="nm-meta">
+        ${m.linkedin ? `<a class="nm-linkedin" href="${esc(m.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(m.n)} on LinkedIn" title="${esc(m.n)} \u00b7 LinkedIn" data-hover>${LI_ICON_SVG}</a>` : ''}
+      </div>
       <div class="name">${esc(m.n)}</div>
       <div class="role">${esc(m.r)}</div>
     `;
@@ -3497,185 +3872,117 @@ function renderRoster(list, mountSel, prefix, dense) {
   });
 }
 
-/* Tiers swapped: executives take the denser 4:5 card, volunteers the large
-   square one. The portrait aspect and type scale ride on .nm / .nm-sm, so the
-   dense flag is the only switch. */
-renderRoster(EXECOM, '#execomGrid', 'E', true);
-renderRoster(VOLCOM, '#volcomGrid', 'V', false);
+renderRoster(EXECOM, '#execomGrid', true);
+renderRoster(VOLCOM, '#volcomGrid', false);
 
-/* ── 07 · NETWORK — acquisition head ────────────────────────────────
-   Place immediately after:
-     renderRoster(EXECOM, '#execomGrid', 'E', true);
-     renderRoster(VOLCOM, '#volcomGrid', 'V', false);
-   renderRoster and its per-card --mx/--my handlers are untouched. */
-(function initNetworkSwitch(){
-  const head  = document.getElementById('nsHead');
-  const stack = document.getElementById('nsPanels');
-  if(!head || !stack) return;
+/* ── 07 · NETWORK — Progressive disclosure & card telemetry ──────── */
+(function initNetworkProgressive(){
+  const btn = document.getElementById('netExpandBtn');
+  const volSection = document.getElementById('volcomSection');
+  if (!btn || !volSection) return;
 
-  const tabs = Array.prototype.slice.call(head.querySelectorAll('[role="tab"]'));
-  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
-  if(tabs.length < 2 || panels.some(p => !p)) return;
-
-  const wide    = window.matchMedia('(min-width: 901px)');
+  const deltaEl = document.getElementById('netExpandDelta');
+  const labelEl = document.getElementById('netExpandLabel');
+  const statusEl = document.getElementById('netExpandStatus');
   const motionQ = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const still   = () => motionQ.matches;
-  const cards   = i => panels[i].querySelectorAll('.nm');
-  const set     = (el, txt) => { if(el) el.textContent = txt; };   /* every lookup is guarded */
+  const still = () => motionQ.matches;
+  const volCards = volSection.querySelectorAll('.nm');
+  volCards.forEach((c, k) => c.style.setProperty('--i', k));
 
-  let current = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
-  if(current < 0) current = 0;
-  let timers = [], heightT = 0, refreshT = 0;
-
-  /* Every readout is derived from the live DOM, so the number a sighted user
-     reads and the number a screen reader hears cannot drift apart. The
-     decorative 07.1 / REC strings stay aria-hidden; the tab's accessible name
-     is built here instead. No live region: aria-selected under automatic
-     activation already speaks the change, and a status region would double
-     every arrow press. */
-  tabs.forEach((tab, i) => {
-    const n = cards(i).length;
-    set(tab.querySelector('.ns-rec'), String(n).padStart(2, '0'));
-    tab.setAttribute('aria-label',
-      `${tab.dataset.tier || ''}, ${tab.dataset.name || ''}, ${n} member${n === 1 ? '' : 's'}`);
-
-    /* raster order for the acquire stagger */
-    cards(i).forEach((c, k) => c.style.setProperty('--i', k));
-
-    tab.addEventListener('click', () => select(i));
-    tab.addEventListener('keydown', onKey);
-    tab.addEventListener('mousemove', e => {
-      const r = tab.getBoundingClientRect();
-      tab.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      tab.style.setProperty('--my', `${e.clientY - r.top}px`);
+  function wake(el){
+    el.querySelectorAll('.reveal').forEach(r => {
+      r.classList.add('in');
+      r.classList.remove('reveal');
     });
+  }
+
+  function refreshScroll(){
+    if (!window.ScrollTrigger || typeof ScrollTrigger.refresh !== 'function') return;
+    setTimeout(() => {
+      try { ScrollTrigger.refresh(); } catch(e){}
+    }, 60);
+  }
+
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    btn.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    btn.style.setProperty('--my', `${e.clientY - r.top}px`);
   });
 
-  /* the tablist stacks to one column at <=900px, so it is vertical there */
-  function orient(){
-    head.setAttribute('aria-orientation', wide.matches ? 'horizontal' : 'vertical');
-  }
-  orient();
-  (wide.addEventListener ? wide.addEventListener('change', orient)
-                         : wide.addListener(orient));
-
-  function onKey(e){
-    const last = tabs.length - 1;
-    let next;
-    switch(e.key){
-      case 'ArrowRight': case 'ArrowDown': next = current === last ? 0 : current + 1; break;
-      case 'ArrowLeft':  case 'ArrowUp':   next = current === 0 ? last : current - 1; break;
-      case 'Home': next = 0; break;
-      case 'End':  next = last; break;
-      default: return;
-    }
-    e.preventDefault();
-    select(next, true);
-  }
-
-  function stop(){ timers.forEach(clearTimeout); timers = []; }
-
-  /* Cards inside a hidden panel never intersect, so the page's revealIO never
-     fires for them — without this the incoming roster is blank until the 4s
-     safety net bails it out. Removing .reveal also stops its 1.4s transition
-     from fighting the 0.55s acquire animation and dragging cards back to 0. */
-  function wake(panel){
-    panel.querySelectorAll('.reveal').forEach(el => {
-      el.classList.add('in');
-      el.classList.remove('reveal');
+  const faCard = document.querySelector('.fa-card');
+  if (faCard) {
+    faCard.addEventListener('mousemove', e => {
+      const r = faCard.getBoundingClientRect();
+      faCard.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      faCard.style.setProperty('--my', `${e.clientY - r.top}px`);
     });
   }
 
-  /* One ScrollTrigger.refresh(), once, after the swap has settled — the page
-     pins #missions and maps the Earth camera off #horizon, both of which move
-     when the roster height changes. Coalesced so a burst of arrow presses
-     cannot queue a stack of full recalculations, and skipped entirely when the
-     height did not change or motion is reduced. */
-  function refreshScroll(){
-    if(!window.ScrollTrigger || typeof ScrollTrigger.refresh !== 'function') return;
-    clearTimeout(refreshT);
-    refreshT = setTimeout(() => { try { ScrollTrigger.refresh(); } catch(err){} }, 60);
-  }
+  let isExpanded = false;
+  let animating = false;
 
-  /* Swap panels without letting the page below lurch under Lenis. */
-  function retune(from){
-    const prev = panels[from], next = panels[current];
-    if(prev === next) return;
-    /* panels are tabindex="0"; hiding one that holds focus would drop it to <body> */
-    const held = prev.contains(document.activeElement);
+  btn.addEventListener('click', () => {
+    if (animating) return;
+    isExpanded = !isExpanded;
+    btn.setAttribute('aria-expanded', String(isExpanded));
 
-    const h0 = still() ? 0 : stack.offsetHeight;
-    prev.hidden = true;
-    next.hidden = false;
-    if(held) tabs[current].focus();
+    if (isExpanded) {
+      if (deltaEl) deltaEl.textContent = '−08';
+      if (labelEl) labelEl.innerHTML = 'Close Network <span class="net-expand-arrow">↑</span>';
+      if (statusEl) statusEl.textContent = 'Active';
 
-    if(still()){ refreshScroll(); return; }
+      wake(volSection);
+      volSection.hidden = false;
 
-    const h1 = stack.offsetHeight;
-    if(h0 === h1){ refreshScroll(); return; }
+      if (still()) {
+        refreshScroll();
+        return;
+      }
 
-    stack.classList.add('ns-tuning');
-    stack.style.height = h0 + 'px';
-    void stack.offsetHeight;            /* flush the start height synchronously */
-    stack.style.height = h1 + 'px';
+      animating = true;
+      volSection.classList.add('is-expanding');
+      const targetH = volSection.scrollHeight;
+      volSection.style.height = '0px';
+      volSection.style.opacity = '0';
+      void volSection.offsetHeight;
 
-    clearTimeout(heightT);
-    heightT = setTimeout(() => {
-      stack.style.height = '';
-      stack.classList.remove('ns-tuning');
-      refreshScroll();
-    }, 640);
-  }
+      volSection.style.height = targetH + 'px';
+      volSection.style.opacity = '1';
 
-  function select(i, moveFocus, init){
-    if(!init && i === current){          /* the live channel is a deliberate no-op */
-      if(moveFocus) tabs[i].focus();
-      return;
+      setTimeout(() => {
+        volSection.style.height = '';
+        volSection.classList.remove('is-expanding');
+        animating = false;
+        refreshScroll();
+      }, 650);
+    } else {
+      if (deltaEl) deltaEl.textContent = '+08';
+      if (labelEl) labelEl.innerHTML = 'Wider Network <span class="net-expand-arrow">→</span>';
+      if (statusEl) statusEl.textContent = 'Standby';
+
+      if (still()) {
+        volSection.hidden = true;
+        refreshScroll();
+        return;
+      }
+
+      animating = true;
+      volSection.classList.add('is-collapsing');
+      volSection.style.height = volSection.offsetHeight + 'px';
+      void volSection.offsetHeight;
+      volSection.style.height = '0px';
+      volSection.style.opacity = '0';
+
+      setTimeout(() => {
+        volSection.hidden = true;
+        volSection.style.height = '';
+        volSection.style.opacity = '';
+        volSection.classList.remove('is-collapsing');
+        animating = false;
+        refreshScroll();
+      }, 650);
     }
-    const from = current;
-    const tab = tabs[i], panel = panels[i];
-    current = i;
-
-    /* switching mid-acquire is safe: pending timers die, every panel's acquire
-       class is stripped, and both channels are written back to a known state */
-    stop();
-    panels.forEach(p => p.classList.remove('ns-acq'));
-    tabs.forEach((t, k) => {
-      t.setAttribute('aria-selected', String(k === i));
-      t.tabIndex = k === i ? 0 : -1;
-      t.removeAttribute('data-state');
-      set(t.querySelector('.ns-word'), 'Lock');
-    });
-    head.dataset.active = String(i);
-    if(moveFocus) tab.focus();
-
-    if(init){
-      panels.forEach((p, k) => { p.hidden = k !== i; });
-      return;                            /* first paint keeps the page's scroll reveal */
-    }
-
-    retune(from);
-    wake(panel);
-
-    if(still()) return;                  /* straight to Lock, no acquire pass */
-
-    tab.dataset.state = 'acq';
-    set(tab.querySelector('.ns-word'), 'Acquire');
-    void panel.offsetWidth;              /* restart the acquire pass */
-    panel.classList.add('ns-acq');
-
-    timers.push(setTimeout(() => {
-      if(current === i) set(tab.querySelector('.ns-word'), 'Sync');
-    }, 330));
-    timers.push(setTimeout(() => {
-      if(current !== i) return;          /* each timer checks it still owns the channel */
-      tab.removeAttribute('data-state');
-      set(tab.querySelector('.ns-word'), 'Lock');
-    }, 760));
-    timers.push(setTimeout(() => { panel.classList.remove('ns-acq'); }, 1400));
-  }
-
-  select(current, false, true);
+  });
 })();
 
 
