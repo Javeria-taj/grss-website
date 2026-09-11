@@ -497,6 +497,201 @@ body.chrome-out .operator {
   pointer-events: none;
   transition: opacity 1.2s var(--ease-cine);
 }
+
+/* ── IDENTITY REVEAL ──────────────────────────── */
+.identity-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  /* no background panel — typography sits directly within the cosmic environment */
+}
+.identity-reveal.active {
+  opacity: 1;
+}
+.identity-reveal.dismissing {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.8s cubic-bezier(0.7, 0, 0.3, 1), transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Presenter block (BMSIT&M) */
+.irev-presenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2vh, 22px);
+  margin-bottom: clamp(24px, 4.5vh, 48px);
+}
+.irev-presenter-logo {
+  width: clamp(140px, 16vw, 220px);
+  height: clamp(140px, 16vw, 220px);
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: irev-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+}
+.irev-presenter-name {
+  font-family: var(--mono);
+  font-size: clamp(18px, 2.2vw, 28px);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: irev-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+  white-space: nowrap;
+}
+.irev-presents {
+  font-family: var(--mono);
+  font-size: clamp(13px, 1.55vw, 19px);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: irev-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+}
+
+/* Ceremonial hairline divider */
+.irev-divider {
+  width: clamp(32px, 4vw, 52px);
+  height: 1px;
+  background: var(--line-mid);
+  opacity: 0;
+  transform: scaleX(0.2);
+  animation: irev-line 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+  margin-bottom: clamp(24px, 4.5vh, 48px);
+  transform-origin: center;
+}
+
+/* Dominant Identity block (IEEE GRSS) */
+.irev-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 2.2vh, 24px);
+}
+.irev-identity-logo {
+  width: clamp(130px, 15vw, 208px);
+  height: clamp(130px, 15vw, 208px);
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: irev-rise 1.0s cubic-bezier(0.16, 1, 0.3, 1) 2.1s forwards;
+  filter: drop-shadow(0 6px 28px rgba(0,0,0,0.6));
+}
+.irev-title {
+  font-family: var(--serif);
+  font-weight: 200;
+  font-size: clamp(54px, 11vw, 138px);
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: var(--ink);
+  text-align: center;
+  font-variation-settings: 'opsz' 144;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: irev-title 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+}
+.irev-subtitle {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 13px);
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: irev-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 3.0s forwards;
+}
+
+@keyframes irev-rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes irev-line {
+  to { opacity: 0.4; transform: scaleX(1); }
+}
+@keyframes irev-title {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fast mode timings for returning visitors / short launch sequences */
+.identity-reveal.fast .irev-presenter-logo { animation-delay: 0.08s; }
+.identity-reveal.fast .irev-presenter-name { animation-delay: 0.22s; }
+.identity-reveal.fast .irev-presents { animation-delay: 0.36s; }
+.identity-reveal.fast .irev-divider { animation-delay: 0.50s; }
+.identity-reveal.fast .irev-identity-logo { animation-delay: 0.65s; }
+.identity-reveal.fast .irev-title { animation-delay: 0.80s; }
+.identity-reveal.fast .irev-subtitle { animation-delay: 1.00s; }
+
+/* Mobile recomposition */
+@media (max-width: 600px) {
+  .irev-presenter {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .irev-presenter-logo {
+    width: clamp(100px, 28vw, 140px);
+    height: clamp(100px, 28vw, 140px);
+  }
+  .irev-presenter-name {
+    font-size: clamp(15px, 4.5vw, 20px);
+    letter-spacing: 0.24em;
+    white-space: normal;
+    text-align: center;
+    max-width: 360px;
+    line-height: 1.5;
+  }
+  .irev-presents {
+    font-size: clamp(11.5px, 3.4vw, 15px);
+    letter-spacing: 0.34em;
+  }
+  .irev-divider {
+    width: 28px;
+    margin-bottom: 24px;
+  }
+  .irev-identity {
+    gap: 14px;
+  }
+  .irev-identity-logo {
+    width: clamp(100px, 28vw, 140px);
+    height: clamp(100px, 28vw, 140px);
+  }
+  .irev-title {
+    font-size: clamp(42px, 15vw, 68px);
+    line-height: 0.95;
+  }
+  .irev-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-align: center;
+    max-width: 300px;
+    line-height: 1.4;
+  }
+}
+
+/* Reduced-motion: skip displacement, maintain complete clarity */
+@media (prefers-reduced-motion: reduce) {
+  .identity-reveal,
+  .irev-presenter-logo,
+  .irev-presenter-name,
+  .irev-presents,
+  .irev-divider,
+  .irev-identity-logo,
+  .irev-title,
+  .irev-subtitle {
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -566,6 +761,38 @@ body.chrome-out .operator {
   <div class="kicker">Mission initialized by</div>
   <div class="name" id="operatorName"></div>
   <div class="role" id="operatorRole"></div>
+</div>
+
+<!-- IDENTITY REVEAL OVERLAY -->
+<div class="identity-reveal" id="identityReveal" role="region" aria-label="Institutional identity reveal">
+  <!-- Presenter: BMSIT&M -->
+  <div class="irev-presenter">
+    <img
+      class="irev-presenter-logo"
+      src="/bmsit-logo.webp"
+      onerror="if(this.getAttribute('data-fb')!=='1'){this.setAttribute('data-fb','1');this.src='bmsit-logo.webp';}"
+      alt="BMS Institute of Technology and Management logo"
+      width="220" height="220" decoding="async"
+    >
+    <span class="irev-presenter-name">BMSIT&amp;M Student Chapter</span>
+    <span class="irev-presents">Proudly Presents</span>
+  </div>
+
+  <!-- Divider -->
+  <div class="irev-divider" aria-hidden="true"></div>
+
+  <!-- Identity: IEEE GRSS -->
+  <div class="irev-identity">
+    <img
+      class="irev-identity-logo"
+      src="/grss-logo.webp"
+      onerror="if(this.getAttribute('data-fb')!=='1'){this.setAttribute('data-fb','1');this.src='grss-logo.webp';}"
+      alt="IEEE Geoscience and Remote Sensing Society logo"
+      width="208" height="208" decoding="async"
+    >
+    <p class="irev-title">IEEE GRSS</p>
+    <span class="irev-subtitle">Geoscience &amp; Remote Sensing Society</span>
+  </div>
 </div>
 
 <div class="hud bl" id="hudYear">2026</div>
@@ -687,7 +914,8 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
     year: $('#hudYear'),
     telemetryNote: $('#telemetryNote'),
     curDot: $('#curDot'),
-    curRing: $('#curRing')
+    curRing: $('#curRing'),
+    identityReveal: $('#identityReveal')
   };
   ui.year.textContent = CONFIG.year;
 
@@ -732,6 +960,7 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
     { id: 'ORBITAL_TRAVERSAL', dur: 2.8, label: 'Signal · Decoded' },
     { id: 'EARTH_APPROACH',    dur: 3.4, label: 'Approach · Nominal' },
     { id: 'ATMOSPHERIC_ENTRY', dur: 2.2, label: 'Atmosphere · Scattering' },
+    { id: 'IDENTITY_REVEAL',   dur: 5.0, label: 'Identity · Confirmed' },
     { id: 'HERO_HANDOFF',      dur: 1.8, label: 'Observe beyond vision' }
   ];
 
@@ -739,6 +968,7 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
     { id: 'SENSOR_ONLINE',     dur: 0.5, label: 'Sensor array · Online' },
     { id: 'OBSERVATION_ACTIVE',dur: 0.9, label: 'Observation · Active' },
     { id: 'EARTH_APPROACH',    dur: 1.2, label: 'Approach · Nominal' },
+    { id: 'IDENTITY_REVEAL',   dur: 1.8, label: 'Identity · Confirmed' },
     { id: 'HERO_HANDOFF',      dur: 1.1, label: 'Observe beyond vision' }
   ];
 
@@ -746,6 +976,7 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
     { id: 'SYSTEM_WAKE',       dur: 0.9, label: 'Observation system · Initializing' },
     { id: 'SENSOR_ONLINE',     dur: 0.9, label: 'Sensor array · Online' },
     { id: 'OBSERVATION_ACTIVE',dur: 1.1, label: 'Observation · Active' },
+    { id: 'IDENTITY_REVEAL',   dur: 1.8, label: 'Identity · Confirmed' },
     { id: 'HERO_HANDOFF',      dur: 1.1, label: 'Observe beyond vision' }
   ];
 
@@ -1467,7 +1698,7 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
   const FOV_KEYS = [
     ['IDLE', 62], ['SYSTEM_WAKE', 60], ['SENSOR_ONLINE', 57], ['ORBITAL_LOCK', 54],
     ['EARTH_ACQUIRED', 46], ['OBSERVATION_ACTIVE', 42], ['ORBITAL_TRAVERSAL', 40],
-    ['EARTH_APPROACH', 37], ['ATMOSPHERIC_ENTRY', 34.6], ['HERO_HANDOFF', HERO.fov]
+    ['EARTH_APPROACH', 37], ['ATMOSPHERIC_ENTRY', 34.6], ['IDENTITY_REVEAL', 34.2], ['HERO_HANDOFF', HERO.fov]
   ];
   function fovAt() {
     if (reduceMotion) return HERO.fov;
@@ -1597,6 +1828,11 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
           ? lerp(a.r, 1.98, ease.out(p / 0.34))
           : lerp(1.98, 4.3, ease.out((p - 0.34) / 0.66));
         target = _v1.copy(dir).multiplyScalar(r);
+      } else if (state.phase === 'IDENTITY_REVEAL') {
+        const a = anchorFor('IDENTITY_REVEAL');
+        const p = through('IDENTITY_REVEAL');
+        const w = ease.out(p * 0.65);
+        target = _v1.copy(a.pos).lerp(heroPos, w);
       } else if (state.phase === 'HERO_HANDOFF' || state.done) {
         const a = anchorFor('HERO_HANDOFF');
         const p = state.done ? 1 : through('HERO_HANDOFF');
@@ -1608,12 +1844,14 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
       const r = target.length();
       if (r < 1.94) target.multiplyScalar(1.94 / r);
 
-      const settle = state.phase === 'HERO_HANDOFF' ? lerp(10, 90, ease.in(through('HERO_HANDOFF'))) : 7.5;
+      const settle = state.phase === 'HERO_HANDOFF'
+        ? lerp(10, 90, ease.in(through('HERO_HANDOFF')))
+        : (state.phase === 'IDENTITY_REVEAL' ? 4.0 : 7.5);
       const k = 1 - Math.exp(-settle * dt);
       camState.world.lerp(target, k);
       /* the aim migrates from the platform to Earth's centre — where the
          hero holds it — rather than cutting across on the phase change */
-      const aim = state.phase === 'HERO_HANDOFF' ? 22 : 3.2;
+      const aim = state.phase === 'HERO_HANDOFF' ? 22 : (state.phase === 'IDENTITY_REVEAL' ? 5.0 : 3.2);
       camState.lookWorld.multiplyScalar(Math.exp(-aim * dt));
       const heroUp = new THREE.Vector3(Math.sin(heroDrift(siteTime()).roll), Math.cos(heroDrift(siteTime()).roll), 0);
       camState.up.lerp(heroUp, 1 - Math.exp(-6 * dt)).normalize();
@@ -1812,6 +2050,7 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
 
   function setPhase(id, label) {
     if (state.phase === id) return;
+    const prev = state.phase;
     state.phase = id;
     if (label) say(label);
     if (id in STEP_AT) {
@@ -1822,6 +2061,20 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
     if (id === 'EARTH_ACQUIRED') showOperator(true);
     if (id === 'EARTH_APPROACH' || id === 'ATMOSPHERIC_ENTRY') showOperator(false);
     if (id === 'ORBITAL_TRAVERSAL') ui.railState.textContent = 'Array · Live';
+
+    /* ── Identity reveal ── */
+    if (id === 'IDENTITY_REVEAL') {
+      const isShort = PHASES === PHASES_SHORT || PHASES === PHASES_REDUCED;
+      ui.identityReveal.classList.toggle('fast', isShort);
+      ui.identityReveal.classList.remove('dismissing');
+      ui.identityReveal.classList.add('active');
+    }
+    if (prev === 'IDENTITY_REVEAL' && id !== 'IDENTITY_REVEAL') {
+      ui.identityReveal.classList.add('dismissing');
+      setTimeout(function () {
+        ui.identityReveal.classList.remove('active', 'dismissing');
+      }, 1000);
+    }
   }
 
   let operatorShown = false;
@@ -1846,7 +2099,8 @@ function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"f
     }
     setPhase(current.id, current.label);
 
-    const chromeOut = state.seqT > TOTAL - (PHASES[PHASES.length - 1].dur + 1.1);
+    const irev = PHASES.find((p) => p.id === 'IDENTITY_REVEAL');
+    const chromeOut = (irev && state.seqT >= irev.start - 0.4) || state.phase === 'IDENTITY_REVEAL' || state.phase === 'HERO_HANDOFF' || state.done;
     document.body.classList.toggle('chrome-out', chromeOut);
   }
 
